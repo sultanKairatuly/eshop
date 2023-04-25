@@ -32,7 +32,8 @@
             <img
               class="product_image"
               :src="getImageUrl(product?.current_type.images[0])"
-              alt=""
+              alt="product image"
+              @click="viewProduct(product.model)"
             />
             <div class="image_separator"></div>
             <div class="product_name">{{ product.model }}</div>
@@ -67,10 +68,11 @@ import { reactive, ref, watch } from "vue";
 import DropdownFilter from "../components/DropdownFilter.vue";
 import type { DropdownFilterType } from "../../types/types";
 import { v4 as uuidv4 } from "uuid";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { useUserUtilities } from "../composables/utilities";
 import EshopLoader from "../components/EshopLoader.vue";
 
+const router = useRouter();
 const loading = ref<boolean>(false);
 const { isHasDepth, findTreeLinkAndDepth, getImageUrl } = useUserUtilities();
 const route = useRoute();
@@ -199,6 +201,31 @@ function getInstallment(price: string): string {
       return `${value[0]}${value[1]}${value[2]} ${value.slice(3)} ₸`;
   }
   return value + " ₸";
+}
+
+function viewProduct(model: string) {
+  const allProducts = findTreeLinkAndDepth(
+    dropdownFilter[0].id,
+    dropdownFilter
+  );
+
+  if (isHasDepth(allProducts)) {
+    products.splice(0);
+    for (let item of catalog) {
+      for (let subcatalogName of allProducts.item.catalog.split("-")) {
+        const foundItem = item[subcatalogName].find(
+          (item: Record<string, any>) => item.model === model
+        );
+        if (foundItem) {
+          router.push(
+            `/catalogs/${catalogName.value}/${item.brand}/${subcatalogName}/${model}`
+          );
+        }
+      }
+    }
+  }
+
+  const subcatalog = catalog.forEach((item) => {});
 }
 </script>
 

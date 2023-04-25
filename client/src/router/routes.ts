@@ -21,6 +21,11 @@ const routes: RouteRecordRaw[] = [
     path: "/catalogs/:catalogName",
     name: "Catalog",
     component: () => import('../views/CatalogPage.vue')
+  },
+  {
+    path: "/catalogs/:catalogName/:brand/:subcatalogName/:model",
+    name: "Product",
+    component: () => import('../views/ProductPage.vue')
   }
 ];
 export default routes;

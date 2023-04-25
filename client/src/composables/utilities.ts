@@ -1,5 +1,4 @@
-import { User } from "../../types/types";
-import { DropdownFilterType } from '../../types/types'
+import { User, DropdownFilterType, Phone, Clock, Charger } from "../../types/types";
 
 export function useUserUtilities() {
   type findTreeLinkAndDepthType = {
@@ -21,9 +20,14 @@ export function useUserUtilities() {
     return typeof emailVerified === "boolean";
   }
   
-  function isHasDepth(value: unknown): value is { depth: number; item: DropdownFilterType } {
+  function isHasDepth(value: unknown): value is findTreeLinkAndDepthType {
     return typeof value === 'object' && value !== null && 'depth' in value && 'item' in value && typeof (value as any).depth === 'number';
   }
+
+  function isPhone(value: unknown): value is Phone {
+    return value && typeof value === 'object' && 'current_bundle' in value
+  }
+
 
   
 function findTreeLinkAndDepth(

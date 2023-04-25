@@ -1099,11 +1099,6 @@ module.exports = {
       clocks: [
         {
           model: "Смарт-часы Apple Watch Series 8",
-          current_color: [
-            "../assets/apple/clocks/S8/black/image1.jpg",
-            "../assets/apple/clocks/S8/black/image2.jpg",
-            "../assets/apple/clocks/S8/black/image3.jpg",
-          ],
           current_type: {
             images: [
               "../assets/apple/clocks/S8/black/image1.jpg",
