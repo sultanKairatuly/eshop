@@ -11,8 +11,8 @@ const products = require("./products.js");
 
 app.use(bodyParser.json());
 app.use(cors());
-app.use(express.json({ limit: "10mb" }));
-app.use(express.urlencoded({ limit: "10mb" }));
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ limit: "50mb" }));
 app.get("/getPhones", async (req, res) => {
   const phones = await getPhones(client, "Apple");
   res.send(JSON.stringify(phones));
@@ -40,6 +40,7 @@ app.get("/all-products", async (req, res) => {
 app.get("/catalogs/:catalog", async (req, res) => {
   const catalog = req.params.catalog;
   const foundCatalog = await getCatalog(catalog);
+  console.log(foundCatalog);
   res.send(foundCatalog);
 });
 

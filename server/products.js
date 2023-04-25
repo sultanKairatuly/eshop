@@ -854,6 +854,13 @@ module.exports = {
             "../assets/apple/chargers/Adapter18W/image2.jpg",
             "../assets/apple/chargers/Adapter18W/image3.jpg",
           ],
+          current_type: {
+            images: [
+              "../assets/apple/chargers/Adapter18W/image1.jpg",
+              "../assets/apple/chargers/Adapter18W/image2.jpg",
+              "../assets/apple/chargers/Adapter18W/image3.jpg",
+            ],
+          },
         },
         {
           id: uuidv4(),
@@ -867,6 +874,13 @@ module.exports = {
             "../assets/apple/chargers/Adapter20W/image2.jpg",
             "../assets/apple/chargers/Adapter120W/image3.jpg",
           ],
+          current_type: {
+            images: [
+              "../assets/apple/chargers/Adapter20W/image1.jpg",
+              "../assets/apple/chargers/Adapter20W/image2.jpg",
+              "../assets/apple/chargers/Adapter120W/image3.jpg",
+            ],
+          },
         },
         {
           id: uuidv4(),
@@ -880,6 +894,13 @@ module.exports = {
             "../assets/apple/chargers/Adapter20WTypeA/image2.jpg",
             "../assets/apple/chargers/Adapter20WTypeA/image3.jpg",
           ],
+          current_type: {
+            images: [
+              "../assets/apple/chargers/Adapter20WTypeA/image1.jpg",
+              "../assets/apple/chargers/Adapter20WTypeA/image2.jpg",
+              "../assets/apple/chargers/Adapter20WTypeA/image3.jpg",
+            ],
+          },
         },
         {
           id: uuidv4(),
@@ -893,6 +914,13 @@ module.exports = {
             "../assets/apple/chargers/Adapter5W/image2.jpg",
             "../assets/apple/chargers/Adapter5W/image3.jpg",
           ],
+          current_type: {
+            images: [
+              "../assets/apple/chargers/Adapter5W/image1.jpg",
+              "../assets/apple/chargers/Adapter5W/image2.jpg",
+              "../assets/apple/chargers/Adapter5W/image3.jpg",
+            ],
+          },
         },
         {
           id: uuidv4(),
@@ -906,6 +934,13 @@ module.exports = {
             "../assets/apple/chargers/Adapter20WTypeG/image2.jpg",
             "../assets/apple/chargers/Adapter20WTypeG/image3.jpg",
           ],
+          current_type: {
+            images: [
+              "../assets/apple/chargers/Adapter20WTypeG/image1.jpg",
+              "../assets/apple/chargers/Adapter20WTypeG/image2.jpg",
+              "../assets/apple/chargers/Adapter20WTypeG/image3.jpg",
+            ],
+          },
         },
         {
           id: uuidv4(),
@@ -919,6 +954,13 @@ module.exports = {
             "../assets/apple/chargers/Adapter12W/image2.jpg",
             "../assets/apple/chargers/Adapter12W/image3.jpg",
           ],
+          current_type: {
+            images: [
+              "../assets/apple/chargers/Adapter12W/image1.jpg",
+              "../assets/apple/chargers/Adapter12W/image2.jpg",
+              "../assets/apple/chargers/Adapter12W/image3.jpg",
+            ],
+          },
         },
         {
           id: uuidv4(),
@@ -932,6 +974,13 @@ module.exports = {
             "../assets/apple/chargers/Adapter30W/image2.jpg",
             "../assets/apple/chargers/Adapter30W/image3.jpg",
           ],
+          current_type: {
+            images: [
+              "../assets/apple/chargers/Adapter30W/image1.jpg",
+              "../assets/apple/chargers/Adapter30W/image2.jpg",
+              "../assets/apple/chargers/Adapter30W/image3.jpg",
+            ],
+          },
         },
         {
           id: uuidv4(),
@@ -941,6 +990,9 @@ module.exports = {
           fast_charge: false,
           connector_type: "USB",
           images: ["../assets/apple/chargers/MagSafe245W/image1.jpg"],
+          current_type: {
+            images: ["../assets/apple/chargers/MagSafe245W/image1.jpg"],
+          },
         },
         {
           id: uuidv4(),
@@ -954,6 +1006,13 @@ module.exports = {
             "../assets/apple/chargers/MagSafe260W/image2.jpg",
             "../assets/apple/chargers/MagSafe260W/image3.jpg",
           ],
+          current_type: {
+            images: [
+              "../assets/apple/chargers/MagSafe260W/image1.jpg",
+              "../assets/apple/chargers/MagSafe260W/image2.jpg",
+              "../assets/apple/chargers/MagSafe260W/image3.jpg",
+            ],
+          },
         },
         {
           id: uuidv4(),
@@ -968,6 +1027,13 @@ module.exports = {
             "../assets/apple/chargers/Adapter61W/image2.jpg",
             "../assets/apple/chargers/Adapter61W/image3.jpg",
           ],
+          current_type: {
+            images: [
+              "../assets/apple/chargers/Adapter61W/image1.jpg",
+              "../assets/apple/chargers/Adapter61W/image2.jpg",
+              "../assets/apple/chargers/Adapter61W/image3.jpg",
+            ],
+          },
         },
         {
           id: uuidv4(),
@@ -981,6 +1047,13 @@ module.exports = {
             "../assets/apple/chargers/Adapter67W/image2.jpg",
             "../assets/apple/chargers/Adapter67W/image3.jpg",
           ],
+          current_type: {
+            images: [
+              "../assets/apple/chargers/Adapter67W/image1.jpg",
+              "../assets/apple/chargers/Adapter67W/image2.jpg",
+              "../assets/apple/chargers/Adapter67W/image3.jpg",
+            ],
+          },
         },
         {
           id: uuidv4(),
@@ -994,6 +1067,13 @@ module.exports = {
             "../assets/apple/chargers/MagSafe85W/image2.jpg",
             "../assets/apple/chargers/MagSafe85W/image3.jpg",
           ],
+          current_type: {
+            images: [
+              "../assets/apple/chargers/MagSafe85W/image1.jpg",
+              "../assets/apple/chargers/MagSafe85W/image2.jpg",
+              "../assets/apple/chargers/MagSafe85W/image3.jpg",
+            ],
+          },
         },
         {
           id: uuidv4(),
@@ -1007,6 +1087,13 @@ module.exports = {
             "../assets/apple/chargers/DuoCharger/image2.jpg",
             "../assets/apple/chargers/DuoCharger/image3.jpg",
           ],
+          current_type: {
+            images: [
+              "../assets/apple/chargers/DuoCharger/image1.jpg",
+              "../assets/apple/chargers/DuoCharger/image2.jpg",
+              "../assets/apple/chargers/DuoCharger/image3.jpg",
+            ],
+          },
         },
       ],
       clocks: [
@@ -1017,6 +1104,13 @@ module.exports = {
             "../assets/apple/clocks/S8/black/image2.jpg",
             "../assets/apple/clocks/S8/black/image3.jpg",
           ],
+          current_type: {
+            images: [
+              "../assets/apple/clocks/S8/black/image1.jpg",
+              "../assets/apple/clocks/S8/black/image2.jpg",
+              "../assets/apple/clocks/S8/black/image3.jpg",
+            ],
+          },
           colors: {
             red: [
               "../assets/apple/clocks/S8/red/image1.jpg",

@@ -17,5 +17,10 @@ const routes: RouteRecordRaw[] = [
     name: "Sign In",
     component: () => import("../views/SignIn.vue"),
   },
+  {
+    path: "/catalogs/:catalogName",
+    name: "Catalog",
+    component: () => import('../views/CatalogPage.vue')
+  }
 ];
 export default routes;

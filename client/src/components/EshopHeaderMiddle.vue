@@ -13,7 +13,7 @@
         <div class="search_button">
           <img
             class="search_icon"
-            src="../assets/small-search.png"
+            src="../assets/apple/small-search.png"
             alt="search"
           />
         </div>

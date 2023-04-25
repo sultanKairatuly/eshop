@@ -30,3 +30,11 @@ export type LoginUser = {
   password: string;
   email: string;
 };
+
+export type DropdownFilterType = {
+  value: string;
+  opened: boolean;
+  children: DropdownFilterType[];
+  id: string,
+  catalog: string;
+};
