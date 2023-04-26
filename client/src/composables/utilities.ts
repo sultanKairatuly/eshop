@@ -1,4 +1,4 @@
-import { User, DropdownFilterType, Phone, Clock, Charger } from "../../types/types";
+import { User, DropdownFilterType, Phone, Clock, Charger, Bundle, ProductType } from "../../types/types";
 
 export function useUserUtilities() {
   type findTreeLinkAndDepthType = {
@@ -24,9 +24,18 @@ export function useUserUtilities() {
     return typeof value === 'object' && value !== null && 'depth' in value && 'item' in value && typeof (value as any).depth === 'number';
   }
 
-  function isPhone(value: unknown): value is Phone {
-    return value && typeof value === 'object' && 'current_bundle' in value
+  function isHasBundle(value: unknown): value is { current_bundle: Bundle } {
+    return value !== null && typeof value === 'object' && 'current_bundle' in value && typeof (value as any).current_bundle === 'object';
   }
+
+  function isHasImages(value: unknown): value is { images: string[] } {
+    return value !== null && typeof value === 'object' && 'images' in value && typeof (value as any).images === 'object';
+  }
+
+  function isHasCurrentType(value: unknown): value is { current_type: ProductType }{
+    return value !== null && typeof value === 'object' && 'current_type' in value && typeof (value as any).current_type === 'object';
+  }
+
 
 
   
@@ -49,11 +58,16 @@ function findTreeLinkAndDepth(
   return -1; // if value not found
 }
 
+
+
   return {
     isUser,
     findTreeLinkAndDepth,
     isHasDepth,
-    getImageUrl
+    getImageUrl,
+    isHasBundle,
+    isHasImages,
+    isHasCurrentType,
   };
 }
 

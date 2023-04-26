@@ -78,12 +78,23 @@ export type Charger = {
     fast_charge: boolean,
     connector_type: string,
     images: string[],
-    current_type: {
-      images: string[],
-    },
+}
+
+export type ProductType = {
+  color: string,
+  images: string[]
+}
+
+export type Bundle = {
+    memory: number;
+    price: string;
+} | {
+    size: number;
+    price: string;
 }
 
 export type Clock = {
+  id: string,
     model: string,
     current_type: {
       images: string[],
@@ -103,3 +114,5 @@ export type Clock = {
     screen: string,
     memory: number,
 }
+
+export type Product = Phone | Clock | Charger

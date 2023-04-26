@@ -9,7 +9,7 @@
           :dropdown-filter="dropdownFilter"
         />
       </div>
-      <div class="products">
+      <div class="products_container">
         <div class="breadcrumps">
           <div
             class="breadcrump"
@@ -27,55 +27,41 @@
             ></i>
           </div>
         </div>
-        <div class="products_content">
-          <div class="product" :key="product.id" v-for="product in products">
-            <img
-              class="product_image"
-              :src="getImageUrl(product?.current_type.images[0])"
-              alt="product image"
-              @click="viewProduct(product.model)"
-            />
-            <div class="image_separator"></div>
-            <div class="product_name">{{ product.model }}</div>
-            <div class="bills">
-              <div class="price">
-                <div class="price_title">Цена</div>
-                <div class="price_value">
-                  {{ product.price || product.current_bundle.price }}
-                </div>
-              </div>
-              <div class="installment">
-                <div class="installment_title">В рассрочку</div>
-                <div class="installment_value">
-                  {{
-                    getInstallment(
-                      product.price || product.current_bundle.price
-                    )
-                  }}
-                </div>
-                <span class="mode">x12</span>
-              </div>
-            </div>
-          </div>
+        <div class="sort">
+          <select class="sort_select" v-model="sortingCriteria">
+            <option class="sort_option" value="popular">Популярные</option>
+            <option class="sort_option" value="price-down">
+              Сначала дешевые
+            </option>
+            <option class="sort_option" value="price-up">
+              Сначала дорогие
+            </option>
+          </select>
         </div>
+        <EshopProductsList
+          :products="sortedProducts"
+          @productClicked="viewProduct"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { reactive, ref, watch } from "vue";
+import { reactive, ref, computed } from "vue";
 import DropdownFilter from "../components/DropdownFilter.vue";
-import type { DropdownFilterType } from "../../types/types";
+import type { DropdownFilterType, Product } from "../../types/types";
 import { v4 as uuidv4 } from "uuid";
 import { useRoute, useRouter } from "vue-router";
 import { useUserUtilities } from "../composables/utilities";
 import EshopLoader from "../components/EshopLoader.vue";
+import EshopProductsList from "../components/EshopProductsList.vue";
 
 const router = useRouter();
 const loading = ref<boolean>(false);
-const { isHasDepth, findTreeLinkAndDepth, getImageUrl } = useUserUtilities();
+const { isHasDepth, findTreeLinkAndDepth, isHasBundle } = useUserUtilities();
 const route = useRoute();
+const sortingCriteria = ref<string>("popular");
 const dropdownFilter: DropdownFilterType[] = reactive([
   {
     value: "Телефоны и гаджеты",
@@ -115,13 +101,45 @@ const dropdownFilter: DropdownFilterType[] = reactive([
     ],
   },
 ]);
+
+const sortedProducts = computed(() => {
+  if (sortingCriteria.value === "popular") {
+    return products;
+  } else if (sortingCriteria.value === "price-up") {
+    return sortProducts();
+  } else {
+    return sortProducts(true);
+  }
+});
+
+function sortProducts(increment: boolean = false) {
+  return [...products].sort((a, b) => {
+    let aPrice: number = 0;
+    let bPrice: number = 0;
+    if (isHasBundle(a)) {
+      aPrice = +a.current_bundle.price.replace(/[\s₸]/g, "");
+    } else {
+      aPrice = +a.price.replace(/[\s₸]/g, "");
+    }
+
+    if (isHasBundle(b)) {
+      bPrice = +b.current_bundle.price.replace(/[\s₸]/g, "");
+    } else {
+      bPrice = +b.price.replace(/[\s₸]/g, "");
+    }
+
+    return increment ? aPrice - bPrice : bPrice - aPrice;
+  });
+}
+
 const breadcrumps: DropdownFilterType[] = reactive([dropdownFilter[0]]);
 const catalogName = ref<string>(route.params.catalogName as string);
 const catalog: Record<string, any>[] = reactive([]);
-const products: Record<string, any>[] = reactive([]);
+const products: Product[] = reactive([]);
 const currentTreeLinkId = ref<string>(dropdownFilter[0].id);
 
 fetchCatalog();
+
 async function fetchCatalog() {
   loading.value = true;
   try {
@@ -188,21 +206,6 @@ function treeLinkClicked(treeLink: DropdownFilterType) {
   }
 }
 
-function getInstallment(price: string): string {
-  const value: string = Math.round(
-    +price.replace(/[\s₸]/g, "") / 12
-  ).toString();
-  switch (value.length) {
-    case 4:
-      return `${value[0]} ${value.slice(1)} ₸`;
-    case 5:
-      return `${value[0]}${value[1]} ${value.slice(2)} ₸`;
-    case 6:
-      return `${value[0]}${value[1]}${value[2]} ${value.slice(3)} ₸`;
-  }
-  return value + " ₸";
-}
-
 function viewProduct(model: string) {
   const allProducts = findTreeLinkAndDepth(
     dropdownFilter[0].id,
@@ -224,8 +227,6 @@ function viewProduct(model: string) {
       }
     }
   }
-
-  const subcatalog = catalog.forEach((item) => {});
 }
 </script>
 
@@ -235,42 +236,8 @@ function viewProduct(model: string) {
   min-height: 100vh;
 }
 
-.bills {
-  display: flex;
-}
-.price {
-  border-right: 1px solid #e5e5e5;
-  padding-right: 15px;
-}
-
-.price_title {
-  color: #999999;
-  font-size: 19px;
-}
-.price_value {
-  font-size: 21px;
-  margin-top: 15px;
-  font-weight: 500;
-}
-.installment {
-  margin-left: 15px;
-}
-.installment_title {
-  color: #999999;
-  font-size: 19px;
-}
-.installment_value {
-  font-size: 18px;
-  font-weight: 500;
-  background-color: #ffd300;
-  display: inline-block;
-  margin-right: 5px;
-  margin-top: 15px;
-}
-
-.mode {
-  color: #999999;
-  font-size: 16px;
+.products_container {
+  width: 85%;
 }
 
 .breadcrumps {
@@ -289,52 +256,11 @@ function viewProduct(model: string) {
   width: 200px;
 }
 
-.products {
-  width: 78%;
-}
-
 .breadcrumps {
   font-size: 25px;
   margin: 20px 0;
   padding-bottom: 20px;
   border-bottom: 1px solid #e5e5e5;
-}
-
-.products_content {
-  display: flex;
-  flex-wrap: wrap;
-}
-.product {
-  width: 33.333%;
-  padding: 15px;
-  border: 1px solid #e5e5e5;
-  background: #fff;
-  padding: 21px 14px;
-}
-.product_image {
-  width: 100%;
-  height: 210px;
-  cursor: pointer;
-  margin: 0 auto;
-  object-fit: contain;
-}
-.product_name {
-  color: #0098de;
-  text-align: center;
-  cursor: pointer;
-  margin: 15px 0;
-  font-size: 20px;
-}
-
-.product_name:hover {
-  text-decoration: underline;
-}
-
-.image_separator {
-  height: 1px;
-  background-color: #e5e5e5;
-  margin: 20px auto;
-  width: 100%;
 }
 
 .breadcrump {

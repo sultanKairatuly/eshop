@@ -4,13 +4,20 @@
       <div class="product_image"></div>
     </div>
     <div class="product_right">
-      <div class="product_model"></div>
+      <div class="product_model">{{ product.model }}</div>
       <div class="separator"></div>
       <div class="product_price">
         <h4 class="price_title">Цена</h4>
         <div class="price_value">
-          {{ product.price || product.current_bundle.price }}
+          {{
+            isHasBundle(product) ? product.current_bundle.price : product.price
+          }}
         </div>
+      </div>
+      <div class="colors" v-if="isHasCurrentType(product)">
+        <select class="color_select">
+          <option value=""></option>
+        </select>
       </div>
     </div>
   </div>
@@ -19,8 +26,10 @@
 import { useRoute } from "vue-router";
 import { reactive, ref } from "vue";
 import type { Clock, Phone, Charger } from "../../types/types";
+import { useUserUtilities } from "../composables/utilities";
 
 const route = useRoute();
+const { isHasBundle, isHasCurrentType } = useUserUtilities();
 const product: Phone | Clock | Charger = reactive({}) as
   | Phone
   | Clock
