@@ -1,4 +1,4 @@
-import { User, DropdownFilterType, Phone, Clock, Charger, Bundle, ProductType } from "../../types/types";
+import { User, DropdownFilterType, Phone, Clock, Charger, Bundle, ProductType, Category } from "../../types/types";
 
 export function useUserUtilities() {
   type findTreeLinkAndDepthType = {
@@ -36,6 +36,10 @@ export function useUserUtilities() {
     return value !== null && typeof value === 'object' && 'current_type' in value && typeof (value as any).current_type === 'object';
   }
 
+  function isCategory(value: unknown): value is Category {
+    return value !== null && typeof value === 'object'  && 'category' in value && 'children' in value && 'id' in value && 'name' in value
+  }
+
 
 
   
@@ -68,6 +72,7 @@ function findTreeLinkAndDepth(
     isHasBundle,
     isHasImages,
     isHasCurrentType,
+    isCategory
   };
 }
 

@@ -47,7 +47,6 @@ function productClicked(model: string) {
 .products-enter-from,
 .products-leave-to {
   opacity: 0;
-  transform: translateY(10px);
 }
 
 /* ensure leaving items are taken out of layout flow so that moving

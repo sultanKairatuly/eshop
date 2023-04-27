@@ -1,5 +1,18 @@
 <template>
   <div class="product">
+    <div class="extra_info">
+      <img
+        class="extra_info_item"
+        src="../assets/12-0-0.svg"
+        alt="installment image"
+      />
+      <img
+        class="extra_info_item"
+        src="../assets/bonus.svg"
+        alt="bonuses image"
+      />
+    </div>
+
     <img
       class="product_image"
       :src="
@@ -69,6 +82,7 @@ function getInstallment(price: string): string {
 
 <style scoped>
 .product {
+  position: relative;
   width: 33.333%;
   padding: 15px;
   border: 1px solid #e5e5e5;
@@ -103,6 +117,7 @@ function getInstallment(price: string): string {
 
 .bills {
   display: flex;
+  justify-content: center;
 }
 .price {
   border-right: 1px solid #e5e5e5;
@@ -135,5 +150,20 @@ function getInstallment(price: string): string {
 .mode {
   color: #999999;
   font-size: 16px;
+}
+
+.extra_info {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  position: absolute;
+  top: 15px;
+  left: 10px;
+}
+
+.extra_info_item {
+  width: 85px;
+  height: 45px;
+  object-fit: cover;
 }
 </style>

@@ -23,7 +23,7 @@ app.get("/getphonebymodel/:brand/:model", async (req, res) => {
   const brand = req.params.brand;
   const brandProducts = await client
     .db("products")
-    .collection("gadgets")
+    .collection("smartphones_and_gadgets")
     .find({ brand })
     .toArray();
   const phone = brandProducts[0].mobiles.filter(
@@ -37,11 +37,13 @@ app.get("/all-products", async (req, res) => {
   res.send(products);
 });
 
-app.get("/catalogs/:catalog", async (req, res) => {
-  const catalog = req.params.catalog;
-  const foundCatalog = await getCatalog(catalog);
-  console.log(foundCatalog);
-  res.send(foundCatalog);
+app.get("/c/:category", async (req, res) => {
+  const category = req.params.category;
+  const foundCategory = await getCategory(category);
+  console.log(foundCategory);
+  console.log(category);
+  console.log(req.params);
+  res.send(foundCategory);
 });
 
 app.get("/user/:email", async (req, res) => {
@@ -62,8 +64,8 @@ app.listen(PORT, async () => {
   console.log(`Сервер запустился на порту  ${PORT}`);
 });
 
-async function getCatalog(catalog) {
-  const collection = client.db("products").collection(catalog);
+async function getCategory(category) {
+  const collection = client.db("products").collection(category);
   const data = await collection.find().toArray();
   return data;
 }
@@ -77,14 +79,14 @@ async function updateCurrentType(client, type, brand, model) {
   const phone = phones.find({ model });
   const typeToUpdate = phone.types.find({ type });
 
-  await client.db("products").collection("gadgets");
+  await client.db("products").collection("smartphones_and_gadgets");
 }
 
 async function fillProductsDatabase() {
   await client
     .db("products")
-    .collection("gadgets")
-    .insertMany(products.gadgets);
+    .collection("smartphones_and_gadgets")
+    .insertMany(products.smartphones_and_gadgets);
 }
 
 async function createDocument(client, document) {
@@ -131,7 +133,7 @@ async function getAllUsers(client) {
 async function getPhones(client, brand) {
   const result = await client
     .db("products")
-    .collection("gadgets")
+    .collection("smartphones_and_gadgets")
     .find({
       brand,
     })
@@ -142,7 +144,7 @@ async function getPhones(client, brand) {
 async function getAllProducts(client) {
   const result = await client
     .db("products")
-    .collection("gadgets")
+    .collection("smartphones_and_gadgets")
     .find()
     .toArray();
 

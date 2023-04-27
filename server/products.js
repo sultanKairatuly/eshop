@@ -1,6 +1,6 @@
 const { v4: uuidv4 } = require("uuid");
 module.exports = {
-  gadgets: [
+  smartphones_and_gadgets: [
     {
       brand: "Apple",
       mobiles: [

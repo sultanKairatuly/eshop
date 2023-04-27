@@ -18,12 +18,12 @@ const routes: RouteRecordRaw[] = [
     component: () => import("../views/SignIn.vue"),
   },
   {
-    path: "/catalogs/:catalogName",
+    path: "/c/:category",
     name: "Catalog",
     component: () => import('../views/CatalogPage.vue')
   },
   {
-    path: "/catalogs/:catalogName/:brand/:subcatalogName/:model",
+    path: "/c/:category/:brand/:subcatalogName/:model",
     name: "Product",
     component: () => import('../views/ProductPage.vue')
   }

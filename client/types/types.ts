@@ -36,8 +36,18 @@ export type DropdownFilterType = {
   opened: boolean;
   children: DropdownFilterType[];
   id: string,
-  catalog: string;
+  category: string;
 };
+
+// export type Category = Omit<DropdownFilterType, 'opened'>
+
+export type Category = {
+  name: string;
+  children: Category[];
+  id: string,
+  category: string;
+  value?: string
+}
 
 export type Phone = {
   id: string,

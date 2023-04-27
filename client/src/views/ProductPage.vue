@@ -34,9 +34,9 @@ const product: Phone | Clock | Charger = reactive({}) as
   | Phone
   | Clock
   | Charger;
-const catalog: Record<string, any>[] = reactive([]);
+const category: Record<string, any>[] = reactive([]);
+const categoryName = ref<string>(route.params.category as string);
 const catalogName = ref<string>(route.params.catalogName as string);
-const subcatalogName = ref<string>(route.params.subcatalogName as string);
 const productModel = ref<string>(route.params.model as string);
 const productBrand = ref<string>(route.params.brand as string);
 const loading = ref<boolean>(false);
@@ -49,9 +49,9 @@ async function fetchData() {
 }
 
 async function fetchProduct() {
-  const brand = catalog.find((item) => item.brand === productBrand.value);
+  const brand = category.find((item) => item.brand === productBrand.value);
   if (brand) {
-    const searchingProduct = brand[subcatalogName.value].find(
+    const searchingProduct = brand[catalogName.value].find(
       (item: Record<string, any>[] & { model: string }) =>
         item.model === productModel.value
     );
@@ -63,11 +63,11 @@ async function fetchCatalog() {
   loading.value = true;
   try {
     const response = await fetch(
-      `http://localhost:5000/catalogs/${catalogName.value}`
+      `http://localhost:5000/c/${categoryName.value}`
     );
     const data = await response.json();
-    catalog.splice(0);
-    catalog.push(...data);
+    category.splice(0);
+    category.push(...data);
     loading.value = false;
   } catch (e) {
     loading.value = false;
