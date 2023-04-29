@@ -24,7 +24,9 @@
       @click="emit('productClicked', props.product.model)"
     />
     <div class="image_separator"></div>
-    <div class="product_name">{{ props.product.model }}</div>
+    <div class="product_name" @click="emit('productClicked', props.product.model)">
+      {{ props.product.model }}
+    </div>
     <div class="bills">
       <div class="price">
         <div class="price_title">Цена</div>
@@ -88,6 +90,7 @@ function getInstallment(price: string): string {
   border: 1px solid #e5e5e5;
   background: #fff;
   padding: 21px 14px;
+  height: 450px;
 }
 .product_image {
   width: 100%;

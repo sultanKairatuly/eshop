@@ -45,7 +45,7 @@ const emit = defineEmits<{
 function routeToProducts(routeQuery: string, sub: boolean = false) {
   router.push({
     path: `/c/${props.category?.value}`,
-    query: { [sub ? "catalogName" : "subcatalogName"]: routeQuery },
+    query: { [sub ? "subcatalogName" : "catalogName"]: routeQuery },
   });
   emit("routeToProducts");
 }
@@ -61,6 +61,7 @@ function routeToProducts(routeQuery: string, sub: boolean = false) {
   margin-top: 80px;
   width: 100%;
   left: 0;
+  border-bottom: 1px solid #e5e5e5;
 }
 .navigation_content {
   width: 80%;

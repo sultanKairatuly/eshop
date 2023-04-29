@@ -10,57 +10,31 @@
         />
       </div>
       <div class="products_container">
-        <div class="breadcrumps">
-          <div
-            class="breadcrump"
-            v-for="(breadcrump, index) in breadcrumps"
-            :key="breadcrump.category"
-            :class="{
-              active_breadcrump: breadcrump.id === currentTreeLinkId,
-            }"
-            @click="treeLinkClicked(breadcrump)"
-          >
-            {{ breadcrump.value }}
-            <i
-              class="fa-solid fa-arrow-right breadcrump_arrow"
-              v-if="index !== breadcrumps.length - 1"
-            ></i>
-          </div>
-        </div>
+        <ProductsBreadcrumps
+          :breadcrumps="breadcrumps"
+          :currentTreeLinkId="currentTreeLinkId"
+          @breadcrumpClicked="breadcrumpClicked"
+        />
         <SortingSelect
           :model-value="sortingCriteria"
           @update:modelValue="updateSortingCriteria"
         />
         <EshopProductsList
           :products="sortedProducts"
-          @productClicked="viewProduct"
+          @productClicked="handleProductClick"
         />
-        <div class="pagination">
-          <div class="pagination_item prev_pag" @click="decrementPage">
-            ← Предыдущая
-          </div>
-          <div
-            class="pagination_item"
-            v-for="pag in Math.ceil(products.length / productsPerPage)"
-            :key="pag"
-            @click="page = pag"
-            :class="{
-              'pagination_item-active': pag === page,
-            }"
-          >
-            {{ pag }}
-          </div>
-          <div class="pagination_item next_pag" @click="incrementPage">
-            Следующая →
-          </div>
-        </div>
+        <ProductsPagination
+          :products="products"
+          :page="page"
+          @updatePage="updatePage"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { reactive, ref, computed, watch } from "vue";
+import { reactive, ref, computed, watch, onUnmounted } from "vue";
 import DropdownFilter from "../components/DropdownFilter.vue";
 import type { DropdownFilterType, Product } from "../../types/types";
 import { v4 as uuidv4 } from "uuid";
@@ -69,38 +43,31 @@ import { useUserUtilities } from "../composables/utilities";
 import EshopLoader from "../components/EshopLoader.vue";
 import EshopProductsList from "../components/EshopProductsList.vue";
 import SortingSelect from "../components/SortingSelect.vue";
+import ProductsPagination from "../components/ProductsPagination.vue";
+import ProductsBreadcrumps from "../components/ProductsBreadcrumps.vue";
+import { useHttpRequests } from "../composables/httpRequests";
 
 const { isHasDepth, findTreeLinkAndDepth, isHasBundle } = useUserUtilities();
 const router = useRouter();
 const route = useRoute();
+const categoryName = route.params.category as string;
+const { fetchCatalog, category } = useHttpRequests(categoryName);
 let catalogName = route.query.catalogName as string;
-let subcatalogName = route.query.subcatalog as string;
+let subcatalogName = route.query.subcatalogName as string;
 const loading = ref<boolean>(false);
 const sortingCriteria = ref<string>("popular");
 const productsPerPage = 12;
 const page = ref<number>(1);
+const scrollYCoordinates = ref<number>(window.scrollY);
+document.addEventListener("scroll", () => {
+  scrollYCoordinates.value = window.scrollY;
+});
 
-watch(
-  () => route.query,
-  (newQueries) => {
-    handleRouteQueryUpdating(
-      newQueries.catalogName as string,
-      newQueries.subcatalogName as string
-    );
-  }
-);
-
-function decrementPage() {
-  if (page.value !== 1) {
-    page.value--;
-  }
-}
-
-function incrementPage() {
-  if (page.value !== Math.ceil(products.length / productsPerPage)) {
-    page.value++;
-  }
-}
+onUnmounted(() => {
+  document.removeEventListener("scroll", () => {
+    scrollYCoordinates.value = window.scrollY;
+  });
+});
 
 const dropdownFilter: DropdownFilterType[] = reactive([
   {
@@ -143,9 +110,8 @@ const dropdownFilter: DropdownFilterType[] = reactive([
 ]);
 
 const breadcrumps: DropdownFilterType[] = reactive([dropdownFilter[0]]);
-const categoryName = ref<string>(route.params.category as string);
-const category: Record<string, any>[] = reactive([]);
 const products: Product[] = reactive([]);
+fetchData();
 const currentTreeLinkId = ref<string>(dropdownFilter[0].id);
 const paginatedProducts = computed(() => {
   return products.slice(
@@ -153,6 +119,20 @@ const paginatedProducts = computed(() => {
     (page.value - 1) * productsPerPage + 12
   );
 });
+
+watch(
+  () => route.query,
+  (newQueries) => {
+    handleRouteQueryUpdating(
+      newQueries.catalogName as string,
+      newQueries.subcatalogName as string
+    );
+    updateCurrentLinkId();
+  },
+  {
+    immediate: true,
+  }
+);
 
 const sortedProducts = computed(() => {
   if (sortingCriteria.value === "popular") {
@@ -164,34 +144,94 @@ const sortedProducts = computed(() => {
   }
 });
 
-watch(page, (newPage) => {
-  console.log(
-    products.slice(
-      (page.value - 1) * productsPerPage,
-      page.value * productsPerPage + 12
-    )
-  );
-  console.log(products.length);
-});
+function breadcrumpClicked(id: string) {
+  const foundTreeLink = findTreeLinkAndDepth(id, dropdownFilter);
+  if (isHasDepth(foundTreeLink)) {
+    const queryKey = foundTreeLink.depth > 1 ? "subcatalogName" : "catalogName";
+    router.push({
+      path: `/c/${categoryName}`,
+      query: { [queryKey]: foundTreeLink.item.category },
+    });
+  }
+}
 
-fetchCatalog();
+function findTreeLinkParentChain(category: string): DropdownFilterType[] {
+  let parentChain: (DropdownFilterType & { depth: number })[] = [];
+  const traverse = (
+    node: DropdownFilterType,
+    depth: number
+  ): DropdownFilterType | null => {
+    if (node.category === category) {
+      return node;
+    } else if (node.children) {
+      for (const child of node.children) {
+        const result = traverse(child, depth + 1);
+        if (result !== null) {
+          parentChain.push({ ...node, depth });
+          return result;
+        }
+      }
+    }
+    return null;
+  };
+  const result = traverse(dropdownFilter[0], 0);
+  if (result !== null) {
+    parentChain.push({ ...result, depth: parentChain.length });
+  }
+  return parentChain.sort((a, b) => a.depth - b.depth);
+}
+
+function updateCurrentLinkId() {
+  if (subcatalogName || catalogName) {
+    breadcrumps.splice(0);
+    let category = subcatalogName ?? catalogName;
+    if (findTreeLinkParentChain(category)) {
+      breadcrumps.push(...findTreeLinkParentChain(category));
+    }
+
+    const foundTreeLink = findTreeLinkAndDepth(
+      "blank",
+      dropdownFilter,
+      1,
+      category
+    );
+    currentTreeLinkId.value = isHasDepth(foundTreeLink)
+      ? foundTreeLink.item.id
+      : dropdownFilter[0].id;
+  }
+}
+
+function updatePage(updatedPage: number) {
+  page.value = updatedPage;
+  const capturedScrollYCoordinates: number = scrollYCoordinates.value;
+  setTimeout(() => {
+    window.scroll({ top: capturedScrollYCoordinates });
+  }, 0);
+}
 
 function updateSortingCriteria(value: string) {
   sortingCriteria.value = value;
 }
 
 function handleRouteQueryUpdating(newCatalog: string, newSubCatalog: string) {
+  page.value = 1;
   catalogName = newCatalog;
   subcatalogName = newSubCatalog;
   products.splice(0);
-  for (let item of category) {
-    if (!subcatalogName) {
-      for (let categoryName of catalogName.split("-")) {
-        products.push(...item[categoryName]);
+  if (!subcatalogName) {
+    for (let categoryName of catalogName.split("-")) {
+      for (let i = 0; i < category.length; i++) {
+        if (category[i].category === categoryName) {
+          products.push(...category[i].products);
+        }
       }
-    } else {
-      for (let subcatalog of subcatalogName.split("-")) {
-        products.push(...item[subcatalog]);
+    }
+  } else {
+    for (let categoryName of subcatalogName.split("-")) {
+      for (let i = 0; i < category.length; i++) {
+        if (category[i].category === categoryName) {
+          products.push(...category[i].products);
+        }
       }
     }
   }
@@ -216,103 +256,80 @@ function sortProducts(increment: boolean = false) {
   });
 }
 
-async function fetchCatalog() {
-  loading.value = true;
+async function fetchData() {
   try {
-    const response = await fetch(
-      `http://localhost:5000/c/${categoryName.value}`
-    );
-    const data = await response.json();
-    category.splice(0);
-    category.push(...data);
-    products.splice(0);
+    loading.value = true;
+    await fetchCatalog();
+    fetchProducts();
+  } catch (e) {
+    console.log(e);
+  } finally {
+    loading.value = false;
+  }
+}
 
-    if (catalogName) {
-      for (let categoryName of catalogName.split("-")) {
-        products.push(...category[0][categoryName]);
-      }
-    } else {
-      const allProducts = findTreeLinkAndDepth(
-        currentTreeLinkId.value,
-        dropdownFilter
-      );
-      if (isHasDepth(allProducts)) {
-        for (let item of category) {
-          for (let catalogName of allProducts.item.category.split("-")) {
-            products.push(...item[catalogName]);
+function fetchProducts() {
+  try {
+    products.splice(0);
+    if (catalogName || subcatalogName) {
+      for (let categoryName of (catalogName ?? subcatalogName).split("-")) {
+        for (let i = 0; i < category.length; i++) {
+          if (category[i].category === categoryName) {
+            products.push(...category[i].products);
           }
         }
       }
+    } else {
+      console.log("We need `catalogName` or `subcatalogName` query parameter!");
     }
-
-    loading.value = false;
-  } catch (e) {
-    loading.value = false;
-    console.log(e);
+  } catch (err) {
+    console.log(err);
   }
 }
+
 function treeLinkClicked(treeLink: DropdownFilterType) {
   currentTreeLinkId.value = treeLink.id;
-  const isExist = !!breadcrumps.find((item) => item.id === treeLink.id);
-  const clickedTreeLinkDepth = findTreeLinkAndDepth(
+  const currentTreeLinkDepth = findTreeLinkAndDepth(
     treeLink.id,
     dropdownFilter
   );
-
-  if (isHasDepth(clickedTreeLinkDepth)) {
-    const depth = clickedTreeLinkDepth.depth;
-    for (let i = 0; i < breadcrumps.length; i++) {
-      const breadcrumpDepth = findTreeLinkAndDepth(
-        breadcrumps[i].id,
-        dropdownFilter
-      );
-      if (isHasDepth(breadcrumpDepth)) {
-        if (breadcrumpDepth.depth >= depth) {
-          breadcrumps.splice(i, 1);
-        }
-      }
-    }
-  }
-
-  if (!isExist) {
-    breadcrumps.push(treeLink);
-  }
-
-  const allProducts = findTreeLinkAndDepth(
-    currentTreeLinkId.value,
-    dropdownFilter
-  );
-  if (isHasDepth(allProducts)) {
-    products.splice(0);
-    for (let item of category) {
-      for (let categoryName of allProducts.item.category.split("-")) {
-        products.push(...item[categoryName]);
-      }
+  if (isHasDepth(currentTreeLinkDepth)) {
+    if (currentTreeLinkDepth.depth > 1) {
+      router.push({
+        path: `/c/${categoryName}`,
+        query: { ["subcatalogName"]: treeLink.category },
+      });
+    } else {
+      router.push({
+        path: `/c/${categoryName}`,
+        query: { ["catalogName"]: treeLink.category },
+      });
     }
   }
 }
 
-function viewProduct(model: string) {
-  const allProducts = findTreeLinkAndDepth(
-    dropdownFilter[0].id,
-    dropdownFilter
-  );
+function handleProductClick(model: string) {
+  // const allProducts = findTreeLinkAndDepth(
+  //   dropdownFilter[0].id,
+  //   dropdownFilter
+  // );
 
-  if (isHasDepth(allProducts)) {
-    products.splice(0);
-    for (let item of category) {
-      for (let catalogName of allProducts.item.category.split("-")) {
-        const foundItem = item[catalogName].find(
-          (item: Record<string, any>) => item.model === model
-        );
-        if (foundItem) {
-          router.push(
-            `/c/${categoryName.value}/${item.brand}/${catalogName}/${model}`
-          );
-        }
-      }
-    }
-  }
+  // if (isHasDepth(allProducts)) {
+  //   products.splice(0);
+  //   for (let item of category) {
+  //     for (let catalogName of allProducts.item.category.split("-")) {
+  //       const foundItem = item[catalogName].find(
+  //         (item: Record<string, any>) => item.model === model
+  //       );
+  //       if (foundItem) {
+  //         router.push(
+  //           `/c/${categoryName.value}/${catalogName ?? subcatalogName}/${model}`
+  //         );
+  //       }
+  //     }
+  //   }
+  // }
+  router.push(`/c/${categoryName}/${catalogName ?? subcatalogName}/${model}`);
 }
 </script>
 
@@ -340,69 +357,5 @@ function viewProduct(model: string) {
 
 .filters {
   width: 200px;
-}
-
-.breadcrumps {
-  font-size: 25px;
-  margin: 20px 0;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.breadcrump {
-  color: #188ed6;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.breadcrump:hover {
-  text-decoration: underline;
-}
-
-.active_breadcrump {
-  color: #9fa19f;
-  cursor: default;
-}
-
-.active_breadcrump:hover {
-  text-decoration: none;
-}
-
-.breadcrump_arrow {
-  color: #9a9a9a;
-  margin: 0 5px;
-}
-
-.pagination {
-  display: flex;
-  justify-content: center;
-  margin: 50px 0;
-}
-
-.pagination_item {
-  padding: 10px 25px;
-  font-size: 20px;
-  border: 1px solid #fff;
-  border-left: 1px solid #dcdcdc;
-  cursor: pointer;
-  border-radius: 0;
-}
-
-.pagination_item:hover {
-  border-radius: 3px;
-  border: 1px solid #dcdcdc;
-  color: #000077;
-  background-color: #e6e6e6;
-}
-
-.next_pag {
-  border-right: 1px solid #dcdcdc;
-}
-
-.pagination_item-active {
-  border-radius: 3px;
-  border: 1px solid #dcdcdc;
-  color: #000077;
-  background-color: #e6e6e6;
 }
 </style>

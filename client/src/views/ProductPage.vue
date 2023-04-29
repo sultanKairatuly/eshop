@@ -25,54 +25,40 @@
 <script setup lang="ts">
 import { useRoute } from "vue-router";
 import { reactive, ref } from "vue";
-import type { Clock, Phone, Charger } from "../../types/types";
+import type { Product } from "../../types/types";
 import { useUserUtilities } from "../composables/utilities";
+import { useHttpRequests } from "../composables/httpRequests";
+import axios from "axios";
 
 const route = useRoute();
 const { isHasBundle, isHasCurrentType } = useUserUtilities();
-const product: Phone | Clock | Charger = reactive({}) as
-  | Phone
-  | Clock
-  | Charger;
-const category: Record<string, any>[] = reactive([]);
-const categoryName = ref<string>(route.params.category as string);
-const catalogName = ref<string>(route.params.catalogName as string);
-const productModel = ref<string>(route.params.model as string);
-const productBrand = ref<string>(route.params.brand as string);
+const product: Product = reactive({}) as Product;
+const categoryName = route.params.category as string;
+const { fetchCatalog } = useHttpRequests(categoryName);
+const catalogName = route.params.catalogName as string;
+const subcatalogName = route.params.subcatalogName as string;
+const productModel = route.params.model as string;
 const loading = ref<boolean>(false);
-
 fetchData();
-
 async function fetchData() {
-  await fetchCatalog();
-  await fetchProduct();
+  try {
+    loading.value = true;
+    await fetchCatalog();
+    await fetchProduct();
+  } catch (e) {
+    console.log(e);
+  } finally {
+    loading.value = false;
+  }
 }
 
 async function fetchProduct() {
-  const brand = category.find((item) => item.brand === productBrand.value);
-  if (brand) {
-    const searchingProduct = brand[catalogName.value].find(
-      (item: Record<string, any>[] & { model: string }) =>
-        item.model === productModel.value
-    );
-    Object.assign(product, searchingProduct);
-  }
-}
-
-async function fetchCatalog() {
-  loading.value = true;
-  try {
-    const response = await fetch(
-      `http://localhost:5000/c/${categoryName.value}`
-    );
-    const data = await response.json();
-    category.splice(0);
-    category.push(...data);
-    loading.value = false;
-  } catch (e) {
-    loading.value = false;
-    console.log(e);
-  }
+  const response = await axios.get<Product[]>(
+    `http://localhost:5000/getproductbymodel/${categoryName}/${
+      catalogName ?? subcatalogName
+    }/${productModel}`
+  );
+  Object.assign(product, response.data[0]);
 }
 </script>
 <style scoped></style>

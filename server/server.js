@@ -8,6 +8,7 @@ const uri =
   "mongodb+srv://sultanbek:d17i4hg4@e-shop.0tq0yni.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
 const products = require("./products.js");
+const { splitVendorChunk } = require("vite");
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -18,18 +19,26 @@ app.get("/getPhones", async (req, res) => {
   res.send(JSON.stringify(phones));
 });
 
-app.get("/getphonebymodel/:brand/:model", async (req, res) => {
+app.get("/getproductbymodel/:collection/:category/:model", async (req, res) => {
   const model = req.params.model;
-  const brand = req.params.brand;
-  const brandProducts = await client
-    .db("products")
-    .collection("smartphones_and_gadgets")
-    .find({ brand })
-    .toArray();
-  const phone = brandProducts[0].mobiles.filter(
-    (mobile) => mobile.model === model
-  );
-  res.send(phone);
+  const category = req.params.category;
+  const collection = req.params.collection;
+  let product = [];
+  for (let singleCategory of category.split("-")) {
+    const foundCategory = await client
+      .db("products")
+      .collection(collection)
+      .find({ category: singleCategory })
+      .toArray();
+    const foundProduct = foundCategory[0].products.find(
+      (item) => item.model === model
+    );
+    console.log("PRODUCT", foundCategory);
+    if (foundProduct) {
+      product.push(foundProduct);
+    }
+  }
+  res.send(product);
 });
 
 app.get("/all-products", async (req, res) => {

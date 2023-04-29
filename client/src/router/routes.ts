@@ -23,7 +23,7 @@ const routes: RouteRecordRaw[] = [
     component: () => import('../views/CatalogPage.vue')
   },
   {
-    path: "/c/:category/:brand/:subcatalogName/:model",
+    path: "/c/:category/:subcatalogName/:model",
     name: "Product",
     component: () => import('../views/ProductPage.vue')
   }

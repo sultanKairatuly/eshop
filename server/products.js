@@ -2,8 +2,8 @@ const { v4: uuidv4 } = require("uuid");
 module.exports = {
   smartphones_and_gadgets: [
     {
-      brand: "Apple",
-      mobiles: [
+      category: "mobiles",
+      products: [
         {
           id: uuidv4(),
           model: "Смартфон Apple iPhone 14 Pro Max",
@@ -841,7 +841,10 @@ module.exports = {
           battery_capacity: "3110.0 мАч",
         },
       ],
-      chargers: [
+    },
+    {
+      category: "chargers",
+      products: [
         {
           id: uuidv4(),
           model: "Зарядное устройство Apple 18W USB-C Power Adapter белый",
@@ -1009,7 +1012,10 @@ module.exports = {
           ],
         },
       ],
-      clocks: [
+    },
+    {
+      category: "clocks",
+      products: [
         {
           id: uuidv4(),
           model: "Смарт-часы Apple Watch Series 8",

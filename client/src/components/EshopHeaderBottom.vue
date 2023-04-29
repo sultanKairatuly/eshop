@@ -10,7 +10,14 @@
         class="category"
         :key="category.name"
         v-for="(category, index) in categories"
-        @click="$router.push(`/c/${category.value}`)"
+        @click="
+          $router.push({
+            path: `/c/${category.value}`,
+            query: {
+              catalogName: category.category,
+            },
+          })
+        "
         :class="{
           'left-bordered': index === 0,
           hovered: category.id === hoveredCategory?.id,
