@@ -1,5 +1,5 @@
 <template>
-  <div class="pagination">
+  <div class="pagination" v-if="props.products.length">
     <div
       class="pagination_item prev_pag"
       :class="{
@@ -47,6 +47,8 @@ const props = withDefaults(
     productsPerPage: 12,
   }
 );
+
+console.log(props.products.length);
 
 const emit = defineEmits<{
   (e: "updatePage", value: number): void;

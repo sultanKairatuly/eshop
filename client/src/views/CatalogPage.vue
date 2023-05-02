@@ -8,6 +8,12 @@
           @treeLinkClicked="treeLinkClicked"
           :dropdown-filter="dropdownFilter"
         />
+        <ProductFilters
+          @changePriceFilter="changePriceFilter"
+          :categories="category"
+          :catalogs="catalogName ?? subcatalogName"
+          @filterProducts="filterProducts"
+        />
       </div>
       <div class="products_container">
         <ProductsBreadcrumps
@@ -24,7 +30,7 @@
           @productClicked="handleProductClick"
         />
         <ProductsPagination
-          :products="products"
+          :products="filtered"
           :page="page"
           @updatePage="updatePage"
         />
@@ -36,7 +42,12 @@
 <script setup lang="ts">
 import { reactive, ref, computed, watch, onUnmounted } from "vue";
 import DropdownFilter from "../components/DropdownFilter.vue";
-import type { DropdownFilterType, Product } from "../../types/types";
+import type {
+  DropdownFilterType,
+  Filter,
+  totalFilterItemType,
+  Product,
+} from "../../types/types";
 import { v4 as uuidv4 } from "uuid";
 import { useRoute, useRouter } from "vue-router";
 import { useUserUtilities } from "../composables/utilities";
@@ -46,6 +57,7 @@ import SortingSelect from "../components/SortingSelect.vue";
 import ProductsPagination from "../components/ProductsPagination.vue";
 import ProductsBreadcrumps from "../components/ProductsBreadcrumps.vue";
 import { useHttpRequests } from "../composables/httpRequests";
+import ProductFilters from "../components/ProductFilters.vue";
 
 const { isHasDepth, findTreeLinkAndDepth, isHasBundle } = useUserUtilities();
 const router = useRouter();
@@ -58,10 +70,15 @@ const loading = ref<boolean>(false);
 const sortingCriteria = ref<string>("popular");
 const productsPerPage = 12;
 const page = ref<number>(1);
+const minPrice = ref<number>(0);
+const maxPrice = ref<number>(Infinity);
 const scrollYCoordinates = ref<number>(window.scrollY);
 document.addEventListener("scroll", () => {
   scrollYCoordinates.value = window.scrollY;
 });
+const totalFilter: {
+  [key: string]: totalFilterItemType;
+} = reactive({});
 
 onUnmounted(() => {
   document.removeEventListener("scroll", () => {
@@ -109,16 +126,83 @@ const dropdownFilter: DropdownFilterType[] = reactive([
   },
 ]);
 
-const breadcrumps: DropdownFilterType[] = reactive([dropdownFilter[0]]);
-const products: Product[] = reactive([]);
-fetchData();
-const currentTreeLinkId = ref<string>(dropdownFilter[0].id);
+const filtered = computed(() => {
+  if (totalFilter.empty || Object.keys(totalFilter).length === 0) {
+    return products;
+  }
+  const r: Product[] = [];
+  products.forEach((product) => {
+    const candidates = [];
+    for (let key in totalFilter) {
+      if (key !== "empty") {
+        let match = 0;
+        if (typeof totalFilter[key] !== "boolean" && key !== "empty") {
+          if (
+            (totalFilter[key] as Exclude<totalFilterItemType, boolean>).type ===
+            "default"
+          ) {
+            (
+              totalFilter[key] as Exclude<totalFilterItemType, boolean>
+            ).values.forEach((item) => {
+              if (!product[key as keyof Product].includes(item)) {
+              } else {
+                match++;
+              }
+            });
+          } else {
+            //! HERE IS THE TYPE OF FILTER === 'RANGE'
+            console.log("Range type is not expected");
+          }
+        }
+        candidates.push(match);
+      }
+    }
+    const matches = candidates.reduce((acc, i) => (acc += i));
+    if (matches === candidates.length) {
+      r.push(product);
+    }
+  });
+
+  return r;
+});
+
 const paginatedProducts = computed(() => {
-  return products.slice(
+  return filtered.value.slice(
     (page.value - 1) * productsPerPage,
     (page.value - 1) * productsPerPage + 12
   );
 });
+
+const breadcrumps: DropdownFilterType[] = reactive([dropdownFilter[0]]);
+const products: Product[] = reactive([]);
+fetchData();
+const currentTreeLinkId = ref<string>(dropdownFilter[0].id);
+const filteredProducts = computed(() => {
+  const filtered: Product[] = [];
+  products.forEach((product) => {
+    if (isHasBundle(product)) {
+      const productPrice: number = +product.current_bundle.price.replace(
+        /[\s₸]/g,
+        ""
+      );
+      if (productPrice > minPrice.value && productPrice < maxPrice.value) {
+        filtered.push(product);
+      }
+    } else {
+      const productPrice: number = +product.price.replace(/[\s₸]/g, "");
+      if (productPrice > minPrice.value && productPrice < maxPrice.value) {
+        filtered.push(product);
+      }
+    }
+  });
+  return filtered;
+});
+
+function changePriceFilter({ min, max }: { min: number; max: number }) {
+  page.value = 1;
+  minPrice.value = min;
+  maxPrice.value = max;
+}
 
 watch(
   () => route.query,
@@ -143,6 +227,25 @@ const sortedProducts = computed(() => {
     return sortProducts(true);
   }
 });
+
+function filterProducts(filter: {
+  property: string;
+  values: any[];
+  empty: boolean;
+  type: "default" | "range";
+}) {
+  console.log(filter.values);
+  if (filter.values.length) {
+    totalFilter[filter.property] = {
+      values: filter.values,
+      type: filter.type,
+    };
+  } else {
+    delete totalFilter[filter.property];
+  }
+
+  totalFilter["empty"] = filter.empty;
+}
 
 function breadcrumpClicked(id: string) {
   const foundTreeLink = findTreeLinkAndDepth(id, dropdownFilter);
@@ -357,5 +460,9 @@ function handleProductClick(model: string) {
 
 .filters {
   width: 200px;
+}
+
+.not-found {
+  padding: 30px 0;
 }
 </style>

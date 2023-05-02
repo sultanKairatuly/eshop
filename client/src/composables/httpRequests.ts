@@ -1,9 +1,9 @@
 import { reactive } from "vue";
-import { Product } from "../../types/types";
+import { Product, Category } from "../../types/types";
 import axios from "axios";
 
 export const useHttpRequests = (categoryName: string) => {
-  const category: { category: string; products: Product[] }[] = reactive([]);
+  const category: Category[] = reactive([]);
 
   async function fetchCatalog() {
     const response = await axios.get<

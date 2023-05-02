@@ -6,7 +6,7 @@ import {
   Charger,
   Bundle,
   ProductType,
-  Category,
+  CategoryExplorerType,
 } from "../../types/types";
 
 export function useUserUtilities() {
@@ -68,7 +68,9 @@ export function useUserUtilities() {
     );
   }
 
-  function isCategory(value: unknown): value is Category {
+  function isCategoryExplorerType(
+    value: unknown
+  ): value is CategoryExplorerType {
     return (
       value !== null &&
       typeof value === "object" &&
@@ -128,6 +130,6 @@ export function useUserUtilities() {
     isHasBundle,
     isHasImages,
     isHasCurrentType,
-    isCategory,
+    isCategoryExplorerType,
   };
 }

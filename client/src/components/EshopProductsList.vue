@@ -1,5 +1,5 @@
 <template>
-  <div class="products">
+  <div class="products" v-if="props.products.length > 0">
     <TransitionGroup name="products" class="products_content" tag="div">
       <EshopProduct
         v-for="product in props.products"
@@ -9,11 +9,15 @@
       />
     </TransitionGroup>
   </div>
+  <div class="products" v-else>
+    <EshopNotFoundProduct />
+  </div>
 </template>
 
 <script setup lang="ts">
 import { Product } from "../../types/types";
 import EshopProduct from "./EshopProduct.vue";
+import EshopNotFoundProduct from "./EshopNotFoundProduct.vue";
 
 const props = defineProps<{
   products: Product[];
@@ -47,6 +51,13 @@ function productClicked(model: string) {
 .products-enter-from,
 .products-leave-to {
   opacity: 0;
+}
+
+.title {
+  color: #999999;
+  font-size: 30px;
+  margin: 50px 0;
+  text-align: center;
 }
 
 /* ensure leaving items are taken out of layout flow so that moving

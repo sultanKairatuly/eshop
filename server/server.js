@@ -8,7 +8,6 @@ const uri =
   "mongodb+srv://sultanbek:d17i4hg4@e-shop.0tq0yni.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
 const products = require("./products.js");
-const { splitVendorChunk } = require("vite");
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -33,7 +32,6 @@ app.get("/getproductbymodel/:collection/:category/:model", async (req, res) => {
     const foundProduct = foundCategory[0].products.find(
       (item) => item.model === model
     );
-    console.log("PRODUCT", foundCategory);
     if (foundProduct) {
       product.push(foundProduct);
     }
@@ -70,6 +68,7 @@ app.post("/save-user", async (req, res) => {
 });
 
 app.listen(PORT, async () => {
+  await fillProductsDatabase();
   console.log(`Сервер запустился на порту  ${PORT}`);
 });
 

@@ -5,6 +5,7 @@ module.exports = {
       category: "mobiles",
       products: [
         {
+          brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 14 Pro Max",
           current_bundle: {
@@ -74,6 +75,7 @@ module.exports = {
           `,
         },
         {
+          brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 14 Pro",
           current_bundle: {
@@ -143,6 +145,7 @@ module.exports = {
           `,
         },
         {
+          brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 14",
           current_bundle: {
@@ -212,6 +215,7 @@ module.exports = {
           `,
         },
         {
+          brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 13 Pro Max",
           current_bundle: {
@@ -285,6 +289,7 @@ module.exports = {
           `,
         },
         {
+          brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 13 Pro",
           current_bundle: {
@@ -358,6 +363,7 @@ module.exports = {
           battery_capacity: "3095 мАч",
         },
         {
+          brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 13",
           current_bundle: {
@@ -427,6 +433,7 @@ module.exports = {
           battery_capacity: "3095 мАч",
         },
         {
+          brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 12 Pro Max",
           current_bundle: {
@@ -496,6 +503,7 @@ module.exports = {
           battery_capacity: "3687.0 мАч",
         },
         {
+          brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 12 Pro",
           current_bundle: {
@@ -565,6 +573,7 @@ module.exports = {
           battery_capacity: "3295 мАч",
         },
         {
+          brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 12",
           current_bundle: {
@@ -634,6 +643,7 @@ module.exports = {
           battery_capacity: "2815.0 мАч",
         },
         {
+          brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 11 Pro Max",
           current_bundle: {
@@ -703,6 +713,7 @@ module.exports = {
           battery_capacity: "3500.0 мАч",
         },
         {
+          brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 11 Pro",
           current_bundle: {
@@ -772,6 +783,7 @@ module.exports = {
           battery_capacity: "2815.0 мАч",
         },
         {
+          brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 11",
           current_bundle: {
@@ -840,12 +852,350 @@ module.exports = {
           CPU: "6-ядерный Apple A13 Bionic",
           battery_capacity: "3110.0 мАч",
         },
+        {
+          brand: "Samsung",
+          id: uuidv4(),
+          model: "Смартфон Samsung Galaxy A13 ",
+          current_bundle: {
+            memory: 128,
+            price: "75 990 ₸",
+          },
+          bundle: [
+            {
+              memory: 64,
+              price: "69 990 ₸",
+            },
+            {
+              memory: 128,
+              price: "75 990 ₸",
+            },
+          ],
+          reviews: [
+            {
+              author: "",
+              content: "",
+            },
+          ],
+          current_type: {
+            color: "чёрный",
+            images: [
+              "../assets/samsung/mobiles/A13/black/image1.jpg",
+              "../assets/samsung/mobiles/A13/black/image2.jpg",
+              "../assets/samsung/mobiles/A13/black/image3.jpg",
+            ],
+          },
+          types: [
+            {
+              color: "чёрный",
+              images: [
+                "../assets/samsung/mobiles/A13/black/image1.jpg",
+                "../assets/samsung/mobiles/A13/black/image2.jpg",
+                "../assets/samsung/mobiles/A13/black/image3.jpg",
+              ],
+            },
+            {
+              color: "белый",
+              images: [
+                "../assets/samsung/mobiles/A13/white/image1.jpg",
+                "../assets/samsung/mobiles/A13/white/image2.jpg",
+                "../assets/samsung/mobiles/A13/white/image3.jpg",
+              ],
+            },
+            {
+              color: "оранжевый",
+              images: [
+                "../assets/samsung/mobiles/A13/orange/image1.jpg",
+                "../assets/samsung/mobiles/A13/orange/image2.jpg",
+                "../assets/samsung/mobiles/A13/orange/image3.jpg",
+              ],
+            },
+          ],
+          description: `
+          Благодаря 6.6-дюймовому экрану Infinity-V на смартфоне Galaxy A13 вы сможете увидеть все, что было скрыто от вашего взгляда. Наслаждайтесь живым четким изображением с технологией FHD+. Galaxy A13 сочетает деликатные цвета и приятную на ощупь текстуру. Благодаря изящным изгибам его удобно держать при работе с экраном. Galaxy A13 оснащен восьмиядерным процессором и оперативной памятью до 4 ГБ для быстрой и эффективной работы. А со встроенной памятью 128 ГБ и картой памяти microSD до 1 ТБ у вас появится еще больше места для хранения. Запечатлейте ценные моменты во всех деталях с основной камерой 50 Мп. Расширьте угол обзора с 5 Мп ультраширокоугольной камерой. 2 Мп камера с датчиком глубины поможет настроить фокус, а 2 Мп макрообъектив — снять все до мельчайших деталей. Снимайте изумительные селфи с помощью фронтальной камеры 8 Мп на Galaxy A13 и эффекта боке — меньше фона, больше вас! Будьте на шаг впереди с надежным аккумулятором. Делайте что угодно, не беспокоясь о заряде, с аккумулятором 5000 мАч, который способен держать заряд 2 дня.
+          `,
+          screen_type: "PLS TFT LCD сенсорный, мультитач",
+          RAM: "4 ГБ",
+          CPU: "8-ядерный Exynos 850",
+          battery_capacity: "5000 мАч",
+        },
+        {
+          brand: "Samsung",
+          id: uuidv4(),
+          model: "Samsung Galaxy A23",
+          current_bundle: {
+            memory: 128,
+            price: "91 490 ₸",
+          },
+          bundle: [
+            {
+              memory: 128,
+              price: "91 490 ₸",
+            },
+          ],
+          reviews: [
+            {
+              author: "",
+              content: "",
+            },
+          ],
+          current_type: {
+            color: "чёрный",
+            images: [
+              "../assets/samsung/mobiles/A23/black/image1.jpg",
+              "../assets/samsung/mobiles/A23/black/image2.jpg",
+              "../assets/samsung/mobiles/A23/black/image3.jpg",
+            ],
+          },
+          types: [
+            {
+              color: "чёрный",
+              images: [
+                "../assets/samsung/mobiles/A23/black/image1.jpg",
+                "../assets/samsung/mobiles/A23/black/image2.jpg",
+                "../assets/samsung/mobiles/A23/black/image3.jpg",
+              ],
+            },
+            {
+              color: "оранжевый",
+              images: [
+                "../assets/samsung/mobiles/A23/orange/image1.jpg",
+                "../assets/samsung/mobiles/A23/orange/image2.jpg",
+                "../assets/samsung/mobiles/A23/orange/image3.jpg",
+              ],
+            },
+            {
+              color: "белый",
+              images: [
+                "../assets/samsung/mobiles/A23/white/image1.jpg",
+                "../assets/samsung/mobiles/A23/white/image2.jpg",
+                "../assets/samsung/mobiles/A23/white/image3.jpg",
+              ],
+            },
+          ],
+          description: `
+          Откройте для себя больше возможностей. Получите всё и сразу. 6.6-дюймовый TFT-дисплей Galaxy A23 с V-образным вырезом позволяет видеть и делать больше. С технологией FHD+ и частотой обновления 90 Гц контент всегда будет оставаться четким и плавным. Делайте бесподобные фото с системой из четырех камер. Запечатлейте ценные моменты во всех деталях с основной камерой 50 Мп. Расширьте угол обзора с ультраширокоугольной камерой. Камера с датчиком глубины поможет настроить фокус, а макрообъектив — снять всё до мельчайших деталей. Технология OIS. Наконец-то в Galaxy A23. Запечатлейте мир в движении. Снимайте невероятно плавные видео и запечатлейте мельчайшие детали даже при слабом освещении благодаря технологии OIS на Galaxy A23. Создавайте панорамные снимки с ультраширокоугольной камерой. Подобно человеческому глазу, ультраширокоугольная камера 5 Мп обеспечивает угол обзора 123 градуса, придавая вашим снимкам более глубокую перспективу. Запечатлейте мельчайшие детали с макрообъективом. Снимите все яркие детали крупным планом благодаря макрообъективу 2 Мп. Благодаря естественному эффекту боке объект съемки выгодно выделяется на размытом фоне. Сфокусируйтесь на главном благодаря камере с датчиком глубины. Камера с датчиком глубины 2 Мп позволяет менять глубину резкости на фото. Выделите объект съемки с помощью размытия фона и получите великолепные портретные фото. Делитесь яркими селфи благодаря фронтальной камере. Снимайте потрясающие селфи с помощью фронтальной камеры 8 Мп и эффекта боке — меньше фона, больше вас! Питание на весь день. Будьте на шаг впереди с надежным аккумулятором. Делайте что угодно, не беспокоясь о заряде, с аккумулятором 5000 мАч. Galaxy A23 с супербыстрой зарядкой до 25 Вт поможет вам держать привычный ритм жизни.
+          `,
+          screen_type: "PLS TFT LCD сенсорный, мультитач",
+          RAM: "6 ГБ",
+          CPU: "8-ядерный Snapdragon 680",
+          battery_capacity: "5000 мАч",
+        },
+        {
+          brand: "Samsung",
+          id: uuidv4(),
+          model: "Смартфон Samsung Galaxy A53",
+          current_bundle: {
+            memory: 256,
+            price: "179 890 ₸",
+          },
+          bundle: [
+            {
+              memory: 256,
+              price: "179 890 ₸",
+            },
+          ],
+          reviews: [
+            {
+              author: "",
+              content: "",
+            },
+          ],
+          current_type: {
+            color: "чёрный",
+            images: [
+              "../assets/samsung/mobiles/A53/black/image1.jpg",
+              "../assets/samsung/mobiles/A53/black/image2.jpg",
+              "../assets/samsung/mobiles/A53/black/image3.jpg",
+            ],
+          },
+          types: [
+            {
+              color: "чёрный",
+              images: [
+                "../assets/samsung/mobiles/A53/black/image1.jpg",
+                "../assets/samsung/mobiles/A53/black/image2.jpg",
+                "../assets/samsung/mobiles/A53/black/image3.jpg",
+              ],
+            },
+            {
+              color: "голубой",
+              images: [
+                "../assets/samsung/mobiles/A53/blue/image1.jpg",
+                "../assets/samsung/mobiles/A53/blue/image2.jpg",
+                "../assets/samsung/mobiles/A53/blue/image3.jpg",
+              ],
+            },
+            {
+              color: "оранжевый",
+              images: [
+                "../assets/samsung/mobiles/A53/orange/image1.jpg",
+                "../assets/samsung/mobiles/A53/orange/image2.jpg",
+                "../assets/samsung/mobiles/A53/orange/image3.jpg",
+              ],
+            },
+          ],
+          description: `
+          Высокая производительность. Благодаря восьмиядерному процессору, выполненному по техпроцессу 5 нм, ваш Galaxy успешно справится со множеством задач одновременно. Функция расширения ОЗУ RAM Plus анализирует особенности использования и обеспечивает дополнительную виртуальную оперативную память. Откройте мир в кинематографическом качестве. Любуйтесь яркими деталями на дисплее Super AMOLED в разрешении FHD+. Широкий 6.5-дюймовый дисплей Infinity-O обеспечивает отличную видимость на улице с яркостью до 800 нит и снижает уровень синего света благодаря технологии защиты глаз Eye Comfort Shield. Потрясающий экран, сверхплавный просмотр. Смотрите всё, что хотите, на смартфоне Galaxy с дисплеем Super AMOLED 120 Гц. Ощутите непревзойденную плавность с глубокой детализацией, высокой контрастностью и без размытия. Превосходная камера с неизменной четкостью и стабильностью. Камера с несколькими объективами на Galaxy A53 5G выводит фотографию на новый уровень. Камера 64 Мп с технологией OIS поможет сделать четкие живые снимки, сверхширокий объектив — расширить угол обзора, камера глубины резкости — настроить фокус, а макрообъектив — снять всё до мельчайших деталей. Снимайте профессиональные видео с превосходной стабилизацией. Запечатлейте мир в движении. Снимайте невероятно плавные видео и запечатлейте мельчайшие детали даже при слабом освещении благодаря технологии OIS на Galaxy A53 5G. Превосходный аккумулятор, который держит заряд два дня. Проводите трансляции в реальном времени, обменивайтесь контентом и играйте в игры с аккумулятором на 5000 мАч (номинальное значение). Мгновенно заряжайте свой Galaxy с супербыстрой зарядкой мощностью до 25 Вт и повышайте общую производительность аккумулятора с адаптивным энергосбережением. Устойчив к воздействию влаги, капель и брызг. Galaxy A53 5G имеет степень пылевлагозащиты IP67 и выдерживает погружение в пресную воду на глубину до 1 метра на время до 30 минут. Благодаря дополнительной защите закаленного стекла Gorilla Glass 5 устройство стало прочнее и устойчивее к царапинам.
+          `,
+          screen_type: "Super AMOLED",
+          RAM: "8 ГБ",
+          CPU: " 8-ядерный Exynos 1280",
+          battery_capacity: "5000 мАч",
+        },
+        {
+          brand: "Samsung",
+          id: uuidv4(),
+          model: "Смартфон Samsung Galaxy S21 FE",
+          current_bundle: {
+            memory: 128,
+            price: "200 000 ₸",
+          },
+          bundle: [
+            {
+              memory: 128,
+              price: "200 000 ₸",
+            },
+            {
+              memory: 256,
+              price: "237 700 ₸",
+            },
+          ],
+          reviews: [
+            {
+              author: "",
+              content: "",
+            },
+          ],
+          current_type: {
+            color: "чёрный",
+            images: [
+              "../assets/samsung/mobiles/S21FE/black/image1.jpg",
+              "../assets/samsung/mobiles/S21FE/black/image2.jpg",
+              "../assets/samsung/mobiles/S21FE/black/image3.jpg",
+            ],
+          },
+          types: [
+            {
+              color: "чёрный",
+              images: [
+                "../assets/samsung/mobiles/S21FE/black/image1.jpg",
+                "../assets/samsung/mobiles/S21FE/black/image2.jpg",
+                "../assets/samsung/mobiles/S21FE/black/image3.jpg",
+              ],
+            },
+            {
+              color: "зелёный",
+              images: [
+                "../assets/samsung/mobiles/S21FE/green/image1.jpg",
+                "../assets/samsung/mobiles/S21FE/green/image2.jpg",
+                "../assets/samsung/mobiles/S21FE/green/image3.jpg",
+              ],
+            },
+            {
+              color: "фиолетовый",
+              images: [
+                "../assets/samsung/mobiles/S21FE/purple/image1.jpg",
+                "../assets/samsung/mobiles/S21FE/purple/image2.jpg",
+                "../assets/samsung/mobiles/S21FE/purple/image3.jpg",
+              ],
+            },
+          ],
+          description: `
+          Apple iPhone 13 Pro получил дисплей 6.1 дюйма Super Retina XDR1 с адаптивной частотой обновления до 120 Гц и технологией ProMotion для более быстрого и плавного взаимодействия. Благодаря передней панели Ceramic Shield экран защищен от трещин, царапин и других мелких повреждений. Способность дисплея обновляться с частотой до 120 Гц в сочетании с потрясающей графической производительностью нового графического процессора на базе чипа A15 Bionic делают iPhone 13 Pro незаменимым устройством для настоящих геймеров. Обновленная система камер Pro (12 Мп + 12 Мп + 12 Мп) позволяет передать еще больше деталей. Новая сверхширокоугольная камера с обновленным объективом и мощной системой автофокуса теперь может снимать на расстоянии всего 2 см от объекта. Самые мелкие детали будут выглядеть масштабно — узор листа, лапки насекомого или капля росы. Apple iPhone 13 Pro создан для съемки при слабом освещении. Широкоугольная камера с увеличенной диафрагмой и самой большой матрицей использует возможности сканера LiDAR для портретов в Ночном режиме. А у телефотокамеры появился Ночной режим. Фокусное расстояние 77 мм и трехкратный оптический зум — идеальные параметры для классических портретных кадров или съемки фото и видео издалека. А если объект находится вблизи, можно настраивать степень размытия фона и экспериментировать с эффектами студийного освещения в Портретном режиме. Фотографические стили позволяют применить к вашим кадрам выбранные параметры тона и теплоты. При этом оттенки неба и кожи остаются естественными — достичь такого эффекта с обычными фильтрами не получится. Если захотите, можно выставить более точные параметры для нужного стиля. Настроить стиль съемки по вашему вкусу достаточно один раз, и он будет применяться автоматически. Это первый смартфон Apple, на котором можно полностью снять и отредактировать фильм в формате ProRes или в стандарте Dolby Vision. ProRes подразумевает высокую четкость изображения и низкую степень сжатия. Поэтому прямо на ходу вы можете создавать видеоконтент, готовый к публикациям и презентациям. Теперь проект в ProRes можно начать и закончить прямо на iPhone. Smart HDR 4 позволяет автоматически отрегулировать контрастность, освещение и оттенок кожи для каждого человека. Чтобы все получились просто идеально. Если в кадре недостаточно света, на помощь приходит технология Deep Fusion. Вместе с системой Neural Engine она анализирует все пиксели изображения, снятого с различными экспозициями. Из самых удачных областей формируется финальное изображение, в котором максимум деталей и самые тончайшие текстуры. Процессор A15 Bionic и камера TrueDepth также обеспечивают работу Face ID, исключительно надежной технологии аутентификации. Apple iPhone 13 Pro работает от аккумулятора на 1.5 часа дольше любого другого iPhone.
+          `,
+          screen_type: "Dynamic AMOLED 2X сенсорный, мультитач",
+          RAM: "6 ГБ",
+          CPU: "8-ядерный Qualcomm Snapdragon 888",
+          battery_capacity: "4500.0 мАч",
+        },
+      ],
+      filters: [
+        {
+          type: 'default',
+          value: "CPU",
+          title: {
+            ru: "Модель процессора",
+            kz: "Процессордын модели",
+          },
+          values: [
+            { value: "A13 Bionic", checked: false, title: "A13 Bionic" },
+            { value: "A14 Bionic", checked: false, title: "A14 Bionic" },
+            { value: "A15 Bionic", checked: false, title: "A15 Bionic" },
+            { value: "A16 Bionic", checked: false, title: "A16 Bionic" },
+          ],
+        },
+        {
+          type: 'default',
+          value: "RAM",
+          title: {
+            ru: "Объем оперативной памяти",
+            kz: "Процессордын модели",
+          },
+          values: [
+            { value: "2 ГБ", checked: false, title: "2 ГБ" },
+            { value: "4 ГБ", checked: false, title: "4 ГБ" },
+            { value: "6 ГБ", checked: false, title: "6 ГБ" },
+            { value: "8 ГБ", checked: false, title: "8 ГБ" },
+            { value: "12 ГБ", checked: false, title: "12 ГБ" },
+          ],
+        },
+        {
+          type: 'default',
+          value: "brand",
+          title: {
+            ru: "Бренд",
+            kz: "Бренд",
+          },
+          values: [
+            { value: "Apple", checked: false, title: "Apple" },
+            { value: "Samsung", checked: false, title: "Samsung" },
+            { value: "OPPO", checked: false, title: "OPPO" },
+          ],
+        },
+        {
+          type: 'range',
+          value: "current_bundle.price",
+          title: {
+            ru: "Цена",
+            kz: "Бага",
+          },
+          values: [
+            { title: "до 10 000т", value: "0-10000", checked: false },
+            { title: "10 000 - 49 999т", value: "10000-49999", checked: false },
+            {
+              title: "50 000 - 99 999т",
+              value: "50000-99999",
+              checked: false,
+            },
+            {
+              title: "100 000 - 149 999т",
+              value: "100000-149999",
+              checked: false,
+            },
+            {
+              title: "150 000 - 199 999т",
+              value: "150000-199999",
+              checked: false,
+            },
+            {
+              title: "200 000 - 499 000т",
+              value: "200000-499000",
+              checked: false,
+            },
+            {
+              title: "более 500 000т",
+              value: "500000-100000000",
+              checked: false,
+            },
+          ],
+        },
       ],
     },
     {
       category: "chargers",
       products: [
         {
+          brand: "Apple",
           id: uuidv4(),
           model: "Зарядное устройство Apple 18W USB-C Power Adapter белый",
           price: "10 155 ₸",
@@ -859,6 +1209,7 @@ module.exports = {
           ],
         },
         {
+          brand: "Apple",
           id: uuidv4(),
           model: "Зарядное устройство Apple 20W USB-C Power Adapter белый",
           price: "9 484 ₸",
@@ -872,6 +1223,7 @@ module.exports = {
           ],
         },
         {
+          brand: "Apple",
           id: uuidv4(),
           model: "Зарядное устройство Apple 20W USB-C Power Adapter (Type A)",
           price: "11 966 ₸",
@@ -885,6 +1237,7 @@ module.exports = {
           ],
         },
         {
+          brand: "Apple",
           id: uuidv4(),
           model: "Зарядное устройство Apple 5W USB Power Adapter",
           price: "8 866 ₸",
@@ -898,6 +1251,7 @@ module.exports = {
           ],
         },
         {
+          brand: "Apple",
           id: uuidv4(),
           model: "Зарядное устройство Apple 20W USB-C Power Adapter (Type G)",
           price: "11 975 ₸",
@@ -911,6 +1265,7 @@ module.exports = {
           ],
         },
         {
+          brand: "Apple",
           id: uuidv4(),
           model: "Зарядное устройство Apple 12W USB Power Adapter",
           price: "13 898 ₸",
@@ -924,6 +1279,7 @@ module.exports = {
           ],
         },
         {
+          brand: "Apple",
           id: uuidv4(),
           model: "Блок питания Apple 30W USB-C Power Adapter",
           price: "29 850 ₸",
@@ -937,6 +1293,7 @@ module.exports = {
           ],
         },
         {
+          brand: "Apple",
           id: uuidv4(),
           model: "Блок питания Apple 45W MagSafe 2 Power Adapter",
           price: "28 490 ₸",
@@ -946,6 +1303,7 @@ module.exports = {
           images: ["../assets/apple/chargers/MagSafe245W/image1.jpg"],
         },
         {
+          brand: "Apple",
           id: uuidv4(),
           model: "Блок питания Apple MagSafe 2 60W белый",
           price: "28 890 ₸",
@@ -959,6 +1317,7 @@ module.exports = {
           ],
         },
         {
+          brand: "Apple",
           id: uuidv4(),
           model:
             "Блок питания Apple 61W USB-C Power Adapter + Apple USB-C - USB-C 2 м",
@@ -973,6 +1332,7 @@ module.exports = {
           ],
         },
         {
+          brand: "Apple",
           id: uuidv4(),
           model: "Блок питания Apple 67W USB-C Power Adapter",
           price: "41 979 ₸",
@@ -986,6 +1346,7 @@ module.exports = {
           ],
         },
         {
+          brand: "Apple",
           id: uuidv4(),
           model: "Блок питания Apple MagSafe 2 85W белый",
           price: "20 550 ₸",
@@ -999,6 +1360,7 @@ module.exports = {
           ],
         },
         {
+          brand: "Apple",
           id: uuidv4(),
           model: "Зарядное устройство Apple MagSafe Duo Charger",
           price: "74 856 ₸",
@@ -1017,6 +1379,7 @@ module.exports = {
       category: "clocks",
       products: [
         {
+          brand: "Apple",
           id: uuidv4(),
           model: "Смарт-часы Apple Watch Series 8",
           current_type: {

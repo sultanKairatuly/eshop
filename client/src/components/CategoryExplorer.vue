@@ -1,5 +1,5 @@
 <template>
-  <div class="navigation" v-if="isCategory(props.category)">
+  <div class="navigation" v-if="isCategoryExplorerType(props.category)">
     <div class="navigation_content">
       <h3 class="navigation_title">
         {{ props.category.name }}
@@ -29,14 +29,14 @@
 </template>
 
 <script setup lang="ts">
-import { Category } from "../../types/types";
+import { CategoryExplorerType } from "../../types/types";
 import { useUserUtilities } from "../composables/utilities";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
-const { isCategory } = useUserUtilities();
+const { isCategoryExplorerType } = useUserUtilities();
 const props = defineProps<{
-  category: Category | null;
+  category: CategoryExplorerType | null;
 }>();
 const emit = defineEmits<{
   (e: "routeToProducts"): void;
