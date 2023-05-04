@@ -38,18 +38,16 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { v4 as uuidv4 } from "uuid";
-import type { Category } from "../../types/types";
-import { useUserUtilities } from "../composables/utilities";
+import type { CategoryExplorerType } from "../../types/types";
 import CategoryExplorer from "./CategoryExplorer.vue";
 
-const { isCategory } = useUserUtilities();
-const hoveredCategory = ref<null | Category>(null);
+const hoveredCategory = ref<null | CategoryExplorerType>(null);
 
 function clearHoveredCategory() {
   hoveredCategory.value = null;
 }
 
-const categories: Category[] = [
+const categories: CategoryExplorerType[] = [
   {
     name: "Телефоны и гаджеты",
     category: "mobiles-clocks-chargers",

@@ -68,7 +68,6 @@ app.post("/save-user", async (req, res) => {
 });
 
 app.listen(PORT, async () => {
-  await fillProductsDatabase();
   console.log(`Сервер запустился на порту  ${PORT}`);
 });
 

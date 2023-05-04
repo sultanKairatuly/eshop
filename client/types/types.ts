@@ -55,7 +55,7 @@ export type totalFilterItemType =
     }
   | boolean;
 
-type A = Exclude<totalFilterItemType, boolean>;
+export type FilterBooleanOff = Exclude<totalFilterItemType, boolean>;
 // export type Category = Omit<DropdownFilterType, 'opened'>
 
 export type CategoryExplorerType = {
@@ -77,6 +77,7 @@ export type Category = {
   category: string;
   products: Product[];
   filters?: Filter[];
+  _id?: string
 };
 
 export type Phone = {

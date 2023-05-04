@@ -34,7 +34,7 @@ const emit = defineEmits<{
 <style scoped>
 .breadcrumps {
   font-size: 25px;
-  margin: 20px 0;
+  margin-bottom: 20px;
   padding-bottom: 20px;
   border-bottom: 1px solid #e5e5e5;
 }

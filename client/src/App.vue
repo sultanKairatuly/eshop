@@ -1,15 +1,61 @@
 <template>
   <div class="app">
     <EshopHeader v-if="isHeader" />
-    <router-view></router-view>
+    <router-view
+      :dropdown-filter="dropdownFilter"
+      :current-tree-link-id="currentTreeLinkId"
+      @updateCurrentTreeLinkId="updateCurrentTreeLinkId"
+    ></router-view>
   </div>
 </template>
 
 <script setup lang="ts">
 import EshopHeader from "./components/EshopHeader.vue";
 import { useRoute } from "vue-router";
-import { ref, watch } from "vue";
+import { ref, watch, reactive } from "vue";
+import { v4 as uuidv4 } from "uuid";
+import { DropdownFilterType } from "../types/types";
 
+const dropdownFilter: DropdownFilterType[] = reactive([
+  {
+    value: "Телефоны и гаджеты",
+    category: "mobiles-clocks-chargers",
+    opened: false,
+    id: uuidv4(),
+    children: [
+      {
+        value: "Телефоны",
+        opened: false,
+        category: "mobiles",
+        children: [],
+        id: uuidv4(),
+      },
+      {
+        value: "Гаджеты",
+        opened: false,
+        category: "clocks-chargers",
+        id: uuidv4(),
+        children: [
+          {
+            value: "Зарядки",
+            opened: false,
+            category: "chargers",
+            children: [],
+            id: uuidv4(),
+          },
+          {
+            value: "Часы",
+            opened: false,
+            category: "clocks",
+            children: [],
+            id: uuidv4(),
+          },
+        ],
+      },
+    ],
+  },
+]);
+const currentTreeLinkId = ref<string>(dropdownFilter[0].id);
 const isHeader = ref<boolean>(true);
 const route = useRoute();
 watch(
@@ -25,6 +71,10 @@ watch(
     immediate: true,
   }
 );
+
+function updateCurrentTreeLinkId(id: string) {
+  currentTreeLinkId.value = id;
+}
 </script>
 
 <style>

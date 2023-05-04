@@ -2,6 +2,7 @@
   <div
     class="filter"
     v-for="(item, index) in dropdownFilter"
+    :key="item.id"
     :style="{
       paddingLeft: setPadding(returnNumberType(item.id)),
     }"
@@ -68,7 +69,6 @@ function setPadding(index: number): string {
 <style scoped>
 .value {
   display: flex;
-  margin-top: 10px;
   column-gap: 10px;
   align-items: center;
 }
@@ -79,7 +79,8 @@ function setPadding(index: number): string {
 }
 
 .name {
-  font-size: 18px;
+  font-size: 20px;
+  margin-bottom: 10px;
   font-weight: 700;
   color: #0089d8;
   cursor: pointer;

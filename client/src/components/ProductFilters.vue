@@ -1,30 +1,29 @@
 <template>
-  <div class="filters">
-    <div class="filter" v-for="filter in filters" :key="filter.name.value">
-      <div class="filter_title">{{ filter.name.ru }}</div>
-      <p v-for="checkbox in filter.values" :key="checkbox.value">
-        <input
-          type="checkbox"
-          @click="setPrice(filter.values, checkbox)"
-          :value="checkbox.value"
-          :name="filter.name.value"
-          :checked="checkbox.checked"
-        />
-        {{ checkbox.title }}
-      </p>
-    </div>
-    <div class="filter_wrapper" v-for="category in categoryFilters">
-      <div v-for="filter in category?.filters">
+  <div class="container">
+    <div class="filter_wrapper" :key="category?._id" v-for="category in categoryFilters">
+      <div
+        class="filter"
+        v-for="(filter, idx) in category?.filters"
+        :key="filter.value"
+        :class="{
+          borderToped: idx === 0
+        }"
+      >
         <div class="filter_title">{{ filter.title.ru }}</div>
-        <p v-for="checkbox in filter.values" :key="checkbox.value">
+        <p
+          class="label"
+          v-for="checkbox in filter.values"
+          :key="checkbox.value"
+        >
           <input
             type="checkbox"
+            class="checkbox"
             @click="filterProducts(filter, checkbox)"
             :value="checkbox.value"
             :name="filter.value"
             :checked="checkbox.checked"
           />
-          {{ checkbox.title }}
+          <div class="label_item">{{ checkbox.title }}</div>
         </p>
       </div>
     </div>
@@ -32,13 +31,24 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, ref, watch } from "vue";
+import { computed, ref, watch } from "vue";
 import { Category, Filter, EmittedFilterType } from "../../types/types";
+import { useRoute } from 'vue-router'
 
+const route = useRoute()
+const catalogName = ref<string>(route.query.catalogName as string)
+const subcatalogName = ref<string>(route.query.subcatalogName as string)
 const props = defineProps<{
   categories: Category[];
-  catalogs: string;
 }>();
+
+
+watch(() => route.query, (query) => {
+  catalogName.value = query.catalogName as string
+  subcatalogName.value = query.subcatalogName as string
+}, { immediate: true })
+
+
 
 const emit = defineEmits<{
   (e: "changePriceFilter", value: { max: number; min: number }): void;
@@ -46,31 +56,49 @@ const emit = defineEmits<{
   (e: "fillWithProducts"): void;
 }>();
 
-type Price = {
-  max: number;
-  min: number;
-};
-
-const price: Price = reactive({
-  min: 0,
-  max: Infinity,
-});
-
-watch(price, (nv) => {
-  emit("changePriceFilter", { max: nv.max, min: nv.min });
-});
-
 const categoryFilters = computed(() => {
   const result: Category[] = [];
   for (let category of props.categories) {
-    const catalogs = props.catalogs.split("-");
+    const catalogs = (subcatalogName.value || catalogName.value).split("-");
     if (catalogs.includes(category.category)) {
       result.push(category);
     }
   }
+  if(result.length === 1){
+    return result
+  }else{
+    let maxFilterValues: string[] = []
+    let maxFilters: Filter[] = []
+    let commonFilters: Category[] = []
+    let maxLength = 0
+    const hash: Record<string, number> = {}
+    result.forEach(category => {
+      const currentCategoryFilterLength = (category.filters || []).length
+      if(currentCategoryFilterLength > maxLength){
+        maxFilterValues = (category.filters?.map(item => item.value) ?? [])
+        maxFilters = (category.filters ?? [])
+        maxLength = currentCategoryFilterLength
+      }
+    })
+    result.forEach(({ filters }) => {
+      filters?.forEach(({ value }) => {
+        if(maxFilterValues.includes(value)){
+          hash[value] = hash[value] + 1 || 1
+        }
+      })
+    })
+    const filters: Filter[] = []
+    for(let key in hash){
+      if(hash[key] === result.length){
+        filters.push(maxFilters.find(filter => filter.value === key) as Filter)
+      }
+    }
 
-  return result.length > 1 ? [] : result;
+    commonFilters = props.categories.map(item => ({...item, filters}) )
+    return [commonFilters[0]]
+  }
 });
+
 
 function filterProducts(
   filter: Filter,
@@ -78,8 +106,8 @@ function filterProducts(
 ) {
   checkbox.checked = !checkbox.checked;
   let empty = false;
-  for (let i = 0; i < categoryFilters.value.length; i++) {
-    const category = categoryFilters.value[i];
+  for (let i = 0; i < (categoryFilters.value || []).length; i++) {
+    const category = (categoryFilters.value || [])[i];
     for (let j = 0; j < (category?.filters?.length ?? 0); j++) {
       let values = (category?.filters || [])[j]?.values;
       let a = !!values.filter((value) => value.checked)[0];
@@ -108,70 +136,61 @@ function filterProducts(
     });
   }
 }
-
-function setPrice(
-  values: { title: string; value: string; checked: boolean }[],
-  checkbox: { title: string; value: string; checked: boolean }
-) {
-  checkbox.checked = !checkbox.checked;
-  const minPrices: number[] = [];
-  const maxPrices: number[] = [];
-  values.forEach((checkbox) => {
-    if (checkbox.checked) {
-      const [currentCheckboxMin, currentCheckboxMax] = checkbox.value
-        .split("-")
-        .map(Number);
-      minPrices.push(currentCheckboxMin);
-      maxPrices.push(currentCheckboxMax);
-    }
-  });
-  if (minPrices.length || maxPrices.length) {
-    price.min = Math.min(...minPrices);
-    price.max = Math.max(...maxPrices);
-  } else {
-    price.min = 0;
-    price.max = Infinity;
-  }
-}
-
-const filters = [
-  {
-    name: {
-      value: "Price",
-      ru: "Цена",
-      kz: "Бага",
-    },
-    values: [
-      { title: "до 10 000т", value: "0-10000", checked: false },
-      { title: "10 000 - 49 999т", value: "10000-49999", checked: false },
-      {
-        title: "50 000 - 99 999т",
-        value: "50000-99999",
-        checked: false,
-      },
-      {
-        title: "100 000 - 149 999т",
-        value: "100000-149999",
-        checked: false,
-      },
-      {
-        title: "150 000 - 199 999т",
-        value: "150000-199999",
-        checked: false,
-      },
-      {
-        title: "200 000 - 499 000т",
-        value: "200000-499000",
-        checked: false,
-      },
-      {
-        title: "более 500 000т",
-        value: "500000-100000000",
-        checked: false,
-      },
-    ],
-  },
-];
 </script>
 
-<style scoped></style>
+<style scoped>
+.filter_wrapper{
+  margin-top: 50px;
+}
+.checkbox {
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: #000;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #e5e5e5;
+  border-radius: 0.15em;
+  cursor: pointer;
+  transition: border 0.2s ease-in-out;
+  margin-right: 7px;
+  margin-bottom: 7px;
+}
+
+.checkbox:hover {
+  border: 1px solid blue;
+}
+
+.checkbox:checked {
+  background-image: url(../assets/small-checked.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 13px 10px;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+}
+
+
+.label_item{
+  font-size: 20px;
+
+}
+.filter {
+  padding: 40px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.borderToped{
+  border-top: 1px solid #e5e5e5;
+}
+
+.filter_title {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+</style>

@@ -102,14 +102,30 @@ module.exports = {
               content: "",
             },
           ],
-          current_type: {
-            color: "чёрный",
-            images: [
-              "../assets/apple/mobiles/I14ProMax/black/image1.jpg",
-              "../assets/apple/mobiles/I14ProMax/black/image2.jpg",
-              "../assets/apple/mobiles/I14ProMax/black/image3.jpg",
-            ],
-          },
+          // current_type: {
+          //   color: "чёрный",
+          //   images: [
+          //     "../assets/apple/mobiles/I14ProMax/black/image1.jpg",
+          //     "../assets/apple/mobiles/I14ProMax/black/image2.jpg",
+          //     "../assets/apple/mobiles/I14ProMax/black/image3.jpg",
+          //   ],
+          // },
+          parameters: [
+            {
+              title: {
+                ru: 'Цвет',
+                kz: 'Тус'
+              },
+              values: [
+                {
+                  title: "чёрный",
+                  value: [
+                    ""
+                  ]
+                }
+              ]
+            }
+          ],
           types: [
             {
               color: "чёрный",
@@ -1111,7 +1127,7 @@ module.exports = {
       ],
       filters: [
         {
-          type: 'default',
+          type: "default",
           value: "CPU",
           title: {
             ru: "Модель процессора",
@@ -1125,7 +1141,7 @@ module.exports = {
           ],
         },
         {
-          type: 'default',
+          type: "default",
           value: "RAM",
           title: {
             ru: "Объем оперативной памяти",
@@ -1140,7 +1156,7 @@ module.exports = {
           ],
         },
         {
-          type: 'default',
+          type: "default",
           value: "brand",
           title: {
             ru: "Бренд",
@@ -1153,8 +1169,8 @@ module.exports = {
           ],
         },
         {
-          type: 'range',
-          value: "current_bundle.price",
+          type: "range",
+          value: "current_bundle.price|price",
           title: {
             ru: "Цена",
             kz: "Бага",
@@ -1374,6 +1390,58 @@ module.exports = {
           ],
         },
       ],
+      filters: [
+        {
+          type: "default",
+          value: "brand",
+          title: {
+            ru: "Бренд",
+            kz: "Бренд",
+          },
+          values: [
+            { value: "Apple", checked: false, title: "Apple" },
+            { value: "Samsung", checked: false, title: "Samsung" },
+            { value: "OPPO", checked: false, title: "OPPO" },
+          ],
+        },
+        {
+          type: "range",
+          value: "current_bundle.price|price",
+          title: {
+            ru: "Цена",
+            kz: "Бага",
+          },
+          values: [
+            { title: "до 10 000т", value: "0-10000", checked: false },
+            { title: "10 000 - 49 999т", value: "10000-49999", checked: false },
+            {
+              title: "50 000 - 99 999т",
+              value: "50000-99999",
+              checked: false,
+            },
+            {
+              title: "100 000 - 149 999т",
+              value: "100000-149999",
+              checked: false,
+            },
+            {
+              title: "150 000 - 199 999т",
+              value: "150000-199999",
+              checked: false,
+            },
+            {
+              title: "200 000 - 499 000т",
+              value: "200000-499000",
+              checked: false,
+            },
+            {
+              title: "более 500 000т",
+              value: "500000-100000000",
+              checked: false,
+            },
+          ],
+        },
+      ],
     },
     {
       category: "clocks",
@@ -1433,6 +1501,58 @@ module.exports = {
           material: "алюминий",
           screen: "OLED",
           memory: 32,
+        },
+      ],
+      filters: [
+        {
+          type: "default",
+          value: "brand",
+          title: {
+            ru: "Бренд",
+            kz: "Бренд",
+          },
+          values: [
+            { value: "Apple", checked: false, title: "Apple" },
+            { value: "Samsung", checked: false, title: "Samsung" },
+            { value: "OPPO", checked: false, title: "OPPO" },
+          ],
+        },
+        {
+          type: "range",
+          value: "current_bundle.price|price",
+          title: {
+            ru: "Цена",
+            kz: "Бага",
+          },
+          values: [
+            { title: "до 10 000т", value: "0-10000", checked: false },
+            { title: "10 000 - 49 999т", value: "10000-49999", checked: false },
+            {
+              title: "50 000 - 99 999т",
+              value: "50000-99999",
+              checked: false,
+            },
+            {
+              title: "100 000 - 149 999т",
+              value: "100000-149999",
+              checked: false,
+            },
+            {
+              title: "150 000 - 199 999т",
+              value: "150000-199999",
+              checked: false,
+            },
+            {
+              title: "200 000 - 499 000т",
+              value: "200000-499000",
+              checked: false,
+            },
+            {
+              title: "более 500 000т",
+              value: "500000-100000000",
+              checked: false,
+            },
+          ],
         },
       ],
     },

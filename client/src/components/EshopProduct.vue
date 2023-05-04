@@ -24,7 +24,10 @@
       @click="emit('productClicked', props.product.model)"
     />
     <div class="image_separator"></div>
-    <div class="product_name" @click="emit('productClicked', props.product.model)">
+    <div
+      class="product_name"
+      @click="emit('productClicked', props.product.model)"
+    >
       {{ props.product.model }}
     </div>
     <div class="bills">
@@ -41,11 +44,7 @@
       <div class="installment">
         <div class="installment_title">В рассрочку</div>
         <div class="installment_value">
-          {{
-            isHasBundle(props.product)
-              ? getInstallment(props.product.current_bundle.price)
-              : getInstallment(props.product.price)
-          }}
+          {{ getInstallment(props.product) }}
         </div>
         <span class="mode">x12</span>
       </div>
@@ -56,7 +55,8 @@
 <script setup lang="ts">
 import type { Product } from "../../types/types";
 import { useUserUtilities } from "../composables/utilities";
-const { getImageUrl, isHasImages, isHasBundle } = useUserUtilities();
+const { getImageUrl, isHasImages, isHasBundle, getInstallment } =
+  useUserUtilities();
 
 const props = defineProps<{
   product: Product;
@@ -65,21 +65,6 @@ const props = defineProps<{
 const emit = defineEmits<{
   (e: "productClicked", value: string): void;
 }>();
-
-function getInstallment(price: string): string {
-  const value: string = Math.round(
-    +price.replace(/[\s₸]/g, "") / 12
-  ).toString();
-  switch (value.length) {
-    case 4:
-      return `${value[0]} ${value.slice(1)} ₸`;
-    case 5:
-      return `${value[0]}${value[1]} ${value.slice(2)} ₸`;
-    case 6:
-      return `${value[0]}${value[1]}${value[2]} ${value.slice(3)} ₸`;
-  }
-  return value + " ₸";
-}
 </script>
 
 <style scoped>
