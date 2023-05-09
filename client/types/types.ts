@@ -77,32 +77,30 @@ export type Category = {
   category: string;
   products: Product[];
   filters?: Filter[];
-  _id?: string
+  _id?: string;
+};
+
+export type ProductParameters = {
+  title: {
+    ru: string;
+    kz: string;
+  };
+  type: string;
+  properties: string[];
+  values: Record<string, any>;
 };
 
 export type Phone = {
   id: string;
   model: string;
-  current_bundle: {
-    memory: number;
-    price: string;
-  };
-  bundle: {
-    memory: number;
-    price: string;
-  }[];
+  price: string;
+  memory: string;
+  images: string[];
   reviews: {
     author: string;
     content: string;
   }[];
-  current_type: {
-    color: string;
-    images: string[];
-  };
-  types: {
-    color: string;
-    images: string[];
-  }[];
+  parameters: ProductParameters[];
   screen_type: string;
   RAM: string;
   CPU: string;
@@ -138,18 +136,10 @@ export type Bundle =
 export type Clock = {
   id: string;
   model: string;
-  current_type: {
-    images: string[];
-  };
-  colors: Record<string, string[]>;
-  current_bundle: {
-    size: number;
-    price: string;
-  };
-  bundles: {
-    size: number;
-    price: string;
-  }[];
+  color: string;
+  size: number;
+  price: string;
+  images: string[];
   autonomy: number;
   energy_saving: number;
   material: string;

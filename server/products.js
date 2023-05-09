@@ -8,61 +8,73 @@ module.exports = {
           brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 14 Pro Max",
-          current_bundle: {
-            memory: 256,
-            price: "671 521 ₸",
-          },
-          bundle: [
-            {
-              memory: 256,
-              price: "671 521 ₸",
-            },
-            {
-              memory: 512,
-              price: "700 000 ₸",
-            },
-            {
-              memory: 1000,
-              price: "750 000 ₸",
-            },
-          ],
           reviews: [
             {
               author: "",
               content: "",
             },
           ],
-          current_type: {
-            color: "чёрный",
-            images: [
-              "../assets/apple/mobiles/I14ProMax/black/image1.jpg",
-              "../assets/apple/mobiles/I14ProMax/black/image2.jpg",
-              "../assets/apple/mobiles/I14ProMax/black/image3.jpg",
-            ],
-          },
-          types: [
+          color: "чёрный",
+          images: [
+            "../assets/apple/mobiles/I14ProMax/black/image1.jpg",
+            "../assets/apple/mobiles/I14ProMax/black/image2.jpg",
+            "../assets/apple/mobiles/I14ProMax/black/image3.jpg",
+          ],
+          memory: "256 ГБ",
+          price: "671 521 ₸",
+          parameters: [
             {
-              color: "чёрный",
-              images: [
-                "../assets/apple/mobiles/I14ProMax/black/image1.jpg",
-                "../assets/apple/mobiles/I14ProMax/black/image2.jpg",
-                "../assets/apple/mobiles/I14ProMax/black/image3.jpg",
+              title: {
+                ru: "Цвет",
+                kz: "Тус",
+              },
+              properties: ["color", "images"],
+              values: [
+                {
+                  color: "чёрный",
+                  images: [
+                    "../assets/apple/mobiles/I14ProMax/black/image1.jpg",
+                    "../assets/apple/mobiles/I14ProMax/black/image2.jpg",
+                    "../assets/apple/mobiles/I14ProMax/black/image3.jpg",
+                  ],
+                },
+                {
+                  color: "серебристый",
+                  images: [
+                    "../assets/apple/mobiles/I14ProMax/silver/image1.jpg",
+                    "../assets/apple/mobiles/I14ProMax/silver/image2.jpg",
+                    "../assets/apple/mobiles/I14ProMax/silver/image3.jpg",
+                  ],
+                },
+                {
+                  color: "золотистый",
+                  images: [
+                    "../assets/apple/mobiles/I14ProMax/gold/image1.jpg",
+                    "../assets/apple/mobiles/I14ProMax/gold/image2.jpg",
+                    "../assets/apple/mobiles/I14ProMax/gold/image3.jpg",
+                  ],
+                },
               ],
             },
             {
-              color: "серебристый",
-              images: [
-                "../assets/apple/mobiles/I14ProMax/silver/image1.jpg",
-                "../assets/apple/mobiles/I14ProMax/silver/image2.jpg",
-                "../assets/apple/mobiles/I14ProMax/silver/image3.jpg",
-              ],
-            },
-            {
-              color: "золотистый",
-              images: [
-                "../assets/apple/mobiles/I14ProMax/gold/image1.jpg",
-                "../assets/apple/mobiles/I14ProMax/gold/image2.jpg",
-                "../assets/apple/mobiles/I14ProMax/gold/image3.jpg",
+              title: {
+                ru: "Объем встроенной памяти",
+                kz: "",
+              },
+              properties: ["memory", "price"],
+              values: [
+                {
+                  memory: "256 ГБ",
+                  price: "671 521 ₸",
+                },
+                {
+                  memory: "512 ГБ",
+                  price: "700 000 ₸",
+                },
+                {
+                  memory: "1000 ГБ",
+                  price: "750 000 ₸",
+                },
               ],
             },
           ],
@@ -102,53 +114,67 @@ module.exports = {
               content: "",
             },
           ],
-          // current_type: {
-          //   color: "чёрный",
-          //   images: [
-          //     "../assets/apple/mobiles/I14ProMax/black/image1.jpg",
-          //     "../assets/apple/mobiles/I14ProMax/black/image2.jpg",
-          //     "../assets/apple/mobiles/I14ProMax/black/image3.jpg",
-          //   ],
-          // },
+          color: "чёрный",
+          images: [
+            "../assets/apple/mobiles/I14ProMax/black/image1.jpg",
+            "../assets/apple/mobiles/I14ProMax/black/image2.jpg",
+            "../assets/apple/mobiles/I14ProMax/black/image3.jpg",
+          ],
+          price: "613 000 ₸",
+          memory: "256 ГБ",
           parameters: [
             {
               title: {
-                ru: 'Цвет',
-                kz: 'Тус'
+                ru: "Цвет",
+                kz: "Тус",
               },
+              properties: ["color", "images"],
               values: [
                 {
-                  title: "чёрный",
-                  value: [
-                    ""
-                  ]
-                }
-              ]
-            }
-          ],
-          types: [
-            {
-              color: "чёрный",
-              images: [
-                "../assets/apple/mobiles/I14ProMax/black/image1.jpg",
-                "../assets/apple/mobiles/I14ProMax/black/image2.jpg",
-                "../assets/apple/mobiles/I14ProMax/black/image3.jpg",
+                  color: "чёрный",
+                  images: [
+                    "../assets/apple/mobiles/I14ProMax/black/image1.jpg",
+                    "../assets/apple/mobiles/I14ProMax/black/image2.jpg",
+                    "../assets/apple/mobiles/I14ProMax/black/image3.jpg",
+                  ],
+                },
+                {
+                  color: "серебристый",
+                  images: [
+                    "../assets/apple/mobiles/I14ProMax/silver/image1.jpg",
+                    "../assets/apple/mobiles/I14ProMax/silver/image2.jpg",
+                    "../assets/apple/mobiles/I14ProMax/silver/image3.jpg",
+                  ],
+                },
+                {
+                  color: "золотистый",
+                  images: [
+                    "../assets/apple/mobiles/I14ProMax/gold/image1.jpg",
+                    "../assets/apple/mobiles/I14ProMax/gold/image2.jpg",
+                    "../assets/apple/mobiles/I14ProMax/gold/image3.jpg",
+                  ],
+                },
               ],
             },
             {
-              color: "серебристый",
-              images: [
-                "../assets/apple/mobiles/I14ProMax/silver/image1.jpg",
-                "../assets/apple/mobiles/I14ProMax/silver/image2.jpg",
-                "../assets/apple/mobiles/I14ProMax/silver/image3.jpg",
-              ],
-            },
-            {
-              color: "золотистый",
-              images: [
-                "../assets/apple/mobiles/I14ProMax/gold/image1.jpg",
-                "../assets/apple/mobiles/I14ProMax/gold/image2.jpg",
-                "../assets/apple/mobiles/I14ProMax/gold/image3.jpg",
+              title: {
+                ru: "Объем встроенной памяти",
+                kz: "",
+              },
+              properties: ["memory", "price"],
+              values: [
+                {
+                  memory: "256 ГБ",
+                  price: "613 000 ₸",
+                },
+                {
+                  memory: "500 ГБ",
+                  price: "650 000 ₸",
+                },
+                {
+                  memory: "1000 ГБ",
+                  price: "700 000 ₸",
+                },
               ],
             },
           ],
@@ -164,61 +190,73 @@ module.exports = {
           brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 14",
-          current_bundle: {
-            memory: 256,
-            price: "410 960 ₸",
-          },
-          bundle: [
-            {
-              memory: 256,
-              price: "410 960 ₸",
-            },
-            {
-              memory: 512,
-              price: "450 000 ₸",
-            },
-            {
-              memory: 1000,
-              price: "500 000 ₸",
-            },
-          ],
           reviews: [
             {
               author: "",
               content: "",
             },
           ],
-          current_type: {
-            color: "чёрный",
-            images: [
-              "../assets/apple/mobiles/I14/black/image1.jpg",
-              "../assets/apple/mobiles/I14/black/image2.jpg",
-              "../assets/apple/mobiles/I14/black/image3.jpg",
-            ],
-          },
-          types: [
+          color: "чёрный",
+          images: [
+            "../assets/apple/mobiles/I14/black/image1.jpg",
+            "../assets/apple/mobiles/I14/black/image2.jpg",
+            "../assets/apple/mobiles/I14/black/image3.jpg",
+          ],
+          memory: "256 ГБ",
+          price: "410 960 ₸",
+          parameters: [
             {
-              color: "чёрный",
-              images: [
-                "../assets/apple/mobiles/I14/black/image1.jpg",
-                "../assets/apple/mobiles/I14/black/image2.jpg",
-                "../assets/apple/mobiles/I14/black/image3.jpg",
+              title: {
+                ru: "Цвет",
+                kz: "Тус",
+              },
+              properties: ["color", "images"],
+              values: [
+                {
+                  color: "чёрный",
+                  images: [
+                    "../assets/apple/mobiles/I14/black/image1.jpg",
+                    "../assets/apple/mobiles/I14/black/image2.jpg",
+                    "../assets/apple/mobiles/I14/black/image3.jpg",
+                  ],
+                },
+                {
+                  color: "красный",
+                  images: [
+                    "../assets/apple/mobiles/I14/red/image1.jpg",
+                    "../assets/apple/mobiles/I14/red/image2.jpg",
+                    "../assets/apple/mobiles/I14/red/image3.jpg",
+                  ],
+                },
+                {
+                  color: "жёлтый",
+                  images: [
+                    "../assets/apple/mobiles/I14/yellow/image1.jpg",
+                    "../assets/apple/mobiles/I14/yellow/image2.jpg",
+                    "../assets/apple/mobiles/I14/yellow/image3.jpg",
+                  ],
+                },
               ],
             },
             {
-              color: "красный",
-              images: [
-                "../assets/apple/mobiles/I14/red/image1.jpg",
-                "../assets/apple/mobiles/I14/red/image2.jpg",
-                "../assets/apple/mobiles/I14/red/image3.jpg",
-              ],
-            },
-            {
-              color: "жёлтый",
-              images: [
-                "../assets/apple/mobiles/I14/yellow/image1.jpg",
-                "../assets/apple/mobiles/I14/yellow/image2.jpg",
-                "../assets/apple/mobiles/I14/yellow/image3.jpg",
+              title: {
+                ru: "Объем встроенной памяти",
+                kz: "",
+              },
+              properties: ["memory", "price"],
+              values: [
+                {
+                  memory: "256 ГБ",
+                  price: "410 960 ₸",
+                },
+                {
+                  memory: "512 ГБ",
+                  price: "450 000 ₸",
+                },
+                {
+                  memory: "1000 ГБ",
+                  price: "500 000 ₸",
+                },
               ],
             },
           ],
@@ -234,65 +272,77 @@ module.exports = {
           brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 13 Pro Max",
-          current_bundle: {
-            memory: 256,
-            price: "690 448 ₸",
-          },
-          bundle: [
-            {
-              memory: 128,
-              price: "597 700 ₸",
-            },
-            {
-              memory: 256,
-              price: "690 448 ₸",
-            },
-            {
-              memory: 512,
-              price: "730 448 ₸",
-            },
-            {
-              memory: 1000,
-              price: "760 000 ₸",
-            },
-          ],
           reviews: [
             {
               author: "",
               content: "",
             },
           ],
-          current_type: {
-            color: "зелёный",
-            images: [
-              "../assets/apple/mobiles/I13ProMax/green/image1.jpg",
-              "../assets/apple/mobiles/I13ProMax/green/image2.jpg",
-              "../assets/apple/mobiles/I13ProMax/green/image3.jpg",
-            ],
-          },
-          types: [
+          color: "зелёный",
+          images: [
+            "../assets/apple/mobiles/I13ProMax/green/image1.jpg",
+            "../assets/apple/mobiles/I13ProMax/green/image2.jpg",
+            "../assets/apple/mobiles/I13ProMax/green/image3.jpg",
+          ],
+          memory: "256 ГБ",
+          price: "690 448 ₸",
+          parameters: [
             {
-              color: "зелёный",
-              images: [
-                "../assets/apple/mobiles/I13ProMax/green/image1.jpg",
-                "../assets/apple/mobiles/I13ProMax/green/image2.jpg",
-                "../assets/apple/mobiles/I13ProMax/green/image3.jpg",
+              title: {
+                ru: "Цвет",
+                kz: "Тус",
+              },
+              properties: ["color", "images"],
+              values: [
+                {
+                  color: "зелёный",
+                  images: [
+                    "../assets/apple/mobiles/I13ProMax/green/image1.jpg",
+                    "../assets/apple/mobiles/I13ProMax/green/image2.jpg",
+                    "../assets/apple/mobiles/I13ProMax/green/image3.jpg",
+                  ],
+                },
+                {
+                  color: "серебристый",
+                  images: [
+                    "../assets/apple/mobiles/I13ProMax/silver/image1.jpg",
+                    "../assets/apple/mobiles/I13ProMax/silver/image2.jpg",
+                    "../assets/apple/mobiles/I13ProMax/silver/image3.jpg",
+                  ],
+                },
+                {
+                  color: "золотистый",
+                  images: [
+                    "../assets/apple/mobiles/I13ProMax/gold/image1.jpg",
+                    "../assets/apple/mobiles/I13ProMax/gold/image2.jpg",
+                    "../assets/apple/mobiles/I13ProMax/gold/image3.jpg",
+                  ],
+                },
               ],
             },
             {
-              color: "серебристый",
-              images: [
-                "../assets/apple/mobiles/I13ProMax/silver/image1.jpg",
-                "../assets/apple/mobiles/I13ProMax/silver/image2.jpg",
-                "../assets/apple/mobiles/I13ProMax/silver/image3.jpg",
-              ],
-            },
-            {
-              color: "золотистый",
-              images: [
-                "../assets/apple/mobiles/I13ProMax/gold/image1.jpg",
-                "../assets/apple/mobiles/I13ProMax/gold/image2.jpg",
-                "../assets/apple/mobiles/I13ProMax/gold/image3.jpg",
+              title: {
+                ru: "Объем встроенной памяти",
+                kz: "",
+              },
+              properties: ["memory", "price"],
+              values: [
+                {
+                  memory: "128 ГБ",
+                  price: "597 700 ₸",
+                },
+                {
+                  memory: "256 ГБ",
+                  price: "690 448 ₸",
+                },
+                {
+                  memory: "512 ГБ",
+                  price: "730 448 ₸",
+                },
+                {
+                  memory: "1000 ГБ",
+                  price: "760 000 ₸",
+                },
               ],
             },
           ],
@@ -308,65 +358,77 @@ module.exports = {
           brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 13 Pro",
-          current_bundle: {
-            memory: 256,
-            price: "650 448 ₸",
-          },
-          bundle: [
-            {
-              memory: 128,
-              price: "567 700 ₸",
-            },
-            {
-              memory: 256,
-              price: "650 448 ₸",
-            },
-            {
-              memory: 512,
-              price: "680 448 ₸",
-            },
-            {
-              memory: 1000,
-              price: "720 000 ₸",
-            },
-          ],
           reviews: [
             {
               author: "",
               content: "",
             },
           ],
-          current_type: {
-            color: "зелёный",
-            images: [
-              "../assets/apple/mobiles/I13ProMax/green/image1.jpg",
-              "../assets/apple/mobiles/I13ProMax/green/image2.jpg",
-              "../assets/apple/mobiles/I13ProMax/green/image3.jpg",
-            ],
-          },
-          types: [
+          color: "зелёный",
+          images: [
+            "../assets/apple/mobiles/I13ProMax/green/image1.jpg",
+            "../assets/apple/mobiles/I13ProMax/green/image2.jpg",
+            "../assets/apple/mobiles/I13ProMax/green/image3.jpg",
+          ],
+          memory: "256 ГБ",
+          price: "690 448 ₸",
+          parameters: [
             {
-              color: "зелёный",
-              images: [
-                "../assets/apple/mobiles/I13ProMax/green/image1.jpg",
-                "../assets/apple/mobiles/I13ProMax/green/image2.jpg",
-                "../assets/apple/mobiles/I13ProMax/green/image3.jpg",
+              title: {
+                ru: "Цвет",
+                kz: "Тус",
+              },
+              properties: ["color", "images"],
+              values: [
+                {
+                  color: "зелёный",
+                  images: [
+                    "../assets/apple/mobiles/I13ProMax/green/image1.jpg",
+                    "../assets/apple/mobiles/I13ProMax/green/image2.jpg",
+                    "../assets/apple/mobiles/I13ProMax/green/image3.jpg",
+                  ],
+                },
+                {
+                  color: "серебристый",
+                  images: [
+                    "../assets/apple/mobiles/I13ProMax/silver/image1.jpg",
+                    "../assets/apple/mobiles/I13ProMax/silver/image2.jpg",
+                    "../assets/apple/mobiles/I13ProMax/silver/image3.jpg",
+                  ],
+                },
+                {
+                  color: "золотистый",
+                  images: [
+                    "../assets/apple/mobiles/I13ProMax/gold/image1.jpg",
+                    "../assets/apple/mobiles/I13ProMax/gold/image2.jpg",
+                    "../assets/apple/mobiles/I13ProMax/gold/image3.jpg",
+                  ],
+                },
               ],
             },
             {
-              color: "серебристый",
-              images: [
-                "../assets/apple/mobiles/I13ProMax/silver/image1.jpg",
-                "../assets/apple/mobiles/I13ProMax/silver/image2.jpg",
-                "../assets/apple/mobiles/I13ProMax/silver/image3.jpg",
-              ],
-            },
-            {
-              color: "золотистый",
-              images: [
-                "../assets/apple/mobiles/I13ProMax/gold/image1.jpg",
-                "../assets/apple/mobiles/I13ProMax/gold/image2.jpg",
-                "../assets/apple/mobiles/I13ProMax/gold/image3.jpg",
+              title: {
+                ru: "Объем встроенной памяти",
+                kz: "",
+              },
+              properties: ["memory", "price"],
+              values: [
+                {
+                  memory: "128 ГБ",
+                  price: "567 700 ₸",
+                },
+                {
+                  memory: "256 ГБ",
+                  price: "650 448 ₸",
+                },
+                {
+                  memory: "512 ГБ",
+                  price: "680 448 ₸",
+                },
+                {
+                  memory: "1000 ГБ",
+                  price: "720 000 ₸",
+                },
               ],
             },
           ],
@@ -382,61 +444,73 @@ module.exports = {
           brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 13",
-          current_bundle: {
-            memory: 256,
-            price: "446 300 ₸",
-          },
-          bundle: [
-            {
-              memory: 128,
-              price: "390 300 ₸",
-            },
-            {
-              memory: 256,
-              price: "446 300 ₸",
-            },
-            {
-              memory: 512,
-              price: "500 448 ₸",
-            },
-          ],
           reviews: [
             {
               author: "",
               content: "",
             },
           ],
-          current_type: {
-            color: "чёрный",
-            images: [
-              "../assets/apple/mobiles/I13/black/image1.jpg",
-              "../assets/apple/mobiles/I13/black/image2.jpg",
-              "../assets/apple/mobiles/I13/black/image3.jpg",
-            ],
-          },
-          types: [
+          color: "чёрный",
+          images: [
+            "../assets/apple/mobiles/I13/black/image1.jpg",
+            "../assets/apple/mobiles/I13/black/image2.jpg",
+            "../assets/apple/mobiles/I13/black/image3.jpg",
+          ],
+          memory: "128 ГБ",
+          price: "390 300 ₸",
+          parameters: [
             {
-              color: "чёрный",
-              images: [
-                "../assets/apple/mobiles/I13/black/image1.jpg",
-                "../assets/apple/mobiles/I13/black/image2.jpg",
-                "../assets/apple/mobiles/I13/black/image3.jpg",
+              title: {
+                ru: "Цвет",
+                kz: "Тус",
+              },
+              properties: ["color", "images"],
+              values: [
+                {
+                  color: "чёрный",
+                  images: [
+                    "../assets/apple/mobiles/I13/black/image1.jpg",
+                    "../assets/apple/mobiles/I13/black/image2.jpg",
+                    "../assets/apple/mobiles/I13/black/image3.jpg",
+                  ],
+                },
+                {
+                  color: "розовый",
+                  images: [
+                    "../assets/apple/mobiles/I13ProMax/silver/image1.jpg",
+                    "../assets/apple/mobiles/I13ProMax/silver/image2.jpg",
+                    "../assets/apple/mobiles/I13ProMax/silver/image3.jpg",
+                  ],
+                },
+                {
+                  color: "синий",
+                  images: [
+                    "../assets/apple/mobiles/I13/blue/image1.jpg",
+                    "../assets/apple/mobiles/I13/blue/image2.jpg",
+                    "../assets/apple/mobiles/I13/blue/image3.jpg",
+                  ],
+                },
               ],
             },
             {
-              color: "розовый",
-              images: [
-                "../assets/apple/mobiles/I13ProMax/silver/image1.jpg",
-                "../assets/apple/mobiles/I13ProMax/silver/image2.jpg",
-                "../assets/apple/mobiles/I13ProMax/silver/image3.jpg",
-              ],
-            },
-            {
-              color: "синий",
-              images: [
-                "../assets/apple/mobiles/I13/blue/image1.jpg",
-                "../assets/apple/mobiles/I13/blue/image2.jpg",
-                "../assets/apple/mobiles/I13/blue/image3.jpg",
+              title: {
+                ru: "Объем встроенной памяти",
+                kz: "",
+              },
+              properties: ["memory", "price"],
+              values: [
+                {
+                  memory: "128 ГБ",
+                  price: "390 300 ₸",
+                },
+                {
+                  memory: "256 ГБ",
+                  price: "446 300 ₸",
+                },
+                {
+                  memory: "512 ГБ",
+                  price: "500 448 ₸",
+                },
               ],
             },
           ],
@@ -452,61 +526,73 @@ module.exports = {
           brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 12 Pro Max",
-          current_bundle: {
-            memory: 256,
-            price: "560 300 ₸",
-          },
-          bundle: [
-            {
-              memory: 128,
-              price: "500 300 ₸",
-            },
-            {
-              memory: 256,
-              price: "560 300 ₸",
-            },
-            {
-              memory: 512,
-              price: "600 448 ₸",
-            },
-          ],
           reviews: [
             {
               author: "",
               content: "",
             },
           ],
-          current_type: {
-            color: "чёрный",
-            images: [
-              "../assets/apple/mobiles/I12ProMax/black/image1.jpg",
-              "../assets/apple/mobiles/I12ProMax/black/image2.jpg",
-              "../assets/apple/mobiles/I12ProMax/black/image3.jpg",
-            ],
-          },
-          types: [
+          color: "чёрный",
+          images: [
+            "../assets/apple/mobiles/I12ProMax/black/image1.jpg",
+            "../assets/apple/mobiles/I12ProMax/black/image2.jpg",
+            "../assets/apple/mobiles/I12ProMax/black/image3.jpg",
+          ],
+          memory: "128 ГБ",
+          price: "500 300 ₸",
+          parameters: [
             {
-              color: "чёрный",
-              images: [
-                "../assets/apple/mobiles/I12ProMax/black/image1.jpg",
-                "../assets/apple/mobiles/I12ProMax/black/image2.jpg",
-                "../assets/apple/mobiles/I12ProMax/black/image3.jpg",
+              title: {
+                ru: "Цвет",
+                kz: "Тус",
+              },
+              properties: ["color", "images"],
+              values: [
+                {
+                  color: "чёрный",
+                  images: [
+                    "../assets/apple/mobiles/I12ProMax/black/image1.jpg",
+                    "../assets/apple/mobiles/I12ProMax/black/image2.jpg",
+                    "../assets/apple/mobiles/I12ProMax/black/image3.jpg",
+                  ],
+                },
+                {
+                  color: "золотистый",
+                  images: [
+                    "../assets/apple/mobiles/I12ProMax/gold/image1.jpg",
+                    "../assets/apple/mobiles/I12ProMax/gold/image2.jpg",
+                    "../assets/apple/mobiles/I12ProMax/gold/image3.jpg",
+                  ],
+                },
+                {
+                  color: "серебристый",
+                  images: [
+                    "../assets/apple/mobiles/I12ProMax/silver/image1.jpg",
+                    "../assets/apple/mobiles/I12ProMax/silver/image2.jpg",
+                    "../assets/apple/mobiles/I12ProMax/silver/image3.jpg",
+                  ],
+                },
               ],
             },
             {
-              color: "золотистый",
-              images: [
-                "../assets/apple/mobiles/I12ProMax/gold/image1.jpg",
-                "../assets/apple/mobiles/I12ProMax/gold/image2.jpg",
-                "../assets/apple/mobiles/I12ProMax/gold/image3.jpg",
-              ],
-            },
-            {
-              color: "серебристый",
-              images: [
-                "../assets/apple/mobiles/I12ProMax/silver/image1.jpg",
-                "../assets/apple/mobiles/I12ProMax/silver/image2.jpg",
-                "../assets/apple/mobiles/I12ProMax/silver/image3.jpg",
+              title: {
+                ru: "Объем встроенной памяти",
+                kz: "",
+              },
+              properties: ["memory", "price"],
+              values: [
+                {
+                  memory: "128 ГБ",
+                  price: "500 300 ₸",
+                },
+                {
+                  memory: "256 ГБ",
+                  price: "560 300 ₸",
+                },
+                {
+                  memory: "512 ГБ",
+                  price: "600 448 ₸",
+                },
               ],
             },
           ],
@@ -522,61 +608,73 @@ module.exports = {
           brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 12 Pro",
-          current_bundle: {
-            memory: 256,
-            price: "520 300 ₸",
-          },
-          bundle: [
-            {
-              memory: 128,
-              price: "460 300 ₸",
-            },
-            {
-              memory: 256,
-              price: "520 300 ₸",
-            },
-            {
-              memory: 512,
-              price: "570 448 ₸",
-            },
-          ],
           reviews: [
             {
               author: "",
               content: "",
             },
           ],
-          current_type: {
-            color: "чёрный",
-            images: [
-              "../assets/apple/mobiles/I12ProMax/black/image1.jpg",
-              "../assets/apple/mobiles/I12ProMax/black/image2.jpg",
-              "../assets/apple/mobiles/I12ProMax/black/image3.jpg",
-            ],
-          },
-          types: [
+          color: "чёрный",
+          images: [
+            "../assets/apple/mobiles/I12ProMax/black/image1.jpg",
+            "../assets/apple/mobiles/I12ProMax/black/image2.jpg",
+            "../assets/apple/mobiles/I12ProMax/black/image3.jpg",
+          ],
+          memory: "128 ГБ",
+          price: "460 300 ₸",
+          parameters: [
             {
-              color: "чёрный",
-              images: [
-                "../assets/apple/mobiles/I12ProMax/black/image1.jpg",
-                "../assets/apple/mobiles/I12ProMax/black/image2.jpg",
-                "../assets/apple/mobiles/I12ProMax/black/image3.jpg",
+              title: {
+                ru: "Цвет",
+                kz: "Тус",
+              },
+              properties: ["color", "images"],
+              values: [
+                {
+                  color: "чёрный",
+                  images: [
+                    "../assets/apple/mobiles/I12ProMax/black/image1.jpg",
+                    "../assets/apple/mobiles/I12ProMax/black/image2.jpg",
+                    "../assets/apple/mobiles/I12ProMax/black/image3.jpg",
+                  ],
+                },
+                {
+                  color: "золотистый",
+                  images: [
+                    "../assets/apple/mobiles/I12ProMax/gold/image1.jpg",
+                    "../assets/apple/mobiles/I12ProMax/gold/image2.jpg",
+                    "../assets/apple/mobiles/I12ProMax/gold/image3.jpg",
+                  ],
+                },
+                {
+                  color: "серебристый",
+                  images: [
+                    "../assets/apple/mobiles/I12ProMax/silver/image1.jpg",
+                    "../assets/apple/mobiles/I12ProMax/silver/image2.jpg",
+                    "../assets/apple/mobiles/I12ProMax/silver/image3.jpg",
+                  ],
+                },
               ],
             },
             {
-              color: "золотистый",
-              images: [
-                "../assets/apple/mobiles/I12ProMax/gold/image1.jpg",
-                "../assets/apple/mobiles/I12ProMax/gold/image2.jpg",
-                "../assets/apple/mobiles/I12ProMax/gold/image3.jpg",
-              ],
-            },
-            {
-              color: "серебристый",
-              images: [
-                "../assets/apple/mobiles/I12ProMax/silver/image1.jpg",
-                "../assets/apple/mobiles/I12ProMax/silver/image2.jpg",
-                "../assets/apple/mobiles/I12ProMax/silver/image3.jpg",
+              title: {
+                ru: "Объем встроенной памяти",
+                kz: "",
+              },
+              properties: ["memory", "price"],
+              values: [
+                {
+                  memory: "128 ГБ",
+                  price: "460 300 ₸",
+                },
+                {
+                  memory: "256 ГБ",
+                  price: "520 300 ₸",
+                },
+                {
+                  memory: "512 ГБ",
+                  price: "570 448 ₸",
+                },
               ],
             },
           ],
@@ -592,61 +690,73 @@ module.exports = {
           brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 12",
-          current_bundle: {
-            memory: 128,
-            price: "360 300 ₸",
-          },
-          bundle: [
-            {
-              memory: 64,
-              price: "320 300 ₸",
-            },
-            {
-              memory: 128,
-              price: "360 300 ₸",
-            },
-            {
-              memory: 256,
-              price: "440 448 ₸",
-            },
-          ],
           reviews: [
             {
               author: "",
               content: "",
             },
           ],
-          current_type: {
-            color: "чёрный",
-            images: [
-              "../assets/apple/mobiles/I12/black/image1.jpg",
-              "../assets/apple/mobiles/I12/black/image2.jpg",
-              "../assets/apple/mobiles/I12/black/image3.jpg",
-            ],
-          },
-          types: [
+          color: "чёрный",
+          images: [
+            "../assets/apple/mobiles/I12/black/image1.jpg",
+            "../assets/apple/mobiles/I12/black/image2.jpg",
+            "../assets/apple/mobiles/I12/black/image3.jpg",
+          ],
+          memory: "128 ГБ",
+          price: "360 300 ₸",
+          parameters: [
             {
-              color: "чёрный",
-              images: [
-                "../assets/apple/mobiles/I12/black/image1.jpg",
-                "../assets/apple/mobiles/I12/black/image2.jpg",
-                "../assets/apple/mobiles/I12/black/image3.jpg",
+              title: {
+                ru: "Цвет",
+                kz: "Тус",
+              },
+              properties: ["color", "images"],
+              values: [
+                {
+                  color: "чёрный",
+                  images: [
+                    "../assets/apple/mobiles/I12/black/image1.jpg",
+                    "../assets/apple/mobiles/I12/black/image2.jpg",
+                    "../assets/apple/mobiles/I12/black/image3.jpg",
+                  ],
+                },
+                {
+                  color: "зелёный",
+                  images: [
+                    "../assets/apple/mobiles/I12/green/image1.jpg",
+                    "../assets/apple/mobiles/I12/green/image2.jpg",
+                    "../assets/apple/mobiles/I12/green/image3.jpg",
+                  ],
+                },
+                {
+                  color: "фиолетовый",
+                  images: [
+                    "../assets/apple/mobiles/I12/violet/image1.jpg",
+                    "../assets/apple/mobiles/I12/violet/image2.jpg",
+                    "../assets/apple/mobiles/I12/violet/image3.jpg",
+                  ],
+                },
               ],
             },
             {
-              color: "зелёный",
-              images: [
-                "../assets/apple/mobiles/I12/green/image1.jpg",
-                "../assets/apple/mobiles/I12/green/image2.jpg",
-                "../assets/apple/mobiles/I12/green/image3.jpg",
-              ],
-            },
-            {
-              color: "фиолетовый",
-              images: [
-                "../assets/apple/mobiles/I12/violet/image1.jpg",
-                "../assets/apple/mobiles/I12/violet/image2.jpg",
-                "../assets/apple/mobiles/I12/violet/image3.jpg",
+              title: {
+                ru: "Объем встроенной памяти",
+                kz: "",
+              },
+              properties: ["memory", "price"],
+              values: [
+                {
+                  memory: "64 ГБ",
+                  price: "320 300 ₸",
+                },
+                {
+                  memory: "128 ГБ",
+                  price: "360 300 ₸",
+                },
+                {
+                  memory: "256 ГБ",
+                  price: "440 448 ₸",
+                },
               ],
             },
           ],
@@ -662,61 +772,73 @@ module.exports = {
           brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 11 Pro Max",
-          current_bundle: {
-            memory: 128,
-            price: "450 300 ₸",
-          },
-          bundle: [
-            {
-              memory: 64,
-              price: "400 300 ₸",
-            },
-            {
-              memory: 128,
-              price: "450 300 ₸",
-            },
-            {
-              memory: 256,
-              price: "500 448 ₸",
-            },
-          ],
           reviews: [
             {
               author: "",
               content: "",
             },
           ],
-          current_type: {
-            color: "чёрный",
-            images: [
-              "../assets/apple/mobiles/I12/black/image1.jpg",
-              "../assets/apple/mobiles/I12/black/image2.jpg",
-              "../assets/apple/mobiles/I12/black/image3.jpg",
-            ],
-          },
-          types: [
+          color: "чёрный",
+          images: [
+            "../assets/apple/mobiles/I11ProMax/black/image1.jpg",
+            "../assets/apple/mobiles/I11ProMax/black/image2.jpg",
+            "../assets/apple/mobiles/I11ProMax/black/image3.jpg",
+          ],
+          memory: "128 ГБ",
+          price: "450 300 ₸",
+          parameters: [
             {
-              color: "чёрный",
-              images: [
-                "../assets/apple/mobiles/I11ProMax/black/image1.jpg",
-                "../assets/apple/mobiles/I11ProMax/black/image2.jpg",
-                "../assets/apple/mobiles/I11ProMax/black/image3.jpg",
+              title: {
+                ru: "Цвет",
+                kz: "Тус",
+              },
+              properties: ["color", "images"],
+              values: [
+                {
+                  color: "чёрный",
+                  images: [
+                    "../assets/apple/mobiles/I11ProMax/black/image1.jpg",
+                    "../assets/apple/mobiles/I11ProMax/black/image2.jpg",
+                    "../assets/apple/mobiles/I11ProMax/black/image3.jpg",
+                  ],
+                },
+                {
+                  color: "зелёный",
+                  images: [
+                    "../assets/apple/mobiles/I11ProMax/green/image1.jpg",
+                    "../assets/apple/mobiles/I11ProMax/green/image2.jpg",
+                    "../assets/apple/mobiles/I11ProMax/green/image3.jpg",
+                  ],
+                },
+                {
+                  color: "золотистый",
+                  images: [
+                    "../assets/apple/mobiles/I11ProMax/gold/image1.jpg",
+                    "../assets/apple/mobiles/I11ProMax/gold/image2.jpg",
+                    "../assets/apple/mobiles/I11ProMax/gold/image3.jpg",
+                  ],
+                },
               ],
             },
             {
-              color: "зелёный",
-              images: [
-                "../assets/apple/mobiles/I11ProMax/green/image1.jpg",
-                "../assets/apple/mobiles/I11ProMax/green/image2.jpg",
-                "../assets/apple/mobiles/I11ProMax/green/image3.jpg",
-              ],
-            },
-            {
-              color: "золотистый",
-              images: [
-                "../assets/apple/mobiles/I11ProMax/gold/image1.jpg",
-                "../assets/apple/mobiles/I11ProMax/gold/image2.jpg",
-                "../assets/apple/mobiles/I11ProMax/gold/image3.jpg",
+              title: {
+                ru: "Объем встроенной памяти",
+                kz: "",
+              },
+              properties: ["memory", "price"],
+              values: [
+                {
+                  memory: "64 ГБ",
+                  price: "400 300 ₸",
+                },
+                {
+                  memory: "128 ГБ",
+                  price: "450 300 ₸",
+                },
+                {
+                  memory: "256 ГБ",
+                  price: "500 448 ₸",
+                },
               ],
             },
           ],
@@ -732,61 +854,73 @@ module.exports = {
           brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 11 Pro",
-          current_bundle: {
-            memory: 128,
-            price: "420 300 ₸",
-          },
-          bundle: [
-            {
-              memory: 64,
-              price: "370 300 ₸",
-            },
-            {
-              memory: 128,
-              price: "420 300 ₸",
-            },
-            {
-              memory: 256,
-              price: "480 448 ₸",
-            },
-          ],
           reviews: [
             {
               author: "",
               content: "",
             },
           ],
-          current_type: {
-            color: "чёрный",
-            images: [
-              "../assets/apple/mobiles/I12/black/image1.jpg",
-              "../assets/apple/mobiles/I12/black/image2.jpg",
-              "../assets/apple/mobiles/I12/black/image3.jpg",
-            ],
-          },
-          types: [
+          color: "чёрный",
+          images: [
+            "../assets/apple/mobiles/I11ProMax/black/image1.jpg",
+            "../assets/apple/mobiles/I11ProMax/black/image2.jpg",
+            "../assets/apple/mobiles/I11ProMax/black/image3.jpg",
+          ],
+          memory: "128 ГБ",
+          price: "420 300 ₸",
+          parameters: [
             {
-              color: "чёрный",
-              images: [
-                "../assets/apple/mobiles/I12/black/image1.jpg",
-                "../assets/apple/mobiles/I12/black/image2.jpg",
-                "../assets/apple/mobiles/I12/black/image3.jpg",
+              title: {
+                ru: "Цвет",
+                kz: "Тус",
+              },
+              properties: ["color", "images"],
+              values: [
+                {
+                  color: "чёрный",
+                  images: [
+                    "../assets/apple/mobiles/I11ProMax/black/image1.jpg",
+                    "../assets/apple/mobiles/I11ProMax/black/image2.jpg",
+                    "../assets/apple/mobiles/I11ProMax/black/image3.jpg",
+                  ],
+                },
+                {
+                  color: "зелёный",
+                  images: [
+                    "../assets/apple/mobiles/I11ProMax/green/image1.jpg",
+                    "../assets/apple/mobiles/I11ProMax/green/image2.jpg",
+                    "../assets/apple/mobiles/I11ProMax/green/image3.jpg",
+                  ],
+                },
+                {
+                  color: "золотистый",
+                  images: [
+                    "../assets/apple/mobiles/I11ProMax/gold/image1.jpg",
+                    "../assets/apple/mobiles/I11ProMax/gold/image2.jpg",
+                    "../assets/apple/mobiles/I11ProMax/gold/image3.jpg",
+                  ],
+                },
               ],
             },
             {
-              color: "зелёный",
-              images: [
-                "../assets/apple/mobiles/I12/green/image1.jpg",
-                "../assets/apple/mobiles/I12/green/image2.jpg",
-                "../assets/apple/mobiles/I12/green/image3.jpg",
-              ],
-            },
-            {
-              color: "фиолетовый",
-              images: [
-                "../assets/apple/mobiles/I12/violet/image1.jpg",
-                "../assets/apple/mobiles/I12/violet/image2.jpg",
-                "../assets/apple/mobiles/I12/violet/image3.jpg",
+              title: {
+                ru: "Объем встроенной памяти",
+                kz: "",
+              },
+              properties: ["memory", "price"],
+              values: [
+                {
+                  memory: "64 ГБ",
+                  price: "370 300 ₸",
+                },
+                {
+                  memory: "128 ГБ",
+                  price: "420 300 ₸",
+                },
+                {
+                  memory: "256 ГБ",
+                  price: "480 448 ₸",
+                },
               ],
             },
           ],
@@ -802,61 +936,73 @@ module.exports = {
           brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 11",
-          current_bundle: {
-            memory: 128,
-            price: "320 300 ₸",
-          },
-          bundle: [
-            {
-              memory: 64,
-              price: "260 300 ₸",
-            },
-            {
-              memory: 128,
-              price: "320 300 ₸",
-            },
-            {
-              memory: 256,
-              price: "360 448 ₸",
-            },
-          ],
           reviews: [
             {
               author: "",
               content: "",
             },
           ],
-          current_type: {
-            color: "чёрный",
-            images: [
-              "../assets/apple/mobiles/I11/black/image1.jpg",
-              "../assets/apple/mobiles/I11/black/image2.jpg",
-              "../assets/apple/mobiles/I11/black/image3.jpg",
-            ],
-          },
-          types: [
+          color: "чёрный",
+          images: [
+            "../assets/apple/mobiles/I11/black/image1.jpg",
+            "../assets/apple/mobiles/I11/black/image2.jpg",
+            "../assets/apple/mobiles/I11/black/image3.jpg",
+          ],
+          memory: "128 ГБ",
+          price: "320 300 ₸",
+          parameters: [
             {
-              color: "чёрный",
-              images: [
-                "../assets/apple/mobiles/I11/black/image1.jpg",
-                "../assets/apple/mobiles/I11/black/image2.jpg",
-                "../assets/apple/mobiles/I11/black/image3.jpg",
+              title: {
+                ru: "Цвет",
+                kz: "Тус",
+              },
+              properties: ["color", "images"],
+              values: [
+                {
+                  color: "чёрный",
+                  images: [
+                    "../assets/apple/mobiles/I11/black/image1.jpg",
+                    "../assets/apple/mobiles/I11/black/image2.jpg",
+                    "../assets/apple/mobiles/I11/black/image3.jpg",
+                  ],
+                },
+                {
+                  color: "белый",
+                  images: [
+                    "../assets/apple/mobiles/I11/white/image1.jpg",
+                    "../assets/apple/mobiles/I11/white/image2.jpg",
+                    "../assets/apple/mobiles/I11/white/image3.jpg",
+                  ],
+                },
+                {
+                  color: "красный",
+                  images: [
+                    "../assets/apple/mobiles/I11/red/image1.jpg",
+                    "../assets/apple/mobiles/I11/red/image2.jpg",
+                    "../assets/apple/mobiles/I11/red/image3.jpg",
+                  ],
+                },
               ],
             },
             {
-              color: "белый",
-              images: [
-                "../assets/apple/mobiles/I11/white/image1.jpg",
-                "../assets/apple/mobiles/I11/white/image2.jpg",
-                "../assets/apple/mobiles/I11/white/image3.jpg",
-              ],
-            },
-            {
-              color: "красный",
-              images: [
-                "../assets/apple/mobiles/I11/red/image1.jpg",
-                "../assets/apple/mobiles/I11/red/image2.jpg",
-                "../assets/apple/mobiles/I11/red/image3.jpg",
+              title: {
+                ru: "Объем встроенной памяти",
+                kz: "",
+              },
+              properties: ["memory", "price"],
+              values: [
+                {
+                  memory: "64 ГБ",
+                  price: "260 300 ₸",
+                },
+                {
+                  memory: "128 ГБ",
+                  price: "320 300 ₸",
+                },
+                {
+                  memory: "256 ГБ",
+                  price: "360 448 ₸",
+                },
               ],
             },
           ],
@@ -872,57 +1018,69 @@ module.exports = {
           brand: "Samsung",
           id: uuidv4(),
           model: "Смартфон Samsung Galaxy A13 ",
-          current_bundle: {
-            memory: 128,
-            price: "75 990 ₸",
-          },
-          bundle: [
-            {
-              memory: 64,
-              price: "69 990 ₸",
-            },
-            {
-              memory: 128,
-              price: "75 990 ₸",
-            },
-          ],
           reviews: [
             {
               author: "",
               content: "",
             },
           ],
-          current_type: {
-            color: "чёрный",
-            images: [
-              "../assets/samsung/mobiles/A13/black/image1.jpg",
-              "../assets/samsung/mobiles/A13/black/image2.jpg",
-              "../assets/samsung/mobiles/A13/black/image3.jpg",
-            ],
-          },
-          types: [
+          color: "чёрный",
+          images: [
+            "../assets/samsung/mobiles/A13/black/image1.jpg",
+            "../assets/samsung/mobiles/A13/black/image2.jpg",
+            "../assets/samsung/mobiles/A13/black/image3.jpg",
+          ],
+          memory: "128 ГБ",
+          price: "75 990 ₸",
+          parameters: [
             {
-              color: "чёрный",
-              images: [
-                "../assets/samsung/mobiles/A13/black/image1.jpg",
-                "../assets/samsung/mobiles/A13/black/image2.jpg",
-                "../assets/samsung/mobiles/A13/black/image3.jpg",
+              title: {
+                ru: "Цвет",
+                kz: "Тус",
+              },
+              properties: ["color", "images"],
+              values: [
+                {
+                  color: "чёрный",
+                  images: [
+                    "../assets/samsung/mobiles/A13/black/image1.jpg",
+                    "../assets/samsung/mobiles/A13/black/image2.jpg",
+                    "../assets/samsung/mobiles/A13/black/image3.jpg",
+                  ],
+                },
+                {
+                  color: "белый",
+                  images: [
+                    "../assets/samsung/mobiles/A13/white/image1.jpg",
+                    "../assets/samsung/mobiles/A13/white/image2.jpg",
+                    "../assets/samsung/mobiles/A13/white/image3.jpg",
+                  ],
+                },
+                {
+                  color: "оранжевый",
+                  images: [
+                    "../assets/samsung/mobiles/A13/orange/image1.jpg",
+                    "../assets/samsung/mobiles/A13/orange/image2.jpg",
+                    "../assets/samsung/mobiles/A13/orange/image3.jpg",
+                  ],
+                },
               ],
             },
             {
-              color: "белый",
-              images: [
-                "../assets/samsung/mobiles/A13/white/image1.jpg",
-                "../assets/samsung/mobiles/A13/white/image2.jpg",
-                "../assets/samsung/mobiles/A13/white/image3.jpg",
-              ],
-            },
-            {
-              color: "оранжевый",
-              images: [
-                "../assets/samsung/mobiles/A13/orange/image1.jpg",
-                "../assets/samsung/mobiles/A13/orange/image2.jpg",
-                "../assets/samsung/mobiles/A13/orange/image3.jpg",
+              title: {
+                ru: "Объем встроенной памяти",
+                kz: "",
+              },
+              properties: ["memory", "price"],
+              values: [
+                {
+                  memory: "64 ГБ",
+                  price: "69 990 ₸",
+                },
+                {
+                  memory: "128 ГБ",
+                  price: "75 990 ₸",
+                },
               ],
             },
           ],
@@ -938,53 +1096,65 @@ module.exports = {
           brand: "Samsung",
           id: uuidv4(),
           model: "Samsung Galaxy A23",
-          current_bundle: {
-            memory: 128,
-            price: "91 490 ₸",
-          },
-          bundle: [
-            {
-              memory: 128,
-              price: "91 490 ₸",
-            },
-          ],
           reviews: [
             {
               author: "",
               content: "",
             },
           ],
-          current_type: {
-            color: "чёрный",
-            images: [
-              "../assets/samsung/mobiles/A23/black/image1.jpg",
-              "../assets/samsung/mobiles/A23/black/image2.jpg",
-              "../assets/samsung/mobiles/A23/black/image3.jpg",
-            ],
-          },
-          types: [
+          color: "чёрный",
+          images: [
+            "../assets/samsung/mobiles/A23/black/image1.jpg",
+            "../assets/samsung/mobiles/A23/black/image2.jpg",
+            "../assets/samsung/mobiles/A23/black/image3.jpg",
+          ],
+          memory: "128 ГБ",
+          price: "91 490 ₸",
+          parameters: [
             {
-              color: "чёрный",
-              images: [
-                "../assets/samsung/mobiles/A23/black/image1.jpg",
-                "../assets/samsung/mobiles/A23/black/image2.jpg",
-                "../assets/samsung/mobiles/A23/black/image3.jpg",
+              title: {
+                ru: "Цвет",
+                kz: "Тус",
+              },
+              properties: ["color", "images"],
+              values: [
+                {
+                  color: "чёрный",
+                  images: [
+                    "../assets/samsung/mobiles/A23/black/image1.jpg",
+                    "../assets/samsung/mobiles/A23/black/image2.jpg",
+                    "../assets/samsung/mobiles/A23/black/image3.jpg",
+                  ],
+                },
+                {
+                  color: "оранжевый",
+                  images: [
+                    "../assets/samsung/mobiles/A23/orange/image1.jpg",
+                    "../assets/samsung/mobiles/A23/orange/image2.jpg",
+                    "../assets/samsung/mobiles/A23/orange/image3.jpg",
+                  ],
+                },
+                {
+                  color: "белый",
+                  images: [
+                    "../assets/samsung/mobiles/A23/white/image1.jpg",
+                    "../assets/samsung/mobiles/A23/white/image2.jpg",
+                    "../assets/samsung/mobiles/A23/white/image3.jpg",
+                  ],
+                },
               ],
             },
             {
-              color: "оранжевый",
-              images: [
-                "../assets/samsung/mobiles/A23/orange/image1.jpg",
-                "../assets/samsung/mobiles/A23/orange/image2.jpg",
-                "../assets/samsung/mobiles/A23/orange/image3.jpg",
-              ],
-            },
-            {
-              color: "белый",
-              images: [
-                "../assets/samsung/mobiles/A23/white/image1.jpg",
-                "../assets/samsung/mobiles/A23/white/image2.jpg",
-                "../assets/samsung/mobiles/A23/white/image3.jpg",
+              title: {
+                ru: "Объем встроенной памяти",
+                kz: "",
+              },
+              properties: ["memory", "price"],
+              values: [
+                {
+                  memory: "128 ГБ",
+                  price: "91 490 ₸",
+                },
               ],
             },
           ],
@@ -1000,53 +1170,65 @@ module.exports = {
           brand: "Samsung",
           id: uuidv4(),
           model: "Смартфон Samsung Galaxy A53",
-          current_bundle: {
-            memory: 256,
-            price: "179 890 ₸",
-          },
-          bundle: [
-            {
-              memory: 256,
-              price: "179 890 ₸",
-            },
-          ],
           reviews: [
             {
               author: "",
               content: "",
             },
           ],
-          current_type: {
-            color: "чёрный",
-            images: [
-              "../assets/samsung/mobiles/A53/black/image1.jpg",
-              "../assets/samsung/mobiles/A53/black/image2.jpg",
-              "../assets/samsung/mobiles/A53/black/image3.jpg",
-            ],
-          },
-          types: [
+          color: "чёрный",
+          images: [
+            "../assets/samsung/mobiles/A53/black/image1.jpg",
+            "../assets/samsung/mobiles/A53/black/image2.jpg",
+            "../assets/samsung/mobiles/A53/black/image3.jpg",
+          ],
+          memory: "256 ГБ",
+          price: "179 890 ₸",
+          parameters: [
             {
-              color: "чёрный",
-              images: [
-                "../assets/samsung/mobiles/A53/black/image1.jpg",
-                "../assets/samsung/mobiles/A53/black/image2.jpg",
-                "../assets/samsung/mobiles/A53/black/image3.jpg",
+              title: {
+                ru: "Цвет",
+                kz: "Тус",
+              },
+              properties: ["color", "images"],
+              values: [
+                {
+                  color: "чёрный",
+                  images: [
+                    "../assets/samsung/mobiles/A53/black/image1.jpg",
+                    "../assets/samsung/mobiles/A53/black/image2.jpg",
+                    "../assets/samsung/mobiles/A53/black/image3.jpg",
+                  ],
+                },
+                {
+                  color: "голубой",
+                  images: [
+                    "../assets/samsung/mobiles/A53/blue/image1.jpg",
+                    "../assets/samsung/mobiles/A53/blue/image2.jpg",
+                    "../assets/samsung/mobiles/A53/blue/image3.jpg",
+                  ],
+                },
+                {
+                  color: "оранжевый",
+                  images: [
+                    "../assets/samsung/mobiles/A53/orange/image1.jpg",
+                    "../assets/samsung/mobiles/A53/orange/image2.jpg",
+                    "../assets/samsung/mobiles/A53/orange/image3.jpg",
+                  ],
+                },
               ],
             },
             {
-              color: "голубой",
-              images: [
-                "../assets/samsung/mobiles/A53/blue/image1.jpg",
-                "../assets/samsung/mobiles/A53/blue/image2.jpg",
-                "../assets/samsung/mobiles/A53/blue/image3.jpg",
-              ],
-            },
-            {
-              color: "оранжевый",
-              images: [
-                "../assets/samsung/mobiles/A53/orange/image1.jpg",
-                "../assets/samsung/mobiles/A53/orange/image2.jpg",
-                "../assets/samsung/mobiles/A53/orange/image3.jpg",
+              title: {
+                ru: "Объем встроенной памяти",
+                kz: "",
+              },
+              properties: ["memory", "price"],
+              values: [
+                {
+                  memory: "256 ГБ",
+                  price: "179 890 ₸",
+                },
               ],
             },
           ],
@@ -1062,57 +1244,69 @@ module.exports = {
           brand: "Samsung",
           id: uuidv4(),
           model: "Смартфон Samsung Galaxy S21 FE",
-          current_bundle: {
-            memory: 128,
-            price: "200 000 ₸",
-          },
-          bundle: [
-            {
-              memory: 128,
-              price: "200 000 ₸",
-            },
-            {
-              memory: 256,
-              price: "237 700 ₸",
-            },
-          ],
           reviews: [
             {
               author: "",
               content: "",
             },
           ],
-          current_type: {
-            color: "чёрный",
-            images: [
-              "../assets/samsung/mobiles/S21FE/black/image1.jpg",
-              "../assets/samsung/mobiles/S21FE/black/image2.jpg",
-              "../assets/samsung/mobiles/S21FE/black/image3.jpg",
-            ],
-          },
-          types: [
+          color: "чёрный",
+          images: [
+            "../assets/samsung/mobiles/S21FE/black/image1.jpg",
+            "../assets/samsung/mobiles/S21FE/black/image2.jpg",
+            "../assets/samsung/mobiles/S21FE/black/image3.jpg",
+          ],
+          memory: "128 ГБ",
+          price: "200 000 ₸",
+          parameters: [
             {
-              color: "чёрный",
-              images: [
-                "../assets/samsung/mobiles/S21FE/black/image1.jpg",
-                "../assets/samsung/mobiles/S21FE/black/image2.jpg",
-                "../assets/samsung/mobiles/S21FE/black/image3.jpg",
+              title: {
+                ru: "Цвет",
+                kz: "Тус",
+              },
+              properties: ["color", "images"],
+              values: [
+                {
+                  color: "чёрный",
+                  images: [
+                    "../assets/samsung/mobiles/S21FE/black/image1.jpg",
+                    "../assets/samsung/mobiles/S21FE/black/image2.jpg",
+                    "../assets/samsung/mobiles/S21FE/black/image3.jpg",
+                  ],
+                },
+                {
+                  color: "зелёный",
+                  images: [
+                    "../assets/samsung/mobiles/S21FE/green/image1.jpg",
+                    "../assets/samsung/mobiles/S21FE/green/image2.jpg",
+                    "../assets/samsung/mobiles/S21FE/green/image3.jpg",
+                  ],
+                },
+                {
+                  color: "фиолетовый",
+                  images: [
+                    "../assets/samsung/mobiles/S21FE/purple/image1.jpg",
+                    "../assets/samsung/mobiles/S21FE/purple/image2.jpg",
+                    "../assets/samsung/mobiles/S21FE/purple/image3.jpg",
+                  ],
+                },
               ],
             },
             {
-              color: "зелёный",
-              images: [
-                "../assets/samsung/mobiles/S21FE/green/image1.jpg",
-                "../assets/samsung/mobiles/S21FE/green/image2.jpg",
-                "../assets/samsung/mobiles/S21FE/green/image3.jpg",
-              ],
-            },
-            {
-              color: "фиолетовый",
-              images: [
-                "../assets/samsung/mobiles/S21FE/purple/image1.jpg",
-                "../assets/samsung/mobiles/S21FE/purple/image2.jpg",
-                "../assets/samsung/mobiles/S21FE/purple/image3.jpg",
+              title: {
+                ru: "Объем встроенной памяти",
+                kz: "",
+              },
+              properties: ["memory", "price"],
+              values: [
+                {
+                  memory: "128 ГБ",
+                  price: "200 000 ₸",
+                },
+                {
+                  memory: "256 ГБ",
+                  price: "237 700 ₸",
+                },
               ],
             },
           ],
@@ -1450,57 +1644,706 @@ module.exports = {
           brand: "Apple",
           id: uuidv4(),
           model: "Смарт-часы Apple Watch Series 8",
-          current_type: {
-            images: [
-              "../assets/apple/clocks/S8/black/image1.jpg",
-              "../assets/apple/clocks/S8/black/image2.jpg",
-              "../assets/apple/clocks/S8/black/image3.jpg",
-            ],
-          },
-          types: [
-            {
-              color: "красный",
-              images: [
-                "../assets/apple/clocks/S8/red/image1.jpg",
-                "../assets/apple/clocks/S8/red/image2.jpg",
-              ],
-            },
-            {
-              color: "серебристый",
-              images: [
-                "../assets/apple/clocks/S8/silver/image1.jpg",
-                "../assets/apple/clocks/S8/silver/image2.jpg",
-                "../assets/apple/clocks/S8/silver/image3.jpg",
-              ],
-            },
-            {
-              color: "чёрный",
-              images: [
-                "../assets/apple/clocks/S8/black/image1.jpg",
-                "../assets/apple/clocks/S8/black/image2.jpg",
-                "../assets/apple/clocks/S8/black/image3.jpg",
-              ],
-            },
+          color: "чёрный",
+          images: [
+            "../assets/apple/clocks/S8/black/image1.jpg",
+            "../assets/apple/clocks/S8/black/image2.jpg",
+            "../assets/apple/clocks/S8/black/image3.jpg",
           ],
-          current_bundle: {
-            size: 41,
-            price: "199 497 ₸",
-          },
-          bundles: [
+          size: "41мм",
+          price: "199 497 ₸",
+          parameters: [
             {
-              size: 41,
-              price: "199 497 ₸",
+              title: {
+                ru: "Цвет",
+                kz: "Тус",
+              },
+              properties: ["color", "images"],
+              values: [
+                {
+                  color: "красный",
+                  images: [
+                    "../assets/apple/clocks/S8/red/image1.jpg",
+                    "../assets/apple/clocks/S8/red/image2.jpg",
+                  ],
+                },
+                {
+                  color: "серебристый",
+                  images: [
+                    "../assets/apple/clocks/S8/silver/image1.jpg",
+                    "../assets/apple/clocks/S8/silver/image2.jpg",
+                    "../assets/apple/clocks/S8/silver/image3.jpg",
+                  ],
+                },
+                {
+                  color: "чёрный",
+                  images: [
+                    "../assets/apple/clocks/S8/black/image1.jpg",
+                    "../assets/apple/clocks/S8/black/image2.jpg",
+                    "../assets/apple/clocks/S8/black/image3.jpg",
+                  ],
+                },
+              ],
             },
             {
-              size: 45,
-              price: "230 497 ₸",
+              title: {
+                ru: "Размер корпуса",
+                kz: "",
+              },
+              properties: ["size", "price"],
+              values: [
+                {
+                  size: "41 мм",
+                  price: "199 497 ₸",
+                },
+                {
+                  size: "45 мм",
+                  price: "230 497 ₸",
+                },
+              ],
             },
           ],
           autonomy: 18,
           energy_saving: 36,
           material: "алюминий",
           screen: "OLED",
-          memory: 32,
+          memory: "32 ГБ",
+        },
+        {
+          brand: "Apple",
+          id: uuidv4(),
+          model: "Смарт-часы Apple Watch SE 2nd Gen",
+          color: "чёрный",
+          images: [
+            "../assets/apple/clocks/SE2/black/image1.jpg",
+            "../assets/apple/clocks/SE2/black/image1.jpg",
+            "../assets/apple/clocks/SE2/black/image1.jpg",
+          ],
+          size: "41 мм",
+          price: "142 737 ₸",
+          parameters: [
+            {
+              title: {
+                ru: "Цвет",
+                kz: "Тус",
+              },
+              properties: ["color", "images"],
+              values: [
+                {
+                  color: "чёрный",
+                  images: [
+                    "../assets/apple/clocks/SE2/black/image1.jpg",
+                    "../assets/apple/clocks/SE2/black/image1.jpg",
+                    "../assets/apple/clocks/SE2/black/image1.jpg",
+                  ],
+                },
+                {
+                  color: "серебристый",
+                  images: [
+                    "../assets/apple/clocks/SE2/silver/image1.jpg",
+                    "../assets/apple/clocks/SE2/silver/image1.jpg",
+                    "../assets/apple/clocks/SE2/silver/image1.jpg",
+                  ],
+                },
+                {
+                  color: "starlight",
+                  images: [
+                    "../assets/apple/clocks/SE2/starlight/image1.jpg",
+                    "../assets/apple/clocks/SE2/starlight/image1.jpg",
+                    "../assets/apple/clocks/SE2/starlightblack/image1.jpg",
+                  ],
+                },
+              ],
+            },
+            {
+              title: {
+                ru: "Размер корпуса",
+                kz: "",
+              },
+              properties: ["size", "price"],
+              values: [
+                {
+                  size: "41 мм",
+                  price: "142 737 ₸",
+                },
+                {
+                  size: "45 мм",
+                  price: "156 200 ₸",
+                },
+              ],
+            },
+          ],
+          autonomy: 18,
+          energy_saving: 36,
+          material: "алюминий",
+          screen: "OLED",
+          memory: "32 ГБ",
+        },
+        {
+          brand: "Apple",
+          id: uuidv4(),
+          model: "Смарт-часы Apple Watch SE",
+          color: "чёрный",
+          images: [
+            "../assets/apple/clocks/SE2/black/image1.jpg",
+            "../assets/apple/clocks/SE2/black/image1.jpg",
+            "../assets/apple/clocks/SE2/black/image1.jpg",
+          ],
+          size: "41мм",
+          price: "137 469 ₸",
+          parameters: [
+            {
+              title: {
+                ru: "Цвет",
+                kz: "Тус",
+              },
+              properties: ["color", "images"],
+              values: [
+                {
+                  color: "синий",
+                  images: [
+                    "../assets/apple/clocks/SE/silver-blue/image1.jpg",
+                    "../assets/apple/clocks/SE/silver-blue/image2.jpg",
+                    "../assets/apple/clocks/SE/silver-blue/image3.jpg",
+                  ],
+                },
+                {
+                  color: "чёрный",
+                  images: [
+                    "../assets/apple/clocks/SE/black/image1.jpg",
+                    "../assets/apple/clocks/SE/black/image2.jpg",
+                    "../assets/apple/clocks/SE/black/image3.jpg",
+                  ],
+                },
+                {
+                  color: "золотистый",
+                  images: [
+                    "../assets/apple/clocks/SE/gold/image1.jpg",
+                    "../assets/apple/clocks/SE/gold/image2.jpg",
+                    "../assets/apple/clocks/SE/gold/image3.jpg",
+                  ],
+                },
+                {
+                  color: "розовый",
+                  images: [
+                    "../assets/apple/clocks/SE/pink/image1.jpg",
+                    "../assets/apple/clocks/SE/pink/image2.jpg",
+                    "../assets/apple/clocks/SE/pink/image3.jpg",
+                  ],
+                },
+              ],
+            },
+            {
+              title: {
+                ru: "Размер корпуса",
+                kz: "",
+              },
+              properties: ["size", "price"],
+              values: [
+                {
+                  size: "40 мм",
+                  price: "142 737 ₸",
+                },
+              ],
+            },
+          ],
+          autonomy: 18,
+          energy_saving: 36,
+          material: "алюминий",
+          screen: "OLED",
+          memory: "32 ГБ",
+        },
+        {
+          brand: "Apple",
+          id: uuidv4(),
+          model: "Смарт-часы Apple Watch Series 7",
+          color: "чёрный",
+          images: [
+            "../assets/apple/clocks/S7/black/image1.jpg",
+            "../assets/apple/clocks/S7/black/image2.jpg",
+            "../assets/apple/clocks/S7/black/image3.jpg",
+          ],
+          size: "41 мм",
+          price: "278 990 ₸",
+          parameters: [
+            {
+              title: {
+                ru: "Цвет",
+                kz: "Тус",
+              },
+              properties: ["color", "images"],
+              values: [
+                {
+                  color: "чёрный",
+                  images: [
+                    "../assets/apple/clocks/S7/black/image1.jpg",
+                    "../assets/apple/clocks/S7/black/image2.jpg",
+                    "../assets/apple/clocks/S7/black/image3.jpg",
+                  ],
+                },
+                {
+                  color: "красный",
+                  images: [
+                    "../assets/apple/clocks/S7/red/image1.jpg",
+                    "../assets/apple/clocks/S7/red/image2.jpg",
+                    "../assets/apple/clocks/S7/red/image3.jpg",
+                  ],
+                },
+                {
+                  color: "зелёный",
+                  images: [
+                    "../assets/apple/clocks/S7/green/image1.jpg",
+                    "../assets/apple/clocks/S7/green/image2.jpg",
+                    "../assets/apple/clocks/S7/green/image3.jpg",
+                  ],
+                },
+              ],
+            },
+            {
+              title: {
+                ru: "Размер корпуса",
+                kz: "",
+              },
+              properties: ["size", "price"],
+              values: [
+                {
+                  size: "41 мм",
+                  price: "278 990 ₸",
+                },
+                {
+                  size: "45 мм",
+                  price: "235 000 ₸",
+                },
+              ],
+            },
+          ],
+          autonomy: 18,
+          energy_saving: 36,
+          material: "алюминий",
+          screen: "OLED",
+          memory: "32 ГБ",
+        },
+        {
+          brand: "Apple",
+          id: uuidv4(),
+          model: "Смарт-часы Apple Watch Series 6",
+          color: "чёрный",
+          images: [
+            "../assets/apple/clocks/S6/black/image1.jpg",
+            "../assets/apple/clocks/S6/black/image2.jpg",
+            "../assets/apple/clocks/S6/black/image3.jpg",
+          ],
+          size: "40 мм",
+          price: "263 200 ₸",
+          parameters: [
+            {
+              title: {
+                ru: "Цвет",
+                kz: "Тус",
+              },
+              properties: ["color", "images"],
+              values: [
+                {
+                  color: "чёрный",
+                  images: [
+                    "../assets/apple/clocks/S6/black/image1.jpg",
+                    "../assets/apple/clocks/S6/black/image2.jpg",
+                    "../assets/apple/clocks/S6/black/image3.jpg",
+                  ],
+                },
+                {
+                  color: "синий",
+                  images: [
+                    "../assets/apple/clocks/S6/blue/image1.jpg",
+                    "../assets/apple/clocks/S6/blue/image2.jpg",
+                    "../assets/apple/clocks/S6/blue/image3.jpg",
+                  ],
+                },
+                {
+                  color: "черно-зелёный",
+                  images: [
+                    "../assets/apple/clocks/S6/black-green/image1.jpg",
+                    "../assets/apple/clocks/S6/black-green/image2.jpg",
+                    "../assets/apple/clocks/S6/black-green/image3.jpg",
+                  ],
+                },
+                {
+                  color: "чёрно-красный",
+                  images: [
+                    "../assets/apple/clocks/S6/black-red/image1.jpg",
+                    "../assets/apple/clocks/S6/black-red/image2.jpg",
+                  ],
+                },
+              ],
+            },
+            {
+              title: {
+                ru: "Размер корпуса",
+                kz: "",
+              },
+              properties: ["size", "price"],
+              values: [
+                {
+                  size: "44 мм",
+                  price: "227 990 ₸",
+                },
+                {
+                  size: "40 мм",
+                  price: "263 200 ₸",
+                },
+              ],
+            },
+          ],
+          autonomy: 18,
+          energy_saving: 36,
+          material: "алюминий",
+          screen: "OLED",
+          memory: "32 ГБ",
+        },
+        {
+          brand: "Apple",
+          id: uuidv4(),
+          model: "Смарт-часы Apple Watch Ultra Ocean",
+          color: "чёрный",
+          images: [
+            "../assets/apple/clocks/S6/black/image1.jpg",
+            "../assets/apple/clocks/S6/black/image2.jpg",
+            "../assets/apple/clocks/S6/black/image3.jpg",
+          ],
+          size: "49 мм",
+          price: "438 100 ₸",
+          parameters: [
+            {
+              title: {
+                ru: "Цвет",
+                kz: "Тус",
+              },
+              properties: ["color", "images"],
+              values: [],
+            },
+            {
+              title: {
+                ru: "Размер корпуса",
+                kz: "",
+              },
+              properties: ["size", "price"],
+              values: [
+                {
+                  size: "49 мм",
+                  price: "438 100 ₸",
+                },
+              ],
+            },
+          ],
+          autonomy: 36,
+          energy_saving: 60,
+          material: "титан",
+          screen: "OLED",
+          memory: "32 ГБ",
+        },
+        {
+          brand: "Samsung",
+          id: uuidv4(),
+          model: "Смарт-часы Samsung Galaxy Watch 5 Pro",
+          color: "чёрный",
+          images: [
+            "../assets/samsung/clocks/5Pro/black/image1.jpg",
+            "../assets/samsung/clocks/5Pro/black/image2.jpg",
+            "../assets/samsung/clocks/5Pro/black/image3.jpg",
+          ],
+          size: "45 мм",
+          price: "174 500 ₸",
+          parameters: [
+            {
+              title: {
+                ru: "Цвет",
+                kz: "Тус",
+              },
+              properties: ["color", "images"],
+              values: [
+                {
+                  color: "чёрный",
+                  images: [
+                    "../assets/samsung/clocks/5Pro/black/image1.jpg",
+                    "../assets/samsung/clocks/5Pro/black/image2.jpg",
+                    "../assets/samsung/clocks/5Pro/black/image3.jpg",
+                  ],
+                },
+                {
+                  color: "серый",
+                  images: [
+                    "../assets/samsung/clocks/5Pro/grey/image1.jpg",
+                    "../assets/samsung/clocks/5Pro/grey/image2.jpg",
+                    "../assets/samsung/clocks/5Pro/grey/image3.jpg",
+                  ],
+                },
+              ],
+            },
+            {
+              title: {
+                ru: "Размер корпуса",
+                kz: "",
+              },
+              properties: ["size", "price"],
+              values: [
+                {
+                  size: "45 мм",
+                  price: "174 500 ₸",
+                },
+              ],
+            },
+          ],
+          autonomy: 18,
+          energy_saving: 36,
+          material: "алюминий",
+          screen: "OLED",
+          memory: "32 ГБ",
+        },
+        {
+          brand: "Samsung",
+          id: uuidv4(),
+          model: "Смарт-часы Samsung Galaxy Watch 5",
+          color: 'чёрный',
+          images: [
+            '../assets/samsung/clocks/5/black/image1.jpg',
+            '../assets/samsung/clocks/5/black/image2.jpg',
+            '../assets/samsung/clocks/5/black/image3.jpg',
+          ],
+          size: "44 мм",
+          price: "117 963 ₸",
+          parameters: [
+            {
+              title: {
+                ru: "Цвет",
+                kz: "Тус",
+              },
+              properties: ["color", "images"],
+              values: [
+                {
+                  color: 'чёрный',
+                  images: [
+                    '../assets/samsung/clocks/5/black/image1.jpg',
+                    '../assets/samsung/clocks/5/black/image2.jpg',
+                    '../assets/samsung/clocks/5/black/image3.jpg',
+                  ]
+                },
+                {
+                  color: 'синий',
+                  images: [
+                    '../assets/samsung/clocks/5/blue/image1.jpg',
+                    '../assets/samsung/clocks/5/blue/image2.jpg',
+                    '../assets/samsung/clocks/5/blue/image3.jpg',
+                  ]
+                },
+                {
+                  color: 'белый',
+                  images: [
+                    '../assets/samsung/clocks/5/white/image1.jpg',
+                    '../assets/samsung/clocks/5/white/image2.jpg',
+                    '../assets/samsung/clocks/5/white/image3.jpg',
+                    '../assets/samsung/clocks/5/white/image4.jpg',
+                  ]
+                },
+              ],
+            },
+            {
+              title: {
+                ru: "Размер корпуса",
+                kz: "",
+              },
+              properties: ["size", "price"],
+              values: [
+                {
+                  size: "44 мм",
+                  price: "117 963 ₸",
+                },
+              ],
+            },
+          ],
+          autonomy: 36,
+          energy_saving: 60,
+          material: "титан",
+          screen: "OLED",
+          memory: "32 ГБ",
+        },
+        {
+          brand: "Samsung",
+          id: uuidv4(),
+          model: "Смарт-часы Samsung Galaxy Watch 4 SM-R870N",
+          color: "чёрный",
+          images: [
+            "../assets/samsung/clocks/4/black/image1.jpg",
+            "../assets/samsung/clocks/4/black/image2.jpg",
+            "../assets/samsung/clocks/4/black/image3.jpg",
+            "../assets/samsung/clocks/4/black/image4.jpg",
+          ],
+          size: "44 мм",
+          price: "67 770 ₸",
+          parameters: [
+            {
+              title: {
+                ru: "Цвет",
+                kz: "Тус",
+              },
+              properties: ["color", "images"],
+              values: [
+                {
+                  color: "чёрный",
+                  images: [
+                    "../assets/samsung/clocks/4/black/image1.jpg",
+                    "../assets/samsung/clocks/4/black/image2.jpg",
+                    "../assets/samsung/clocks/4/black/image3.jpg",
+                    "../assets/samsung/clocks/4/black/image4.jpg",
+                  ],
+                },
+                {
+                  color: "серый",
+                  images: [
+                    "../assets/samsung/clocks/4/grey/image1.jpg",
+                    "../assets/samsung/clocks/4/grey/image2.jpg",
+                    "../assets/samsung/clocks/4/grey/image3.jpg",
+                    "../assets/samsung/clocks/4/grey/image4.jpg",
+                  ],
+                },
+              ],
+            },
+            {
+              title: {
+                ru: "Размер корпуса",
+                kz: "",
+              },
+              properties: ["size", "price"],
+              values: [
+                {
+                  size: "44 мм",
+                  price: "67 770 ₸",
+                },
+              ],
+            },
+          ],
+          autonomy: 40,
+          energy_saving: 120,
+          material: "алюминий",
+          screen: "Super AMOLED",
+          memory: "16 ГБ",
+        },
+        {
+          brand: "Samsung",
+          id: uuidv4(),
+          model: "Смарт-часы Samsung Galaxy Watch3 SM-R840",
+          color: "чёрный",
+          images: [
+            "../assets/samsung/clocks/R840/black/image1.jpg",
+            "../assets/samsung/clocks/R840/black/image2.jpg",
+            "../assets/samsung/clocks/R840/black/image3.jpg",
+          ],
+          size: "45 мм",
+          price: "150 000 ₸",
+          parameters: [
+            {
+              title: {
+                ru: "Цвет",
+                kz: "Тус",
+              },
+              properties: ["color", "images"],
+              values: [
+                {
+                  color: "чёрный",
+                  images: [
+                    "../assets/samsung/clocks/R840/black/image1.jpg",
+                    "../assets/samsung/clocks/R840/black/image2.jpg",
+                    "../assets/samsung/clocks/R840/black/image3.jpg",
+                  ],
+                },
+                {
+                  color: "серый",
+                  images: [
+                    "../assets/samsung/clocks/R840/silver/image1.jpg",
+                    "../assets/samsung/clocks/R840/silver/image2.jpg",
+                    "../assets/samsung/clocks/R840/silver/image3.jpg",
+                  ],
+                },
+              ],
+            },
+            {
+              title: {
+                ru: "Размер корпуса",
+                kz: "",
+              },
+              properties: ["size", "price"],
+              values: [
+                {
+                  size: "45 мм",
+                  price: "150 000 ₸",
+                },
+              ],
+            },
+          ],
+          autonomy: 23,
+          energy_saving: 56,
+          material: "нерж. сталь",
+          screen: "Super AMOLED",
+          memory: "8 ГБ",
+        },
+        {
+          brand: "Samsung",
+          id: uuidv4(),
+          model: "Смарт-часы Samsung Galaxy Watch3 SM-R850",
+          color: "чёрный",
+          images: [
+            "../assets/samsung/clocks/R840/black/image1.jpg",
+            "../assets/samsung/clocks/R840/black/image2.jpg",
+            "../assets/samsung/clocks/R840/black/image3.jpg",
+          ],
+          size: "41 мм",
+          price: "129 790 ₸",
+          parameters: [
+            {
+              title: {
+                ru: "Цвет",
+                kz: "Тус",
+              },
+              properties: ["color", "images"],
+              values: [
+                {
+                  color: "чёрный",
+                  images: [
+                    "../assets/samsung/clocks/R850/black/image1.jpg",
+                    "../assets/samsung/clocks/R850/black/image2.jpg",
+                    "../assets/samsung/clocks/R850/black/image3.jpg",
+                    "../assets/samsung/clocks/R850/black/image4.jpg",
+                  ],
+                },
+                {
+                  color: "серый",
+                  images: [
+                    "../assets/samsung/clocks/R850/silver/image1.jpg",
+                    "../assets/samsung/clocks/R850/silver/image2.jpg",
+                    "../assets/samsung/clocks/R850/silver/image3.jpg",
+                    "../assets/samsung/clocks/R850/silver/image4.jpg",
+                  ],
+                },
+              ],
+            },
+            {
+              title: {
+                ru: "Размер корпуса",
+                kz: "",
+              },
+              properties: ["size", "price"],
+              values: [
+                {
+                  size: "41 мм",
+                  price: "129 790 ₸",
+                },
+              ],
+            },
+          ],
+          autonomy: 23,
+          energy_saving: 56,
+          material: "нерж. сталь",
+          screen: "Super AMOLED",
+          memory: "8 ГБ",
         },
       ],
       filters: [

@@ -80,6 +80,10 @@ function updateCurrentTreeLinkId(id: string) {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 
+.app {
+  position: relative;
+}
+
 * {
   padding: 0;
   margin: 0;

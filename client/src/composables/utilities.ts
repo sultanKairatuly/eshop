@@ -8,7 +8,8 @@ import {
   ProductType,
   CategoryExplorerType,
   Product,
-  FilterBooleanOff
+  FilterBooleanOff,
+  ProductParameters,
 } from "../../types/types";
 
 export function useUserUtilities() {
@@ -70,7 +71,6 @@ export function useUserUtilities() {
     );
   }
 
-
   function isCategoryExplorerType(
     value: unknown
   ): value is CategoryExplorerType {
@@ -85,7 +85,7 @@ export function useUserUtilities() {
   }
 
   function isHasValues(obj: any): obj is FilterBooleanOff {
-    return typeof obj === 'object' && 'values' in obj
+    return typeof obj === "object" && "values" in obj;
   }
 
   function findTreeLinkAndDepth(
@@ -130,12 +130,8 @@ export function useUserUtilities() {
   }
 
   function getInstallment(product: Product): string {
-    let price = ''
-    if(isHasBundle(product)){
-      price = product.current_bundle.price
-    }else{
-      price = product.price
-    }
+    let price = "";
+    price = product.price;
     const value: string = Math.round(
       +price.replace(/[\s₸]/g, "") / 12
     ).toString();
@@ -150,6 +146,12 @@ export function useUserUtilities() {
     return value + " ₸";
   }
 
+  function isHasParameters(
+    value: unknown
+  ): value is { parameters: ProductParameters[] } {
+    return value !== null && typeof value === "object" && "parameters" in value;
+  }
+
   return {
     isUser,
     findTreeLinkAndDepth,
@@ -160,8 +162,7 @@ export function useUserUtilities() {
     isHasCurrentType,
     isCategoryExplorerType,
     isHasValues,
-    getInstallment
+    getInstallment,
+    isHasParameters,
   };
 }
-
-

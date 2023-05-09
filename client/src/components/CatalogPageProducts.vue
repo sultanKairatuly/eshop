@@ -122,9 +122,7 @@ const filtered = computed(() => {
 
             if (trueKey.split(".").length > 1) {
               [key1, key2] = trueKey.split(".");
-              productKey = product[key1 as keyof Product][
-                key2 as keyof (keyof Product)
-              ] as string;
+              productKey = product[key1 as keyof Product][key2 as string] as string;
             } else {
               productKey = product[trueKey as keyof Product] as string;
             }

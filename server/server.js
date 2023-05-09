@@ -67,6 +67,25 @@ app.post("/save-user", async (req, res) => {
   res.send("ok");
 });
 
+app.get("/getproductbyname/:name", async (req, res) => {
+  const name = req.params.name;
+  const db = client.db("products");
+  const collection = db.collection("smartphones_and_gadgets");
+  const query = { "products.model": { $regex: name, $options: "i" } };
+  const documents = await collection.find(query).toArray();
+  const result = [];
+  documents.forEach((doc) => {
+    doc.products.forEach((product) => {
+      const formattedModel = product.model.replace(/\s/g, "").toLowerCase();
+      const formattedName = name.replace(/\s/g, "").toLocaleLowerCase();
+      if (formattedModel.includes(formattedName)) {
+        result.push(product);
+      }
+    });
+  });
+  res.send(result);
+});
+
 app.listen(PORT, async () => {
   console.log(`Сервер запустился на порту  ${PORT}`);
 });

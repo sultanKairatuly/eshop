@@ -10,7 +10,7 @@
           class="search_input"
           placeholder="Поиск товара"
         />
-        <div class="search_button">
+        <div class="search_button" @click="emit('searchProduct')">
           <img
             class="search_icon"
             src="../assets/apple/small-search.png"
@@ -28,6 +28,7 @@ const props = defineProps<{
 }>();
 const emit = defineEmits<{
   (e: "update:modelValue", value: string): void;
+  (e: "searchProduct"): void;
 }>();
 
 function updateModelValue(event: Event) {
