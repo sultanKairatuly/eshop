@@ -8,6 +8,7 @@
     />
     <ProductParametersSelect
       :product="product"
+      v-if="props.parameters.title.ru === props.activeConfiguration?.title.ru"
       :parameters="parameters"
       :active-configuration="activeConfiguration"
       @changeActiveConfiguration="changeActiveConfiguration"
@@ -18,26 +19,24 @@
 </template>
 
 <script setup lang="ts">
-import { Product, ProductParameters } from "../../types/types";
-import { useUserUtilities } from "../composables/utilities";
-import { ref } from "vue";
+import { Product, ProductParametersType } from "../../types/types";
 import ProductParametersConfiguration from "./ProductParametersConfiguration.vue";
 import ProductParametersSelect from "./ProductParametersSelect.vue";
 
 const props = defineProps<{
-  parameters: ProductParameters;
+  parameters: ProductParametersType;
   product: Product;
+  activeConfiguration: ProductParametersType | null;
 }>();
 
 const emit = defineEmits<{
   (e: "changeProductProperty", property: keyof Product, value: unknown): void;
   (e: "changeCurrentImage", value: string): void;
+  (e: "changeActiveConfiguration", value: ProductParametersType | null): void;
 }>();
 
-const activeConfiguration = ref<ProductParameters | null>(null);
-
-function changeActiveConfiguration(value: ProductParameters | null) {
-  activeConfiguration.value = value;
+function changeActiveConfiguration(value: ProductParametersType | null) {
+  emit("changeActiveConfiguration", value);
 }
 
 function changeProductProperty(property: keyof Product, value: unknown) {

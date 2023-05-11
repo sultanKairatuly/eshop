@@ -47,23 +47,33 @@ app.get("/all-products", async (req, res) => {
 app.get("/c/:category", async (req, res) => {
   const category = req.params.category;
   const foundCategory = await getCategory(category);
-  console.log(foundCategory);
-  console.log(category);
-  console.log(req.params);
   res.send(foundCategory);
 });
 
 app.get("/user/:email", async (req, res) => {
   const email = req.params.email;
-  console.log(email);
   const user = await findDocumentWithQuery(client, "email", email);
-  console.log("USER", user);
   res.send(user);
 });
 
 app.post("/save-user", async (req, res) => {
-  console.log(req.body);
   await saveUser(client, req.body);
+  res.send("ok");
+});
+
+app.post("/postreview/:category/:catalog/:model", async (req, res) => {
+  const catalog = req.params.catalog;
+  const category = req.params.category;
+  const model = req.params.model;
+  const collection = client.db("products").collection(category);
+  const document = await collection.findOne({ category: catalog });
+  const products = document.products;
+  const idx = products.findIndex((product) => product.model === model);
+  const query = { [`products.${idx}.reviews`]: { $type: "array" } };
+  const update = {
+    $push: { [`products.${idx}.reviews`]: JSON.parse(req.body.body) },
+  };
+  await collection.updateOne(query, update);
   res.send("ok");
 });
 

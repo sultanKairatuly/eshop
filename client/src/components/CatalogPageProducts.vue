@@ -101,7 +101,7 @@ const filtered = computed(() => {
             (
               props.totalFilter[key] as Exclude<totalFilterItemType, boolean>
             ).values.forEach((item) => {
-              if (!product[trueKey as keyof Product].includes(item)) {
+              if (!product[trueKey as keyof Product]?.includes(item)) {
               } else {
                 match++;
               }
@@ -122,7 +122,9 @@ const filtered = computed(() => {
 
             if (trueKey.split(".").length > 1) {
               [key1, key2] = trueKey.split(".");
-              productKey = product[key1 as keyof Product][key2 as string] as string;
+              productKey = product[key1 as keyof Product]?.[
+                key2 as string
+              ] as string;
             } else {
               productKey = product[trueKey as keyof Product] as string;
             }
@@ -209,8 +211,8 @@ function sortProducts(increment: boolean = false) {
   });
 }
 
-function handleProductClick(model: string) {
-  router.push(`/c/${props.categoryName}/${props.catalog}/${model}`);
+function handleProductClick(value: { model: string; category: string }) {
+  router.push(`/c/${props.categoryName}/${value.category}/${value.model}`);
 }
 </script>
 

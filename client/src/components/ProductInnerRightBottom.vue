@@ -4,6 +4,7 @@
     @changeProductProperty="changeProductProperty"
     @changeCurrentImage="changeCurrentImage"
   />
+  <div class="buy_btn">В корзину</div>
 </template>
 
 <script setup lang="ts">
@@ -29,6 +30,17 @@ function changeCurrentImage(value: string) {
 </script>
 
 <style scoped>
+.buy_btn {
+  background-color: #f14635;
+  color: #fff;
+  padding: 10px 50px;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  cursor: pointer;
+}
 
-
+.buy_btn:hover {
+  background-color: #e04131;
+}
 </style>

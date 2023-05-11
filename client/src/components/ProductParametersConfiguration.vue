@@ -15,19 +15,19 @@
 </template>
 
 <script setup lang="ts">
-import { ProductParameters, Product } from "../../types/types";
+import { ProductParametersType, Product } from "../../types/types";
 
 const props = defineProps<{
-  parameters: ProductParameters;
+  parameters: ProductParametersType;
   product: Product;
-  activeConfiguration: ProductParameters | null;
+  activeConfiguration: ProductParametersType | null;
 }>();
 
 const emit = defineEmits<{
-  (e: "changeActiveConfiguration", value: ProductParameters | null): void;
+  (e: "changeActiveConfiguration", value: ProductParametersType | null): void;
 }>();
 
-function handleParameterConfigClick(parameter: ProductParameters) {
+function handleParameterConfigClick(parameter: ProductParametersType) {
   if (props.activeConfiguration?.title.ru === parameter.title.ru) {
     emit("changeActiveConfiguration", null);
   } else {

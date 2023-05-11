@@ -24,11 +24,11 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{
-  (e: "productClicked", value: string): void;
+  (e: "productClicked", value: { model: string, category: string }): void;
 }>();
 
-function productClicked(model: string) {
-  emit("productClicked", model);
+function productClicked(value: { model: string; category: string }) {
+  emit("productClicked", { model: value.model, category: value.category });
 }
 </script>
 

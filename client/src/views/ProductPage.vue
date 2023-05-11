@@ -1,5 +1,12 @@
 <template>
   <div class="product">
+    <ProductSlider
+      :images="product.images ?? ['']"
+      :isSlider="isSlider"
+      :current-slide-index="currentSlideIndex"
+      @changeSlideIndex="changeSlideIndex"
+      @changeSliderFlag="changeSliderFlag"
+    />
     <EshopLoader v-if="loading" />
     <div v-else class="product_container">
       <ProductsBreadcrumps
@@ -21,54 +28,23 @@
           @changeCurrentImage="changeCurrentImage"
         />
       </div>
+      <ProductTabs :product="product" />
     </div>
-    <Teleport to=".app">
-      <div class="slider" v-if="isSlider">
-        <div class="slider_content">
-          <img
-            src="../assets/close-icon.svg"
-            @click="isSlider = false"
-            class="close_slider-btn"
-          />
-          <div
-            class="prev_slide_btn slider_navigator_btn"
-            @click="handlePreviousSlideClick"
-            v-if="currentSlideIndex !== 0"
-          ></div>
-          <img
-            class="slider_item"
-            :src="getImageUrl(image)"
-            :key="image"
-            v-for="(image, idx) in product.images"
-            :class="{
-              'slider_item-disactivated': idx !== currentSlideIndex,
-            }"
-          />
-          <div
-            class="next_slide_btn slider_navigator_btn"
-            @click="handleNextSlideClick"
-            v-if="currentSlideIndex !== product.images?.length - 1"
-          ></div>
-        </div>
-      </div>
-    </Teleport>
   </div>
 </template>
 <script setup lang="ts">
 import axios from "axios";
 import { useRoute, useRouter } from "vue-router";
-import { reactive, ref, computed } from "vue";
-import type {
-  DropdownFilterType,
-  Product,
-  ProductParameters,
-} from "../../types/types";
+import { reactive, ref } from "vue";
+import type { DropdownFilterType, Product } from "../../types/types";
 import { useUserUtilities } from "../composables/utilities";
 import { useHttpRequests } from "../composables/httpRequests";
 import ProductsBreadcrumps from "../components/ProductsBreadcrumps.vue";
 import EshopLoader from "../components/EshopLoader.vue";
 import ProductInnerLeft from "../components/ProductInnerLeft.vue";
 import ProductInnerRight from "../components/ProductInnerRight.vue";
+import ProductSlider from "../components/ProductSlider.vue";
+import ProductTabs from "../components/ProductTabs.vue";
 
 const props = defineProps<{
   dropdownFilter: DropdownFilterType[];
@@ -76,13 +52,7 @@ const props = defineProps<{
 }>();
 const router = useRouter();
 const route = useRoute();
-const {
-  getImageUrl,
-  getInstallment,
-  isHasParameters,
-  findTreeLinkAndDepth,
-  isHasDepth,
-} = useUserUtilities();
+const { findTreeLinkAndDepth, isHasDepth } = useUserUtilities();
 const product: Product = reactive({}) as Product;
 const categoryName = route.params.category as string;
 const { fetchCatalog } = useHttpRequests(categoryName);
@@ -101,6 +71,7 @@ async function fetchData() {
     loading.value = true;
     await fetchCatalog();
     await fetchProduct();
+    console.log(product.reviews);
   } catch (e) {
     console.log(e);
   } finally {
@@ -123,6 +94,14 @@ function handleMiniImageClick(src: string, idx: number) {
   currentSlideIndex.value = idx;
 }
 
+function changeSlideIndex(idx: number) {
+  currentSlideIndex.value = idx;
+}
+
+function changeSliderFlag(value: boolean) {
+  isSlider.value = value;
+}
+
 async function fetchProduct() {
   const response = await axios.get<Product[]>(
     `http://localhost:5000/getproductbymodel/${categoryName}/${
@@ -131,18 +110,6 @@ async function fetchProduct() {
   );
   Object.assign(product, response.data[0]);
   currentImage.value = product?.images?.[0];
-}
-
-function handlePreviousSlideClick() {
-  if (currentSlideIndex.value !== 0) {
-    currentSlideIndex.value--;
-  }
-}
-
-function handleNextSlideClick() {
-  if (currentSlideIndex.value !== product.images.length - 1) {
-    currentSlideIndex.value++;
-  }
 }
 
 function breadcrumpClicked(id: string) {
@@ -160,6 +127,7 @@ function breadcrumpClicked(id: string) {
 .product {
   background-color: #fbfbfb;
   min-height: 100vh;
+  padding-bottom: 50px;
 }
 
 .product_container {
@@ -174,69 +142,6 @@ function breadcrumpClicked(id: string) {
   display: flex;
   background-color: #fff;
   border: 1px solid #e5e5e5;
-}
-
-
-
-.slider {
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #00000060;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 100;
-}
-.slider_content {
-  width: 75%;
-  max-width: 1000px;
-  height: 90vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fff;
-  padding: 10px;
-  position: relative;
-}
-.slider_item {
-  width: 50%;
-  height: 90%;
-  object-fit: contain;
-  user-select: none;
-}
-
-.slider_item-disactivated {
-  display: none;
-}
-
-.slider_navigator_btn {
-  background-repeat: no-repeat;
-  width: 50px;
-  height: 40px;
-  position: absolute;
-  cursor: pointer;
-}
-.next_slide_btn {
-  background-image: url("../assets/sliders-controls.png");
-  background-position: -22px -3px;
-  right: 10px;
-}
-
-.prev_slide_btn {
-  background-image: url("../assets/sliders-controls.png");
-  background-position: 24px -3px;
-  left: 10px;
-}
-
-.close_slider-btn {
-  width: 25px;
-  height: 25px;
-  cursor: pointer;
-  position: absolute;
-  top: 20px;
-  right: 20px;
+  margin-bottom: 40px;
 }
 </style>

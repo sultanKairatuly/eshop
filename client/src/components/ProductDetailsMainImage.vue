@@ -35,7 +35,7 @@ function activateSliderFlag() {
 
 <style scoped>
 .product_image_container {
-  height: 350px;
+  height: 550px;
   width: 250px;
   padding: 30px;
   width: 100%;
@@ -51,7 +51,7 @@ function activateSliderFlag() {
 .product_image {
   width: 60%;
   margin: 0 auto;
-  height: 100%;
+  height: 75%;
   object-fit: contain;
   cursor: zoom-in;
 }

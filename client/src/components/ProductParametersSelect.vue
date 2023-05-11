@@ -1,13 +1,10 @@
 <template>
-  <div
-    class="parameters_select"
-    v-if="activeConfiguration?.title?.ru === parameters.title.ru"
-  >
+  <div class="parameters_select">
     <ProductParam
       :product="props.product"
       :parameters="props.parameters"
       :param="param"
-      v-for="param in parameters.values"
+      v-for="param in props.parameters.values"
       :key="param[0]"
       @changeActiveConfiguration="changeActiveConfiguration"
       @changeCurrentImage="changeCurrentImage"
@@ -17,22 +14,23 @@
 </template>
 
 <script setup lang="ts">
-import { ProductParameters, Product } from "../../types/types";
+import { ProductParametersType, Product } from "../../types/types";
 import ProductParam from "./ProductParam.vue";
 
 const props = defineProps<{
-  parameters: ProductParameters;
+  parameters: ProductParametersType;
   product: Product;
-  activeConfiguration: ProductParameters | null;
 }>();
+
+
 
 const emit = defineEmits<{
   (e: "changeProductProperty", property: keyof Product, value: unknown): void;
   (e: "changeCurrentImage", value: string): void;
-  (e: "changeActiveConfiguration", value: null | ProductParameters): void;
+  (e: "changeActiveConfiguration", value: null | ProductParametersType): void;
 }>();
 
-function changeActiveConfiguration(value: ProductParameters | null) {
+function changeActiveConfiguration(value: ProductParametersType | null) {
   emit("changeActiveConfiguration", value);
 }
 

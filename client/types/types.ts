@@ -1,3 +1,4 @@
+import type { Component } from "vue";
 import { auth } from "../firebase";
 
 export type FormUser = {
@@ -9,9 +10,12 @@ export type FormUser = {
 
 type currentUser = typeof auth.currentUser;
 
-type Review = {
+export type Review = {
   author: string;
-  content: string;
+  message: string;
+  createdAt: number,
+  rate: number,
+  id: string
 };
 
 export type Guest = {
@@ -80,7 +84,7 @@ export type Category = {
   _id?: string;
 };
 
-export type ProductParameters = {
+export type ProductParametersType = {
   title: {
     ru: string;
     kz: string;
@@ -100,12 +104,11 @@ export type Phone = {
     author: string;
     content: string;
   }[];
-  parameters: ProductParameters[];
+  parameters: ProductParametersType[];
   screen_type: string;
   RAM: string;
   CPU: string;
   battery_capacity: string;
-  description: string;
 };
 
 export type Charger = {
@@ -147,4 +150,17 @@ export type Clock = {
   memory: number;
 };
 
-export type Product = Phone | Clock | Charger;
+export type Product = (Phone | Clock | Charger) & { [key: string]: any, description?: string, category: string };
+
+export type Tab = {
+  name: string,
+  id: string,
+  component: Component
+}
+
+export type Critertias = 'all' | 'new' | "old" | 'positive' | 'negative'
+
+export type sortingCriteriesType = {
+  name: string,
+  value: Critertias
+}

@@ -23,20 +23,20 @@
 
 <script setup lang="ts">
 import { useUserUtilities } from "../composables/utilities";
-import { ProductParameters, Product } from "../../types/types";
+import { ProductParametersType, Product } from "../../types/types";
 
 const { getImageUrl } = useUserUtilities();
 
 const props = defineProps<{
   param: any;
-  parameters: ProductParameters;
+  parameters: ProductParametersType;
   product: Product;
 }>();
 
 const emit = defineEmits<{
   (e: "changeProductProperty", property: keyof Product, value: unknown): void;
   (e: "changeCurrentImage", value: string): void;
-  (e: "changeActiveConfiguration", value: null | ProductParameters): void;
+  (e: "changeActiveConfiguration", value: null | ProductParametersType): void;
 }>();
 
 function handleParameterClick(

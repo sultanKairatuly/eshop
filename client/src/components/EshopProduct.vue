@@ -15,18 +15,24 @@
 
     <img
       class="product_image"
-      :src="
-        isHasImages(props.product)
-          ? getImageUrl(props.product.images[0])
-          : getImageUrl(props.product.current_type.images[0])
-      "
+      :src="getImageUrl(props.product.images[0])"
       alt="product image"
-      @click="emit('productClicked', props.product.model)"
+      @click="
+        emit('productClicked', {
+          model: props.product.model,
+          category: props.product.category,
+        })
+      "
     />
     <div class="image_separator"></div>
     <div
       class="product_name"
-      @click="emit('productClicked', props.product.model)"
+      @click="
+        emit('productClicked', {
+          model: props.product.model,
+          category: props.product.category,
+        })
+      "
     >
       {{ props.product.model }}
     </div>
@@ -34,11 +40,7 @@
       <div class="price">
         <div class="price_title">Цена</div>
         <div class="price_value">
-          {{
-            isHasBundle(props.product)
-              ? props.product.current_bundle.price
-              : props.product.price
-          }}
+          {{ props.product.price }}
         </div>
       </div>
       <div class="installment">
@@ -55,15 +57,14 @@
 <script setup lang="ts">
 import type { Product } from "../../types/types";
 import { useUserUtilities } from "../composables/utilities";
-const { getImageUrl, isHasImages, isHasBundle, getInstallment } =
-  useUserUtilities();
+const { getImageUrl, getInstallment } = useUserUtilities();
 
 const props = defineProps<{
   product: Product;
 }>();
 
 const emit = defineEmits<{
-  (e: "productClicked", value: string): void;
+  (e: "productClicked", value: { model: string; category: string }): void;
 }>();
 </script>
 

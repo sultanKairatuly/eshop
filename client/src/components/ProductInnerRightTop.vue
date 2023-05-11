@@ -12,7 +12,7 @@
     <div class="product_price_item">
       <h4 class="price_title">В рассрочку</h4>
       <div class="installment_value">
-        {{ getInstallment(props.product) }}
+        {{ getInstallment(props?.product) }}
       </div>
       <div class="price-info">x 12</div>
     </div>
@@ -24,10 +24,11 @@ import { useUserUtilities } from "../composables/utilities";
 import { Product } from "../../types/types";
 
 const { getInstallment } = useUserUtilities();
-
 const props = defineProps<{
   product: Product;
 }>();
+
+console.log(props.product);
 </script>
 
 <style scoped>

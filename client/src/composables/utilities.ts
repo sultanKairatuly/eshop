@@ -9,7 +9,7 @@ import {
   CategoryExplorerType,
   Product,
   FilterBooleanOff,
-  ProductParameters,
+  ProductParametersType,
 } from "../../types/types";
 
 export function useUserUtilities() {
@@ -129,9 +129,13 @@ export function useUserUtilities() {
     }
   }
 
+  function assertUnreachable(x: never): never {
+    throw new Error("Didn't expect to get here");
+}
+
   function getInstallment(product: Product): string {
     let price = "";
-    price = product.price;
+    price = (product.price ?? '');
     const value: string = Math.round(
       +price.replace(/[\s₸]/g, "") / 12
     ).toString();
@@ -148,7 +152,7 @@ export function useUserUtilities() {
 
   function isHasParameters(
     value: unknown
-  ): value is { parameters: ProductParameters[] } {
+  ): value is { parameters: ProductParametersType[] } {
     return value !== null && typeof value === "object" && "parameters" in value;
   }
 
@@ -164,5 +168,6 @@ export function useUserUtilities() {
     isHasValues,
     getInstallment,
     isHasParameters,
+    assertUnreachable
   };
 }

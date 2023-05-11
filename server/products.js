@@ -5,7 +5,8 @@ module.exports = {
       category: "mobiles",
       products: [
         {
-          brand: "Apple",
+      category: "mobiles",
+      brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 14 Pro Max",
           reviews: [
@@ -87,7 +88,8 @@ module.exports = {
           `,
         },
         {
-          brand: "Apple",
+      category: "mobiles",
+      brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 14 Pro",
           current_bundle: {
@@ -110,8 +112,25 @@ module.exports = {
           ],
           reviews: [
             {
-              author: "",
-              content: "",
+              author: "Султанбек",
+              message: "хороший товар! Очень быстрый и красивый телефон.",
+              rate: 4,
+              createdAt: Date.now(),
+              id: uuidv4(),
+            },
+            {
+              author: "Кожа",
+              message: "средний товар! быстрый и красивый телефон.",
+              rate: 3,
+              createdAt: Date.now(),
+              id: uuidv4(),
+            },
+            {
+              author: "Алдияр",
+              message: "плохой товар! медленный  и уродливый телефон.",
+              rate: 2,
+              createdAt: Date.now(),
+              id: uuidv4(),
             },
           ],
           color: "чёрный",
@@ -187,7 +206,8 @@ module.exports = {
           `,
         },
         {
-          brand: "Apple",
+      category: "mobiles",
+      brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 14",
           reviews: [
@@ -269,7 +289,8 @@ module.exports = {
           `,
         },
         {
-          brand: "Apple",
+      category: "mobiles",
+      brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 13 Pro Max",
           reviews: [
@@ -355,7 +376,8 @@ module.exports = {
           `,
         },
         {
-          brand: "Apple",
+      category: "mobiles",
+      brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 13 Pro",
           reviews: [
@@ -441,7 +463,8 @@ module.exports = {
           battery_capacity: "3095 мАч",
         },
         {
-          brand: "Apple",
+      category: "mobiles",
+      brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 13",
           reviews: [
@@ -523,7 +546,8 @@ module.exports = {
           battery_capacity: "3095 мАч",
         },
         {
-          brand: "Apple",
+      category: "mobiles",
+      brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 12 Pro Max",
           reviews: [
@@ -605,7 +629,8 @@ module.exports = {
           battery_capacity: "3687.0 мАч",
         },
         {
-          brand: "Apple",
+      category: "mobiles",
+      brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 12 Pro",
           reviews: [
@@ -687,7 +712,8 @@ module.exports = {
           battery_capacity: "3295 мАч",
         },
         {
-          brand: "Apple",
+      category: "mobiles",
+      brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 12",
           reviews: [
@@ -769,7 +795,8 @@ module.exports = {
           battery_capacity: "2815.0 мАч",
         },
         {
-          brand: "Apple",
+      category: "mobiles",
+      brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 11 Pro Max",
           reviews: [
@@ -851,7 +878,8 @@ module.exports = {
           battery_capacity: "3500.0 мАч",
         },
         {
-          brand: "Apple",
+      category: "mobiles",
+      brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 11 Pro",
           reviews: [
@@ -933,7 +961,8 @@ module.exports = {
           battery_capacity: "2815.0 мАч",
         },
         {
-          brand: "Apple",
+      category: "mobiles",
+      brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 11",
           reviews: [
@@ -1015,7 +1044,8 @@ module.exports = {
           battery_capacity: "3110.0 мАч",
         },
         {
-          brand: "Samsung",
+      category: "mobiles",
+      brand: "Samsung",
           id: uuidv4(),
           model: "Смартфон Samsung Galaxy A13 ",
           reviews: [
@@ -1093,7 +1123,8 @@ module.exports = {
           battery_capacity: "5000 мАч",
         },
         {
-          brand: "Samsung",
+      category: "mobiles",
+      brand: "Samsung",
           id: uuidv4(),
           model: "Samsung Galaxy A23",
           reviews: [
@@ -1167,7 +1198,8 @@ module.exports = {
           battery_capacity: "5000 мАч",
         },
         {
-          brand: "Samsung",
+      category: "mobiles",
+      brand: "Samsung",
           id: uuidv4(),
           model: "Смартфон Samsung Galaxy A53",
           reviews: [
@@ -1241,7 +1273,8 @@ module.exports = {
           battery_capacity: "5000 мАч",
         },
         {
-          brand: "Samsung",
+      category: "mobiles",
+      brand: "Samsung",
           id: uuidv4(),
           model: "Смартфон Samsung Galaxy S21 FE",
           reviews: [
@@ -1405,7 +1438,8 @@ module.exports = {
       category: "chargers",
       products: [
         {
-          brand: "Apple",
+      category: "chargers",
+      brand: "Apple",
           id: uuidv4(),
           model: "Зарядное устройство Apple 18W USB-C Power Adapter белый",
           price: "10 155 ₸",
@@ -1419,7 +1453,8 @@ module.exports = {
           ],
         },
         {
-          brand: "Apple",
+      category: "chargers",
+      brand: "Apple",
           id: uuidv4(),
           model: "Зарядное устройство Apple 20W USB-C Power Adapter белый",
           price: "9 484 ₸",
@@ -1433,7 +1468,8 @@ module.exports = {
           ],
         },
         {
-          brand: "Apple",
+      category: "chargers",
+      brand: "Apple",
           id: uuidv4(),
           model: "Зарядное устройство Apple 20W USB-C Power Adapter (Type A)",
           price: "11 966 ₸",
@@ -1447,7 +1483,8 @@ module.exports = {
           ],
         },
         {
-          brand: "Apple",
+      category: "chargers",
+      brand: "Apple",
           id: uuidv4(),
           model: "Зарядное устройство Apple 5W USB Power Adapter",
           price: "8 866 ₸",
@@ -1461,7 +1498,8 @@ module.exports = {
           ],
         },
         {
-          brand: "Apple",
+      category: "chargers",
+      brand: "Apple",
           id: uuidv4(),
           model: "Зарядное устройство Apple 20W USB-C Power Adapter (Type G)",
           price: "11 975 ₸",
@@ -1475,7 +1513,8 @@ module.exports = {
           ],
         },
         {
-          brand: "Apple",
+      category: "chargers",
+      brand: "Apple",
           id: uuidv4(),
           model: "Зарядное устройство Apple 12W USB Power Adapter",
           price: "13 898 ₸",
@@ -1489,7 +1528,8 @@ module.exports = {
           ],
         },
         {
-          brand: "Apple",
+      category: "chargers",
+      brand: "Apple",
           id: uuidv4(),
           model: "Блок питания Apple 30W USB-C Power Adapter",
           price: "29 850 ₸",
@@ -1503,7 +1543,8 @@ module.exports = {
           ],
         },
         {
-          brand: "Apple",
+      category: "chargers",
+      brand: "Apple",
           id: uuidv4(),
           model: "Блок питания Apple 45W MagSafe 2 Power Adapter",
           price: "28 490 ₸",
@@ -1513,7 +1554,8 @@ module.exports = {
           images: ["../assets/apple/chargers/MagSafe245W/image1.jpg"],
         },
         {
-          brand: "Apple",
+      category: "chargers",
+      brand: "Apple",
           id: uuidv4(),
           model: "Блок питания Apple MagSafe 2 60W белый",
           price: "28 890 ₸",
@@ -1527,7 +1569,8 @@ module.exports = {
           ],
         },
         {
-          brand: "Apple",
+      category: "chargers",
+      brand: "Apple",
           id: uuidv4(),
           model:
             "Блок питания Apple 61W USB-C Power Adapter + Apple USB-C - USB-C 2 м",
@@ -1542,7 +1585,8 @@ module.exports = {
           ],
         },
         {
-          brand: "Apple",
+      category: "chargers",
+      brand: "Apple",
           id: uuidv4(),
           model: "Блок питания Apple 67W USB-C Power Adapter",
           price: "41 979 ₸",
@@ -1556,7 +1600,8 @@ module.exports = {
           ],
         },
         {
-          brand: "Apple",
+      category: "chargers",
+      brand: "Apple",
           id: uuidv4(),
           model: "Блок питания Apple MagSafe 2 85W белый",
           price: "20 550 ₸",
@@ -1570,7 +1615,8 @@ module.exports = {
           ],
         },
         {
-          brand: "Apple",
+      category: "chargers",
+      brand: "Apple",
           id: uuidv4(),
           model: "Зарядное устройство Apple MagSafe Duo Charger",
           price: "74 856 ₸",
@@ -1641,7 +1687,8 @@ module.exports = {
       category: "clocks",
       products: [
         {
-          brand: "Apple",
+      category: "clocks",
+      brand: "Apple",
           id: uuidv4(),
           model: "Смарт-часы Apple Watch Series 8",
           color: "чёрный",
@@ -1710,7 +1757,8 @@ module.exports = {
           memory: "32 ГБ",
         },
         {
-          brand: "Apple",
+      category: "clocks",
+      brand: "Apple",
           id: uuidv4(),
           model: "Смарт-часы Apple Watch SE 2nd Gen",
           color: "чёрный",
@@ -1780,7 +1828,8 @@ module.exports = {
           memory: "32 ГБ",
         },
         {
-          brand: "Apple",
+      category: "clocks",
+      brand: "Apple",
           id: uuidv4(),
           model: "Смарт-часы Apple Watch SE",
           color: "чёрный",
@@ -1854,7 +1903,8 @@ module.exports = {
           memory: "32 ГБ",
         },
         {
-          brand: "Apple",
+      category: "clocks",
+      brand: "Apple",
           id: uuidv4(),
           model: "Смарт-часы Apple Watch Series 7",
           color: "чёрный",
@@ -1924,7 +1974,8 @@ module.exports = {
           memory: "32 ГБ",
         },
         {
-          brand: "Apple",
+      category: "clocks",
+      brand: "Apple",
           id: uuidv4(),
           model: "Смарт-часы Apple Watch Series 6",
           color: "чёрный",
@@ -2001,7 +2052,8 @@ module.exports = {
           memory: "32 ГБ",
         },
         {
-          brand: "Apple",
+      category: "clocks",
+      brand: "Apple",
           id: uuidv4(),
           model: "Смарт-часы Apple Watch Ultra Ocean",
           color: "чёрный",
@@ -2042,7 +2094,8 @@ module.exports = {
           memory: "32 ГБ",
         },
         {
-          brand: "Samsung",
+      category: "clocks",
+      brand: "Samsung",
           id: uuidv4(),
           model: "Смарт-часы Samsung Galaxy Watch 5 Pro",
           color: "чёрный",
@@ -2100,14 +2153,15 @@ module.exports = {
           memory: "32 ГБ",
         },
         {
-          brand: "Samsung",
+      category: "clocks",
+      brand: "Samsung",
           id: uuidv4(),
           model: "Смарт-часы Samsung Galaxy Watch 5",
-          color: 'чёрный',
+          color: "чёрный",
           images: [
-            '../assets/samsung/clocks/5/black/image1.jpg',
-            '../assets/samsung/clocks/5/black/image2.jpg',
-            '../assets/samsung/clocks/5/black/image3.jpg',
+            "../assets/samsung/clocks/5/black/image1.jpg",
+            "../assets/samsung/clocks/5/black/image2.jpg",
+            "../assets/samsung/clocks/5/black/image3.jpg",
           ],
           size: "44 мм",
           price: "117 963 ₸",
@@ -2120,29 +2174,29 @@ module.exports = {
               properties: ["color", "images"],
               values: [
                 {
-                  color: 'чёрный',
+                  color: "чёрный",
                   images: [
-                    '../assets/samsung/clocks/5/black/image1.jpg',
-                    '../assets/samsung/clocks/5/black/image2.jpg',
-                    '../assets/samsung/clocks/5/black/image3.jpg',
-                  ]
+                    "../assets/samsung/clocks/5/black/image1.jpg",
+                    "../assets/samsung/clocks/5/black/image2.jpg",
+                    "../assets/samsung/clocks/5/black/image3.jpg",
+                  ],
                 },
                 {
-                  color: 'синий',
+                  color: "синий",
                   images: [
-                    '../assets/samsung/clocks/5/blue/image1.jpg',
-                    '../assets/samsung/clocks/5/blue/image2.jpg',
-                    '../assets/samsung/clocks/5/blue/image3.jpg',
-                  ]
+                    "../assets/samsung/clocks/5/blue/image1.jpg",
+                    "../assets/samsung/clocks/5/blue/image2.jpg",
+                    "../assets/samsung/clocks/5/blue/image3.jpg",
+                  ],
                 },
                 {
-                  color: 'белый',
+                  color: "белый",
                   images: [
-                    '../assets/samsung/clocks/5/white/image1.jpg',
-                    '../assets/samsung/clocks/5/white/image2.jpg',
-                    '../assets/samsung/clocks/5/white/image3.jpg',
-                    '../assets/samsung/clocks/5/white/image4.jpg',
-                  ]
+                    "../assets/samsung/clocks/5/white/image1.jpg",
+                    "../assets/samsung/clocks/5/white/image2.jpg",
+                    "../assets/samsung/clocks/5/white/image3.jpg",
+                    "../assets/samsung/clocks/5/white/image4.jpg",
+                  ],
                 },
               ],
             },
@@ -2167,7 +2221,8 @@ module.exports = {
           memory: "32 ГБ",
         },
         {
-          brand: "Samsung",
+      category: "clocks",
+      brand: "Samsung",
           id: uuidv4(),
           model: "Смарт-часы Samsung Galaxy Watch 4 SM-R870N",
           color: "чёрный",
@@ -2228,7 +2283,8 @@ module.exports = {
           memory: "16 ГБ",
         },
         {
-          brand: "Samsung",
+      category: "clocks",
+      brand: "Samsung",
           id: uuidv4(),
           model: "Смарт-часы Samsung Galaxy Watch3 SM-R840",
           color: "чёрный",
@@ -2286,7 +2342,8 @@ module.exports = {
           memory: "8 ГБ",
         },
         {
-          brand: "Samsung",
+      category: "clocks",
+      brand: "Samsung",
           id: uuidv4(),
           model: "Смарт-часы Samsung Galaxy Watch3 SM-R850",
           color: "чёрный",

@@ -18,6 +18,7 @@ const props = defineProps<{
   product: Product;
   currentImage: string;
 }>();
+console.log(props.product);
 const emit = defineEmits<{
   (e: "changeProductProperty", property: keyof Product, value: unknown): void;
   (e: "changeCurrentImage", value: string): void;
@@ -37,6 +38,4 @@ function changeCurrentImage(value: string) {
   width: 35%;
   padding: 20px 40px;
 }
-
-
 </style>
