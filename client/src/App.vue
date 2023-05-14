@@ -6,15 +6,17 @@
       :current-tree-link-id="currentTreeLinkId"
       @updateCurrentTreeLinkId="updateCurrentTreeLinkId"
     ></router-view>
+    <EshopFooter />
   </div>
 </template>
 
 <script setup lang="ts">
-import EshopHeader from "./components/EshopHeader.vue";
 import { useRoute } from "vue-router";
 import { ref, watch, reactive } from "vue";
 import { v4 as uuidv4 } from "uuid";
 import { DropdownFilterType } from "../types/types";
+import EshopHeader from "./components/EshopHeader.vue";
+import EshopFooter from "./components/EshopFooter.vue";
 
 const dropdownFilter: DropdownFilterType[] = reactive([
   {

@@ -14,7 +14,7 @@ export const useUserStore = defineStore("user", {
   state() {
     return {
       user:
-        JSON.parse(localStorage.getItem("user") as string) ||
+        JSON.parse(sessionStorage.getItem("user") as string) ||
         ({
           displayName: "Гость",
           basket: [],
@@ -42,7 +42,7 @@ export const useUserStore = defineStore("user", {
         reviews: [],
       } as User;
       router.push("/");
-      localStorage.setItem("user", JSON.stringify(this.user));
+      sessionStorage.setItem("user", JSON.stringify(this.user));
       await fetch("http://localhost:5000/save-user", {
         method: "POST",
         headers: {
@@ -78,13 +78,10 @@ export const useUserStore = defineStore("user", {
           switch (e.code) {
             case "auth/user-not-found":
               throw new Error("Пользователь не найден");
-              break;
             case "auth/wrong-password":
               throw new Error("Неверный пароль");
-              break;
             default:
               throw new Error("Непредвиденная ошибка");
-              break;
           }
         } else {
           throw new Error("An unknown error occurred.");
@@ -93,7 +90,7 @@ export const useUserStore = defineStore("user", {
     },
     async logoutUser() {
       await signOut(auth);
-      localStorage.removeItem("user");
+      sessionStorage.removeItem("user");
       this.user = {
         displayName: "Гость",
         basket: [],

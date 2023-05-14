@@ -150,6 +150,7 @@ export type Clock = {
   memory: number;
 };
 
+<<<<<<< Updated upstream
 export type Product = (Phone | Clock | Charger) & { [key: string]: any, description?: string, category: string };
 
 export type Tab = {
@@ -164,3 +165,6 @@ export type sortingCriteriesType = {
   name: string,
   value: Critertias
 }
+=======
+export type Product = (Phone | Clock | Charger) & { category: string };
+>>>>>>> Stashed changes
