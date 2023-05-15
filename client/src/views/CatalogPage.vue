@@ -1,10 +1,11 @@
 <template>
   <div class="wrapper">
-    <EshopLoader v-if="loading" />
+    <EshopLoader v-if="props.loading" />
     <div class="container">
       <CatalogPageContent
         :dropdown-filter="props.dropdownFilter"
-        :loading="loading"
+        :loading="props.loading"
+        :foundProducts="foundProducts"
         :currentTreeLinkId="props.currentTreeLinkId"
         @changeLoading="changeLoading"
         @updateCurrentTreeLinkId="updateCurrentTreeLinkId"
@@ -16,20 +17,21 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import CatalogPageContent from "../components/CatalogPageContent.vue";
-import { DropdownFilterType } from "../../types/types";
+import { DropdownFilterType, Product } from "../../types/types";
 
 const props = defineProps<{
   dropdownFilter: DropdownFilterType[];
   currentTreeLinkId: string;
+  foundProducts: Product[] | null;
+  loading: boolean
 }>();
 const emit = defineEmits<{
   (e: "updateCurrentTreeLinkId", value: string): void;
+  (e: "changeLoader", value: boolean): void;
 }>();
 
-const loading = ref<boolean>(false);
-
 function changeLoading(loadingValue: boolean) {
-  loading.value = loadingValue;
+  emit("changeLoader", loadingValue);
 }
 
 function updateCurrentTreeLinkId(id: string) {

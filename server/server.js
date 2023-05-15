@@ -77,22 +77,54 @@ app.post("/postreview/:category/:catalog/:model", async (req, res) => {
   res.send("ok");
 });
 
+app.post("/save-to-cart/:userId", async (req, res) => {
+  const userId = req.params.userId;
+  const collection = client.db("users_info").collection("users");
+  const result = await collection.findOne({ uid: userId });
+  await client
+    .db("users_info")
+    .collection("users")
+    .updateOne(
+      { uid: userId },
+      { $set: { cart: [...result.cart, JSON.parse(req.body.body)] } }
+    );
+  res.send("product saved to cart");
+});
+
+app.get("/find-user/:userId", async (req, res) => {
+  const userId = req.params.userId;
+  const collection = client.db("users_info").collection("users");
+  const result = await collection.findOne({ uid: userId });
+  console.log("RESULt", result);
+  console.log(userId);
+  res.send(result);
+});
+
 app.get("/getproductbyname/:name", async (req, res) => {
   const name = req.params.name;
   const db = client.db("products");
-  const collection = db.collection("smartphones_and_gadgets");
   const query = { "products.model": { $regex: name, $options: "i" } };
-  const documents = await collection.find(query).toArray();
   const result = [];
-  documents.forEach((doc) => {
-    doc.products.forEach((product) => {
-      const formattedModel = product.model.replace(/\s/g, "").toLowerCase();
-      const formattedName = name.replace(/\s/g, "").toLocaleLowerCase();
-      if (formattedModel.includes(formattedName)) {
-        result.push(product);
-      }
+
+  await new Promise((r, j) => {
+    db.listCollections().forEach(async function (collname) {
+      console.log(collname.name);
+      const collection = db.collection(collname.name);
+      const documents = await collection.find({}).toArray();
+      console.log("request gone ===================");
+      documents.forEach((doc) => {
+        doc.products.forEach((product) => {
+          const formattedModel = product.model.replace(/\s/g, "").toLowerCase();
+          const formattedName = name.replace(/\s/g, "").toLowerCase();
+          if (formattedModel.includes(formattedName)) {
+            result.push(product);
+          }
+        });
+      });
+      r();
     });
   });
+  console.log("request over =================== ");
   res.send(result);
 });
 

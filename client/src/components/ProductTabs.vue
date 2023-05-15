@@ -11,7 +11,12 @@
     </div>
     <KeepAlive>
       <div class="tab_content">
-        <component :reviews="props.product.reviews" :product="props.product" :is="currentComponent" />
+        <component
+          @updateReviews="updateReviews"
+          :reviews="props.product.reviews"
+          :product="props.product"
+          :is="currentComponent"
+        />
       </div>
     </KeepAlive>
   </div>
@@ -20,7 +25,7 @@
 <script setup lang="ts">
 import { shallowRef } from "vue";
 import type { Component } from "vue";
-import { Product, Tab } from "../../types/types";
+import { Product, Review, Tab } from "../../types/types";
 import ProductDescription from "./ProductDescription.vue";
 import ProductReviews from "./ProductReviews.vue";
 import ProductTab from "../components/ProductTab.vue";
@@ -28,7 +33,11 @@ import { v4 as uuidv4 } from "uuid";
 const props = defineProps<{
   product: Product;
 }>();
-console.log();
+
+const emit = defineEmits<{
+  (e: "updateReviews", value: Review): void;
+}>();
+
 let currentComponent = shallowRef<Component>(ProductDescription);
 const tabs: Tab[] = [
   {
@@ -45,6 +54,10 @@ const tabs: Tab[] = [
 
 function changeTab(component: Component) {
   currentComponent.value = component;
+}
+
+function updateReviews(review: Review) {
+  emit("updateReviews", review);
 }
 </script>
 

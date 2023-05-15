@@ -27,8 +27,6 @@ const { getInstallment } = useUserUtilities();
 const props = defineProps<{
   product: Product;
 }>();
-
-console.log(props.product);
 </script>
 
 <style scoped>
@@ -43,6 +41,7 @@ console.log(props.product);
 .product_price {
   display: flex;
   align-items: center;
+  margin-bottom: 30px;
 }
 
 .product_price_item:first-child {

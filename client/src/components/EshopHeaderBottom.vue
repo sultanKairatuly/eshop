@@ -22,12 +22,13 @@
           'left-bordered': index === 0,
           hovered: category.id === hoveredCategory?.id,
         }"
-        @mouseenter="hoveredCategory = category"
+        @mouseleave="changeHoveredCategory(null)"
+        @mouseenter="changeHoveredCategory(category)"
       >
         {{ category.name }}
       </div>
       <CategoryExplorer
-        @mouseleave="hoveredCategory = null"
+        @mouseleave="changeHoveredCategory"
         :category="hoveredCategory"
         @routeToProducts="clearHoveredCategory"
       />
@@ -42,7 +43,7 @@ import type { CategoryExplorerType } from "../../types/types";
 import CategoryExplorer from "./CategoryExplorer.vue";
 
 const hoveredCategory = ref<null | CategoryExplorerType>(null);
-
+const tillHovered = ref<boolean>(false);
 function clearHoveredCategory() {
   hoveredCategory.value = null;
 }
@@ -107,6 +108,17 @@ const categories: CategoryExplorerType[] = [
     id: uuidv4(),
   },
 ];
+
+function changeHoveredCategory(category: CategoryExplorerType | null = null) {
+  tillHovered.value = category ? true : false;
+  const timeout = setTimeout(() => {
+    if (tillHovered.value) {
+      hoveredCategory.value = category;
+    } else {
+      hoveredCategory.value = null;
+    }
+  }, 500);
+}
 </script>
 
 <style scoped>

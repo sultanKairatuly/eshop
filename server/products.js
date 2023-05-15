@@ -10,10 +10,7 @@ module.exports = {
           id: uuidv4(),
           model: "Смартфон Apple iPhone 14 Pro Max",
           reviews: [
-            {
-              author: "",
-              content: "",
-            },
+           
           ],
           color: "чёрный",
           images: [
@@ -211,10 +208,7 @@ module.exports = {
           id: uuidv4(),
           model: "Смартфон Apple iPhone 14",
           reviews: [
-            {
-              author: "",
-              content: "",
-            },
+            
           ],
           color: "чёрный",
           images: [
@@ -294,10 +288,7 @@ module.exports = {
           id: uuidv4(),
           model: "Смартфон Apple iPhone 13 Pro Max",
           reviews: [
-            {
-              author: "",
-              content: "",
-            },
+
           ],
           color: "зелёный",
           images: [
@@ -381,10 +372,6 @@ module.exports = {
           id: uuidv4(),
           model: "Смартфон Apple iPhone 13 Pro",
           reviews: [
-            {
-              author: "",
-              content: "",
-            },
           ],
           color: "зелёный",
           images: [
@@ -468,10 +455,7 @@ module.exports = {
           id: uuidv4(),
           model: "Смартфон Apple iPhone 13",
           reviews: [
-            {
-              author: "",
-              content: "",
-            },
+           
           ],
           color: "чёрный",
           images: [
@@ -551,10 +535,7 @@ module.exports = {
           id: uuidv4(),
           model: "Смартфон Apple iPhone 12 Pro Max",
           reviews: [
-            {
-              author: "",
-              content: "",
-            },
+    
           ],
           color: "чёрный",
           images: [
@@ -634,10 +615,7 @@ module.exports = {
           id: uuidv4(),
           model: "Смартфон Apple iPhone 12 Pro",
           reviews: [
-            {
-              author: "",
-              content: "",
-            },
+     
           ],
           color: "чёрный",
           images: [
@@ -717,10 +695,7 @@ module.exports = {
           id: uuidv4(),
           model: "Смартфон Apple iPhone 12",
           reviews: [
-            {
-              author: "",
-              content: "",
-            },
+   
           ],
           color: "чёрный",
           images: [
@@ -800,10 +775,7 @@ module.exports = {
           id: uuidv4(),
           model: "Смартфон Apple iPhone 11 Pro Max",
           reviews: [
-            {
-              author: "",
-              content: "",
-            },
+       
           ],
           color: "чёрный",
           images: [
@@ -883,10 +855,7 @@ module.exports = {
           id: uuidv4(),
           model: "Смартфон Apple iPhone 11 Pro",
           reviews: [
-            {
-              author: "",
-              content: "",
-            },
+   
           ],
           color: "чёрный",
           images: [
@@ -966,10 +935,7 @@ module.exports = {
           id: uuidv4(),
           model: "Смартфон Apple iPhone 11",
           reviews: [
-            {
-              author: "",
-              content: "",
-            },
+  
           ],
           color: "чёрный",
           images: [
@@ -1049,10 +1015,6 @@ module.exports = {
           id: uuidv4(),
           model: "Смартфон Samsung Galaxy A13 ",
           reviews: [
-            {
-              author: "",
-              content: "",
-            },
           ],
           color: "чёрный",
           images: [
@@ -1128,10 +1090,7 @@ module.exports = {
           id: uuidv4(),
           model: "Samsung Galaxy A23",
           reviews: [
-            {
-              author: "",
-              content: "",
-            },
+   
           ],
           color: "чёрный",
           images: [
@@ -1203,10 +1162,7 @@ module.exports = {
           id: uuidv4(),
           model: "Смартфон Samsung Galaxy A53",
           reviews: [
-            {
-              author: "",
-              content: "",
-            },
+
           ],
           color: "чёрный",
           images: [
@@ -1278,10 +1234,7 @@ module.exports = {
           id: uuidv4(),
           model: "Смартфон Samsung Galaxy S21 FE",
           reviews: [
-            {
-              author: "",
-              content: "",
-            },
+
           ],
           color: "чёрный",
           images: [

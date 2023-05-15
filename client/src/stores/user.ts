@@ -6,9 +6,10 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import { FormUser, LoginUser } from "../../types/types";
+import { FormUser, LoginUser, Product } from "../../types/types";
 import { User, Guest } from "../../types/types";
 import router from "../router/index";
+import axios from "axios";
 
 export const useUserStore = defineStore("user", {
   state() {
@@ -17,7 +18,7 @@ export const useUserStore = defineStore("user", {
         JSON.parse(sessionStorage.getItem("user") as string) ||
         ({
           displayName: "Гость",
-          basket: [],
+          cart: [],
           photoURL:
             "https://thinksport.com.au/wp-content/uploads/2020/01/avatar-.jpg",
         } as User | Guest),
@@ -38,7 +39,7 @@ export const useUserStore = defineStore("user", {
       this.user = {
         ...auth.currentUser,
         photoURL: photoURL,
-        basket: [],
+        cart: [],
         reviews: [],
       } as User;
       router.push("/");
@@ -54,7 +55,7 @@ export const useUserStore = defineStore("user", {
     continueWithGuest() {
       const guest: Guest = {
         displayName: "Гость",
-        basket: [],
+        cart: [],
         photoURL:
           "https://thinksport.com.au/wp-content/uploads/2020/01/avatar-.jpg",
       };
@@ -68,6 +69,7 @@ export const useUserStore = defineStore("user", {
         const response = await fetch(`http://localhost:5000/user/${email}`);
         const a = await response.json();
         this.user = structuredClone(a);
+        sessionStorage.setItem("user", JSON.stringify(this.user));
         localStorage.setItem("user", JSON.stringify(this.user));
         router.push("/");
       } catch (e) {
@@ -98,6 +100,33 @@ export const useUserStore = defineStore("user", {
           "https://thinksport.com.au/wp-content/uploads/2020/01/avatar-.jpg",
       };
       router.push("/signin");
+    },
+    async addToCart(product: Product) {
+      const cartedProduct = {
+        ...product,
+        amount: 1,
+      };
+      if (this.user.email) {
+        console.log("sending response");
+        const response = await axios.post(
+          `http://localhost:5000/save-to-cart/${this.user.uid}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(cartedProduct),
+          }
+        );
+      } else {
+        this.user.cart.push(product);
+      }
+    },
+    async updateUser() {
+      const { data: updatedUser } = await axios.get(
+        `http://localhost:5000/find-user/${this.user.uid}`
+      );
+      this.user = updatedUser;
+      sessionStorage.setItem("user", JSON.stringify(this.user));
     },
   },
   getters: {},

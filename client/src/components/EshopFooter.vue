@@ -14,7 +14,11 @@
         <img class="contact_image" src="../assets/facebook-icon.svg" alt="" />
         <img class="contact_image" src="../assets/twitter-icon.svg" alt="" />
         <img class="contact_image" src="../assets/youtube-icon.svg" alt="" />
-        <img class="contact_image" src="../assets/odnoklassniki-icon.svg" alt="" />
+        <img
+          class="contact_image"
+          src="../assets/odnoklassniki-icon.svg"
+          alt=""
+        />
         <img class="contact_image" src="../assets/instagram-icon.svg" alt="" />
         <img class="contact_image" src="../assets/telegram-icon.svg" alt="" />
         <img class="contact_image" src="../assets/linked-in-icon.svg" alt="" />
@@ -27,6 +31,7 @@
 .footer {
   background-color: #fbfbfb;
   padding: 30px 20px;
+  border-top: 2px solid #e5e5e5;
 }
 
 .footer_container {
@@ -51,7 +56,7 @@
   column-gap: 10px;
 }
 
-.contact_image{
-    cursor: pointer;
+.contact_image {
+  cursor: pointer;
 }
 </style>

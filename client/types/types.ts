@@ -13,20 +13,20 @@ type currentUser = typeof auth.currentUser;
 export type Review = {
   author: string;
   message: string;
-  createdAt: number,
-  rate: number,
-  id: string
+  createdAt: number;
+  rate: number;
+  id: string;
 };
 
 export type Guest = {
   photoURL: string;
   displayName: string;
-  basket: Record<string, any>;
+  cart: Cart;
 };
 
 export type User = {
   photoURL: string;
-  basket: Record<string, any>;
+  cart: Cart;
   reviews: Review[];
 } & currentUser;
 
@@ -150,21 +150,6 @@ export type Clock = {
   memory: number;
 };
 
-<<<<<<< Updated upstream
-export type Product = (Phone | Clock | Charger) & { [key: string]: any, description?: string, category: string };
+export type Cart = (Product & { amount: number })[];
 
-export type Tab = {
-  name: string,
-  id: string,
-  component: Component
-}
-
-export type Critertias = 'all' | 'new' | "old" | 'positive' | 'negative'
-
-export type sortingCriteriesType = {
-  name: string,
-  value: Critertias
-}
-=======
 export type Product = (Phone | Clock | Charger) & { category: string };
->>>>>>> Stashed changes

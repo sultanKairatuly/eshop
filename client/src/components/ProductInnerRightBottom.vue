@@ -4,13 +4,15 @@
     @changeProductProperty="changeProductProperty"
     @changeCurrentImage="changeCurrentImage"
   />
-  <div class="buy_btn">В корзину</div>
+  <div class="buy_btn" @click="addToCart">В корзину</div>
 </template>
 
 <script setup lang="ts">
 import { Product } from "../../types/types";
 import ProductParametersList from "./ProductParametersList.vue";
+import { useUserStore } from "../stores/user";
 
+const userStore = useUserStore();
 const props = defineProps<{
   product: Product;
 }>();
@@ -26,6 +28,11 @@ function changeProductProperty(property: keyof Product, value: unknown) {
 
 function changeCurrentImage(value: string) {
   emit("changeCurrentImage", value);
+}
+
+function addToCart() {
+  userStore.addToCart(props.product);
+  userStore.updateUser();
 }
 </script>
 

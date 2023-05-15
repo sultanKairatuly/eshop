@@ -18,7 +18,7 @@
     </div>
     <div class="products_container">
       <CatalogPageProducts
-        :products="products"
+        :products="props.foundProducts || products"
         :category-name="categoryName"
         :page="page"
         :dropdown-filter="props.dropdownFilter"
@@ -58,6 +58,7 @@ const emit = defineEmits<{
 const props = defineProps<{
   dropdownFilter: DropdownFilterType[];
   currentTreeLinkId: string;
+  foundProducts: Product[] | null;
 }>();
 
 const { isHasDepth, findTreeLinkAndDepth, isHasBundle, isHasValues } =
@@ -69,8 +70,6 @@ let catalogName: string = route.query.catalogName as string;
 let subcatalogName: string = route.query.subcatalogName as string;
 const productsPerPage = 12;
 const page = ref<number>(1);
-
-
 
 const totalFilter: Record<string, totalFilterItemType> = reactive({});
 

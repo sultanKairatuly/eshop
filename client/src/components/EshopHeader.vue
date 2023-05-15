@@ -11,21 +11,39 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watch, onUnmounted } from "vue";
 import EshopHeaderTop from "./EshopHeaderTop.vue";
 import EshopHeaderMiddle from "./EshopHeaderMiddle.vue";
 import EshopHeaderBottom from "./EshopHeaderBottom.vue";
-import axios from "axios";
 
+onUnmounted(() => {
+  document.removeEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      emit("findProducts", productSearch.value);
+    }
+  });
+});
+
+const emit = defineEmits<{
+  (e: "findProducts", value: string): void;
+  (e: "clearSearch"): void;
+}>();
 const productSearch = ref<string>("");
 
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    emit("findProducts", productSearch.value);
+  }
+});
+
+watch(productSearch, (nv) => {
+  if (nv.length === 0) {
+    emit("clearSearch");
+  }
+});
+
 async function searchProduct() {
-  const response = await axios.get(
-    `http://localhost:5000/getproductbyname/${productSearch.value}`
-  );
-  console.log(response);
-  console.log(response.data);
-  console.log('===============')
+  emit("findProducts", productSearch.value);
 }
 </script>
 

@@ -1,10 +1,18 @@
 <template>
   <div class="app">
-    <EshopHeader v-if="isHeader" />
+    <EshopHeader
+      v-if="isHeader"
+      @findProducts="findProducts"
+      @clearSearch="clearSearch"
+    />
     <router-view
       :dropdown-filter="dropdownFilter"
       :current-tree-link-id="currentTreeLinkId"
+      :foundProducts="foundProducts"
+      :loading="loading"
       @updateCurrentTreeLinkId="updateCurrentTreeLinkId"
+      @changeLoader="changeLoader"
+      @changeCurrentTreeLinkId="changeCurrentTreeLinkId"
     ></router-view>
     <EshopFooter />
   </div>
@@ -14,7 +22,8 @@
 import { useRoute } from "vue-router";
 import { ref, watch, reactive } from "vue";
 import { v4 as uuidv4 } from "uuid";
-import { DropdownFilterType } from "../types/types";
+import { DropdownFilterType, Product } from "../types/types";
+import axios from "axios";
 import EshopHeader from "./components/EshopHeader.vue";
 import EshopFooter from "./components/EshopFooter.vue";
 
@@ -57,8 +66,10 @@ const dropdownFilter: DropdownFilterType[] = reactive([
     ],
   },
 ]);
+const foundProducts = ref<null | Product[]>(null);
 const currentTreeLinkId = ref<string>(dropdownFilter[0].id);
 const isHeader = ref<boolean>(true);
+const loading = ref<boolean>(false);
 const route = useRoute();
 watch(
   () => route.path,
@@ -76,6 +87,26 @@ watch(
 
 function updateCurrentTreeLinkId(id: string) {
   currentTreeLinkId.value = id;
+}
+
+function changeCurrentTreeLinkId(id: string) {
+  currentTreeLinkId.value = id;
+}
+function changeLoader(loaderValue: boolean) {
+  loading.value = loaderValue;
+}
+
+async function findProducts(search: string) {
+  loading.value = true;
+  const response = await axios.get(
+    `http://localhost:5000/getproductbyname/${search}`
+  );
+  foundProducts.value = response.data;
+  loading.value = false;
+}
+
+function clearSearch() {
+  foundProducts.value = null;
 }
 </script>
 

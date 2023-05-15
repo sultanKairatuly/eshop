@@ -28,15 +28,22 @@
           @changeCurrentImage="changeCurrentImage"
         />
       </div>
-      <ProductTabs :product="product" />
+      <ProductTabs @updateReviews="updateReviews" :product="product" />
     </div>
   </div>
 </template>
 <script setup lang="ts">
 import axios from "axios";
 import { useRoute, useRouter } from "vue-router";
-import { reactive, ref, computed } from "vue";
-import type { DropdownFilterType, Product } from "../../types/types";
+import {
+  reactive,
+  ref,
+  computed,
+  provide,
+  onUnmounted,
+  onBeforeUpdate,
+} from "vue";
+import type { DropdownFilterType, Product, Review } from "../../types/types";
 import { useUserUtilities } from "../composables/utilities";
 import { useHttpRequests } from "../composables/httpRequests";
 import ProductsBreadcrumps from "../components/ProductsBreadcrumps.vue";
@@ -50,27 +57,54 @@ const props = defineProps<{
   dropdownFilter: DropdownFilterType[];
   currentTreeLinkId: string;
 }>();
+
+const emit = defineEmits<{
+  (e: "changeCurrentTreeLinkId", value: string): void;
+}>();
+
+onUnmounted(() => {
+  sessionStorage.removeItem("cached_product");
+});
+
+onBeforeUpdate(() => {
+  sessionStorage.removeItem("cached_product");
+});
+const reviewLoading = ref<boolean>(false);
+provide("reviewLoading", reviewLoading);
 const router = useRouter();
 const route = useRoute();
-const { getImageUrl, findTreeLinkAndDepth, isHasDepth } = useUserUtilities();
-const product: Product = reactive({}) as Product;
+const { findTreeLinkAndDepth, isHasDepth } = useUserUtilities();
+const product: Product =
+  JSON.parse(sessionStorage.getItem("cached_product") as string) ||
+  (reactive({}) as Product);
 const categoryName = route.params.category as string;
 const { fetchCatalog } = useHttpRequests(categoryName);
 const catalogName = route.params.catalogName as string;
 const subcatalogName = route.params.subcatalogName as string;
 const productModel = route.params.model as string;
 const loading = ref<boolean>(false);
-const breadcrumps = reactive([
-  props.dropdownFilter[0],
-  props.dropdownFilter[0].children[0],
-]);
-const currentImage = ref<string>("");
+const breadcrumps = computed(() => {
+  const narrowedCategory = findTreeLinkAndDepth(
+    "_",
+    props.dropdownFilter,
+    0,
+    product.category
+  );
+  return [
+    props.dropdownFilter[0],
+    isHasDepth(narrowedCategory)
+      ? narrowedCategory.item
+      : props.dropdownFilter[0].children?.[0],
+  ];
+});
+
+console.log();
+const currentImage = ref<string>(product?.images?.[0] || "");
 const currentSlideIndex = ref<number>(0);
 const isSlider = ref<boolean>(false);
 const active = computed(() => {
   props.dropdownFilter[0].children.forEach((item) => {
     if (item.category === product.category) {
-      console.log(item);
       return item.id;
     }
   });
@@ -80,10 +114,22 @@ fetchData();
 
 async function fetchData() {
   try {
-    loading.value = true;
-    await fetchCatalog();
-    await fetchProduct();
-    console.log(product.reviews);
+    if (!sessionStorage.getItem("cached_product")) {
+      loading.value = true;
+      await fetchCatalog();
+      await fetchProduct();
+      const narrowedCategory = findTreeLinkAndDepth(
+        "_",
+        props.dropdownFilter,
+        0,
+        product.category
+      );
+      sessionStorage.setItem("cached_product", JSON.stringify(product));
+      emit(
+        "changeCurrentTreeLinkId",
+        isHasDepth(narrowedCategory) ? narrowedCategory.item.id : ""
+      );
+    }
   } catch (e) {
     console.log(e);
   } finally {
@@ -96,6 +142,8 @@ function changeCurrentImage(value: string) {
 }
 
 function changeProductProperty(property: keyof Product, value: unknown) {
+  console.log("caching...");
+  sessionStorage.setItem("cached_product", JSON.stringify(product));
   if (value && Array.isArray(value) && typeof value === "string") {
     product[property] = value;
   }
@@ -133,6 +181,21 @@ function breadcrumpClicked(id: string) {
       query: { [queryKey]: foundTreeLink.item.category },
     });
   }
+}
+
+async function updateReviews(review: Review) {
+  reviewLoading.value = true;
+  await axios.post<string>(
+    `http://localhost:5000/postreview/${route.params.category}/${product.category}/${product.model}`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(review),
+    }
+  );
+  await fetchProduct();
+  reviewLoading.value = false;
 }
 </script>
 <style scoped>

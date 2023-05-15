@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <EshopLoader v-if="loading" />
     <div class="locked" v-if="!userStore.user.email">
       <i class="fa-solid fa-lock lock"></i>
       <div class="lock_text">Авторизуйтесь на сайте</div>
@@ -20,13 +21,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import EshopButton from "../UIcomponents/EshopButton.vue";
+import { ref, inject } from "vue";
+import type { Ref } from "vue";
 import { Review, Product } from "../../types/types";
 import { v4 as uuidv4 } from "uuid";
 import { useUserStore } from "../stores/user";
-import axios from "axios";
 import { useRoute } from "vue-router";
+import EshopButton from "../UIcomponents/EshopButton.vue";
+import EshopLoader from "./EshopLoader.vue";
 
 const route = useRoute();
 const userStore = useUserStore();
@@ -34,42 +36,26 @@ const props = defineProps<{
   product: Product;
 }>();
 
+const loading: Ref<boolean> = inject("reviewLoading") as Ref<boolean>;
 const emit = defineEmits<{
   (e: "updateReviews", value: Review): void;
 }>();
+
 const reviewMessage = ref<string>("");
 const reviewRate = ref<string>("5");
 
-async function postReview() {
-  try {
-    const review: Review = {
-      message: reviewMessage.value,
-      author: userStore.user.displayName,
-      id: uuidv4(),
-      rate: +reviewRate.value,
-      createdAt: Date.now(),
-    };
+function postReview() {
+  const review: Review = {
+    message: reviewMessage.value,
+    author: userStore.user.displayName,
+    id: uuidv4(),
+    rate: +reviewRate.value,
+    createdAt: Date.now(),
+  };
 
-    const response = await axios.post<string>(
-      `http://localhost:5000/postreview/${route.params.category}/${props.product.category}/${props.product.model}`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(review),
-      }
-    );
-
-    if (response.data === "ok") {
-      emit("updateReviews", review);
-      reviewMessage.value = "";
-      reviewRate.value = "5";
-    } else {
-      throw new Error("review was not added");
-    }
-  } catch (e) {
-    console.log(e);
-  }
+  emit("updateReviews", review);
+  reviewMessage.value = "";
+  reviewRate.value = "5";
 }
 </script>
 

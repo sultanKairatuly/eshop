@@ -2,7 +2,7 @@
   <div class="reviews_container">
     <h1 class="title">Отзывы о {{ props.product.model }}</h1>
     <ReviewSorts
-      :reviews="reviews"
+      :reviews="props.product.reviews"
       :activeSortingCriteria="activerSortingCriteria"
       :sorting-criteries="sortingCriteries"
       @changeActiveSortingCriteria="changeActiveSortingCriteria"
@@ -25,7 +25,10 @@ import ReviewAdd from "./ReviewsAdd.vue";
 const props = defineProps<{
   product: Product;
 }>();
-const reviews: Review[] = reactive(props.product.reviews);
+
+const emit = defineEmits<{
+  (e: "updateReviews", value: Review): void;
+}>();
 
 const sortingCriteries: sortingCriteriesType[] = [
   { name: "Все", value: "all" },
@@ -38,19 +41,23 @@ const activerSortingCriteria = ref<sortingCriteriesType>(sortingCriteries[0]);
 const sortingCriteria = ref<sortingCriteriesType["value"]>("all");
 const sortedReviews = computed<Review[] | undefined>(() => {
   if (sortingCriteria.value === "all") {
-    return [...reviews];
+    return [...props.product.reviews];
   } else if (sortingCriteria.value === "new") {
     const month = 2592000000;
     const actualDate = Date.now() - month;
-    return reviews.filter((review) => review.createdAt - month <= actualDate);
+    return props.product.reviews.filter(
+      (review: Review) => review.createdAt - month <= actualDate
+    );
   } else if (sortingCriteria.value === "old") {
     const month = 2592000000;
     const actualDate = Date.now() - month;
-    return reviews.filter((review) => review.createdAt - month >= actualDate);
+    return props.product.reviews.filter(
+      (review: Review) => review.createdAt - month >= actualDate
+    );
   } else if (sortingCriteria.value === "positive")
-    return reviews.filter((review) => review.rate >= 4);
+    return props.product.reviews.filter((review: Review) => review.rate >= 4);
   else if (sortingCriteria.value === "negative")
-    return reviews.filter((review) => review.rate <= 3);
+    return props.product.reviews.filter((review: Review) => review.rate <= 3);
   else {
     console.log("not passed");
     return [];
@@ -66,7 +73,8 @@ function updateSortedReviews(value: sortingCriteriesType["value"]) {
 }
 
 function updateReviews(review: Review) {
-  reviews.push(review);
+  // reviews.push(review);
+  emit("updateReviews", review);
 }
 </script>
 

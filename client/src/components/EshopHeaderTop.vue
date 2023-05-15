@@ -16,6 +16,9 @@
         <button class="auth_btn" @click="$router.push('/signin')" v-else>
           Войти
         </button>
+        <button class="cart_btn" @click="$router.push('/cart')">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </button>
       </div>
       <div class="lang">
         <div class="lang_item">Қаз</div>
@@ -26,7 +29,6 @@
 </template>
 
 <script setup lang="ts">
-import { User } from "../../types/types";
 import { useUserStore } from "../stores/user";
 import { useUserUtilities } from "../composables/utilities";
 const userStore = useUserStore();
@@ -39,6 +41,20 @@ async function logoutUser() {
 </script>
 
 <style scoped>
+.cart_btn {
+  padding: 3px;
+  background-color: #cf4e3b;
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cart_btn:hover {
+  background-color: #b04231;
+}
+
 .header_top {
   box-shadow: 0px 4px 10px 2px rgba(34, 60, 80, 0.2);
   z-index: 10;
