@@ -30,7 +30,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/cart",
     name: "Cart",
-    component: () => import("../views/UserCart.vue"),
+    component: () => import("../views/CartPage.vue"),
   },
 ];
 export default routes;

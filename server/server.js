@@ -61,6 +61,78 @@ app.post("/save-user", async (req, res) => {
   res.send("ok");
 });
 
+app.delete("/remove-from-cart/:userId", async (req, res) => {
+  const model = req.query.model;
+  const image = req.query.image;
+  const price = req.query.price;
+  const userId = req.params.userId;
+  const collection = client.db("users_info").collection("users");
+  const result = await collection.findOne({ uid: userId });
+  const filteredCart = result.cart.filter((item) => {
+    return item.price !== price || item.images[0] !== image;
+  });
+
+  await client
+    .db("users_info")
+    .collection("users")
+    .updateOne({ uid: userId }, { $set: { cart: filteredCart } });
+  res.send("product removed from cart");
+});
+
+app.post("/increment-product-amount", async (req, res) => {
+  const { price, image, model, userId } = req.body.body;
+  const collection = client.db("users_info").collection("users");
+  const result = await collection.findOne({ uid: userId });
+  console.log(price);
+  console.log(userId);
+  const updatedCart = result.cart.map((product) => {
+    if (
+      product.model === model &&
+      product.price === price &&
+      product.images[0] === image
+    ) {
+      return {
+        ...product,
+        amount: product.amount + 1,
+      };
+    } else {
+      return product;
+    }
+  });
+
+  await client
+    .db("users_info")
+    .collection("users")
+    .updateOne({ uid: userId }, { $set: { cart: updatedCart } });
+  res.send("product amount incremented");
+});
+
+app.post("/change-product-amount", async (req, res) => {
+  const { price, image, model, userId, increment } = req.body.body;
+  const collection = client.db("users_info").collection("users");
+  const result = await collection.findOne({ uid: userId });
+  const updatedCart = result.cart.map((product) => {
+    if (
+      product.model === model &&
+      product.price === price &&
+      product.images[0] === image
+    ) {
+      return {
+        ...product,
+        amount: increment ? product.amount + 1 : product.amount - 1,
+      };
+    } else {
+      return product;
+    }
+  });
+
+  await client
+    .db("users_info")
+    .collection("users")
+    .updateOne({ uid: userId }, { $set: { cart: updatedCart } });
+  res.send("product amount incremented");
+});
+
 app.post("/postreview/:category/:catalog/:model", async (req, res) => {
   const catalog = req.params.catalog;
   const category = req.params.category;
@@ -81,13 +153,41 @@ app.post("/save-to-cart/:userId", async (req, res) => {
   const userId = req.params.userId;
   const collection = client.db("users_info").collection("users");
   const result = await collection.findOne({ uid: userId });
+  const product = JSON.parse(req.body.body);
+  let filteredCart = result.cart;
+
+  const { images, model, price } = product;
+  const exist = filteredCart.findIndex((item) => {
+    if (
+      item.model === model &&
+      item.images[0] === images[0] &&
+      item.price === price
+    ) {
+      return true;
+    }
+  });
+  if (exist !== -1) {
+    if (filteredCart[exist].amount === 5) {
+      return;
+    }
+    filteredCart = filteredCart.map((item, idx) => {
+      if (idx === exist) {
+        return {
+          ...item,
+          amount: item.amount + 1,
+        };
+      } else {
+        return item;
+      }
+    });
+  } else {
+    filteredCart.push(product);
+  }
+
   await client
     .db("users_info")
     .collection("users")
-    .updateOne(
-      { uid: userId },
-      { $set: { cart: [...result.cart, JSON.parse(req.body.body)] } }
-    );
+    .updateOne({ uid: userId }, { $set: { cart: filteredCart } });
   res.send("product saved to cart");
 });
 
@@ -95,8 +195,6 @@ app.get("/find-user/:userId", async (req, res) => {
   const userId = req.params.userId;
   const collection = client.db("users_info").collection("users");
   const result = await collection.findOne({ uid: userId });
-  console.log("RESULt", result);
-  console.log(userId);
   res.send(result);
 });
 
@@ -108,10 +206,8 @@ app.get("/getproductbyname/:name", async (req, res) => {
 
   await new Promise((r, j) => {
     db.listCollections().forEach(async function (collname) {
-      console.log(collname.name);
       const collection = db.collection(collname.name);
       const documents = await collection.find({}).toArray();
-      console.log("request gone ===================");
       documents.forEach((doc) => {
         doc.products.forEach((product) => {
           const formattedModel = product.model.replace(/\s/g, "").toLowerCase();
@@ -124,7 +220,6 @@ app.get("/getproductbyname/:name", async (req, res) => {
       r();
     });
   });
-  console.log("request over =================== ");
   res.send(result);
 });
 

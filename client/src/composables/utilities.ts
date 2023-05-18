@@ -133,18 +133,28 @@ export function useUserUtilities() {
     throw new Error("Didn't expect to get here");
 }
 
-  function getInstallment(product: Product): string {
+  function getInstallment(product: Product | string): string {
     let price = "";
-    price = (product.price ?? '');
-    const value: string = Math.round(
-      +price.replace(/[\s₸]/g, "") / 12
-    ).toString();
+    let value = ''
+    if(typeof product !== 'string'){
+      value = Math.round(
+        +price.replace(/[\s₸]/g, "") / 12
+      ).toString();
+      price = (product.price ?? '');
+    }else{
+      value = product
+    }
+ 
     switch (value.length) {
       case 4:
         return `${value[0]} ${value.slice(1)} ₸`;
       case 5:
         return `${value[0]}${value[1]} ${value.slice(2)} ₸`;
       case 6:
+        return `${value[0]}${value[1]}${value[2]} ${value.slice(3)} ₸`;
+      case 7:
+        return `${value[0]} ${value[1]}${value[2]}${value[3]} ${value.slice(4)} ₸`;
+      case 8:
         return `${value[0]}${value[1]}${value[2]} ${value.slice(3)} ₸`;
     }
     return value + " ₸";

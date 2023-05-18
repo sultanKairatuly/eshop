@@ -29,6 +29,7 @@
       </div>
       <CategoryExplorer
         @mouseleave="changeHoveredCategory"
+        @mouseenter="changeHoveredCategory(hoveredCategory)"
         :category="hoveredCategory"
         @routeToProducts="clearHoveredCategory"
       />

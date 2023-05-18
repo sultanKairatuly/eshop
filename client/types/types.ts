@@ -28,6 +28,8 @@ export type User = {
   photoURL: string;
   cart: Cart;
   reviews: Review[];
+  email: string,
+  uid: string
 } & currentUser;
 
 export type LoginUser = {

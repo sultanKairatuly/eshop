@@ -5,10 +5,12 @@
 </template>
 
 <script setup lang="ts">
-import { Product } from "../../types/types";
-
 const props = defineProps<{
   cartItems: number;
 }>();
 </script>
-<style scoped></style>
+<style scoped>
+.header {
+  padding: 30px 0;
+}
+</style>

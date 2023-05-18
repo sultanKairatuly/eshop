@@ -29,6 +29,7 @@
         />
       </div>
       <ProductTabs @updateReviews="updateReviews" :product="product" />
+      {{ test }}
     </div>
   </div>
 </template>
@@ -42,6 +43,8 @@ import {
   provide,
   onUnmounted,
   onBeforeUpdate,
+  watch,
+  onUpdated,
 } from "vue";
 import type { DropdownFilterType, Product, Review } from "../../types/types";
 import { useUserUtilities } from "../composables/utilities";
@@ -69,10 +72,12 @@ onUnmounted(() => {
 onBeforeUpdate(() => {
   sessionStorage.removeItem("cached_product");
 });
+
 const reviewLoading = ref<boolean>(false);
 provide("reviewLoading", reviewLoading);
 const router = useRouter();
 const route = useRoute();
+
 const { findTreeLinkAndDepth, isHasDepth } = useUserUtilities();
 const product: Product =
   JSON.parse(sessionStorage.getItem("cached_product") as string) ||
@@ -97,8 +102,8 @@ const breadcrumps = computed(() => {
       : props.dropdownFilter[0].children?.[0],
   ];
 });
+const test = localStorage.getItem("test") || ref<string>("");
 
-console.log();
 const currentImage = ref<string>(product?.images?.[0] || "");
 const currentSlideIndex = ref<number>(0);
 const isSlider = ref<boolean>(false);
@@ -143,10 +148,10 @@ function changeCurrentImage(value: string) {
 
 function changeProductProperty(property: keyof Product, value: unknown) {
   console.log("caching...");
-  sessionStorage.setItem("cached_product", JSON.stringify(product));
   if (value && Array.isArray(value) && typeof value === "string") {
     product[property] = value;
   }
+  sessionStorage.setItem("cached_product", JSON.stringify(product));
 }
 
 function handleMiniImageClick(src: string, idx: number) {

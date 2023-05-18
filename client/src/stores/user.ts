@@ -10,6 +10,8 @@ import { FormUser, LoginUser, Product } from "../../types/types";
 import { User, Guest } from "../../types/types";
 import router from "../router/index";
 import axios from "axios";
+import { useHttpRequests } from "../composables/httpRequests";
+import { BlockquoteHTMLAttributes } from "vue";
 
 export const useUserStore = defineStore("user", {
   state() {
@@ -18,10 +20,12 @@ export const useUserStore = defineStore("user", {
         JSON.parse(sessionStorage.getItem("user") as string) ||
         ({
           displayName: "Гость",
-          cart: [],
-          photoURL:
+          cart: JSON.parse(sessionStorage.getItem('guest_cart' || null) as string) || [],
+          photoURL: 
             "https://thinksport.com.au/wp-content/uploads/2020/01/avatar-.jpg",
         } as User | Guest),
+      http: useHttpRequests('_'),
+      checkedProducts: JSON.parse(sessionStorage.getItem('checkedProducts') as string) ||  [] as (Product & { amount: number})[]
     };
   },
   actions: {
@@ -105,9 +109,9 @@ export const useUserStore = defineStore("user", {
       const cartedProduct = {
         ...product,
         amount: 1,
+        checked: false
       };
       if (this.user.email) {
-        console.log("sending response");
         const response = await axios.post(
           `http://localhost:5000/save-to-cart/${this.user.uid}`,
           {
@@ -117,14 +121,74 @@ export const useUserStore = defineStore("user", {
             body: JSON.stringify(cartedProduct),
           }
         );
+        this.updateUser()
       } else {
-        this.user.cart.push(product);
+        const { images, model, price } = product
+        const exist = this.user.cart.findIndex((item: Product, index: number) =>  {
+          if(item.model === model && item.images[0] === images[0] && item.price === price){
+            return true
+          }
+
+        }
+          )
+          if(exist !== -1){
+            if(this.user.cart[exist].amount === 5){
+              return
+            }
+            this.user.cart = this.user.cart.map((item: Product & { amount: number }, idx: number) => {
+              if(idx === exist){
+                return {
+                  ...item,
+                  amount: item.amount + 1
+                }
+              }else{
+                return item
+              }
+            })
+          sessionStorage.setItem('guest_cart', JSON.stringify(this.user.cart))
+          }else{
+          this.user.cart.push(cartedProduct)
+          sessionStorage.setItem('guest_cart', JSON.stringify(this.user.cart))
+        }
       }
+
+    },
+    async removeFromCart(product: Product){
+      const { price, model, images } = product
+      if (this.user.email) {
+        await axios.delete(
+          `http://localhost:5000/remove-from-cart/${this.user.uid}`, {
+            params: {
+              price: product.price,
+              model: product.model,
+              image: product.images[0]
+            }
+          }
+        );
+        this.updateUser()
+      } else {
+        this.user.cart = this.user.cart.filter((product: Product) => product.images[0] !== images[0] || product.price !== price)
+       sessionStorage.setItem('guest_cart', JSON.stringify(this.user.cart))
+      }
+    },
+    changeCart(cart: (Product & {amount: number, checked: boolean})[
+      ]){
+        this.user.cart = cart
+    },
+    async incrementProductAmount(product: Product){
+      const { changeProductAmount } = this.http
+      changeProductAmount(product, this.updateUser, this.user)
+    },
+    async decrementProductAmount(product: Product){
+      const { changeProductAmount } = this.http
+      changeProductAmount(product, this.updateUser, this.user, false)
     },
     async updateUser() {
       const { data: updatedUser } = await axios.get(
         `http://localhost:5000/find-user/${this.user.uid}`
       );
+      console.log(updatedUser)
+
       this.user = updatedUser;
       sessionStorage.setItem("user", JSON.stringify(this.user));
     },

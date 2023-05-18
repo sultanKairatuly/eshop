@@ -1,5 +1,10 @@
 <template>
-  <div class="loader_wrapper">
+  <div
+    class="loader_wrapper"
+    :class="{
+      invise: props.opacity,
+    }"
+  >
     <div class="lds-spinner">
       <div></div>
       <div></div>
@@ -17,6 +22,17 @@
   </div>
 </template>
 
+<script setup lang="ts">
+const props = withDefaults(
+  defineProps<{
+    opacity?: boolean;
+  }>(),
+  {
+    opacity: false,
+  }
+);
+</script>
+
 <style scoped>
 .loader_wrapper {
   position: absolute;
@@ -26,7 +42,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
+  background-color: #ffffff;
 }
 .lds-spinner {
   color: official;
@@ -105,5 +121,14 @@
   100% {
     opacity: 0;
   }
+}
+
+.invise {
+  background-color: #00000071;
+}
+
+.invise .lds-spinner {
+  background-color: #fff;
+  border-radius: 50%;
 }
 </style>

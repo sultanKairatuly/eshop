@@ -17,6 +17,7 @@
           Войти
         </button>
         <button class="cart_btn" @click="$router.push('/cart')">
+          <div class="unchecked">{{ uncheckedProductsLength }}</div>
           <i class="fa-solid fa-cart-shopping"></i>
         </button>
       </div>
@@ -31,17 +32,24 @@
 <script setup lang="ts">
 import { useUserStore } from "../stores/user";
 import { useUserUtilities } from "../composables/utilities";
+import { computed } from "vue";
+import { Product } from "../../types/types";
 const userStore = useUserStore();
 const { isUser } = useUserUtilities();
 async function logoutUser() {
-  console.log("logging out");
   await userStore.logoutUser();
-  console.log("logged out!");
 }
+const uncheckedProductsLength = computed(() => {
+  const unchecked = userStore.user.cart.filter(
+    (product: Product & { checked: boolean }) => !product.checked
+  ).length;
+  return unchecked;
+});
 </script>
 
 <style scoped>
 .cart_btn {
+  position: relative;
   padding: 3px;
   background-color: #cf4e3b;
   color: #fff;
@@ -49,6 +57,16 @@ async function logoutUser() {
   font-size: 20px;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.unchecked {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: red;
+  padding: 2px 6px;
+  font-size: 15px;
+  border-radius: 50%;
 }
 
 .cart_btn:hover {
