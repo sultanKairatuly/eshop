@@ -2,28 +2,28 @@
   <div class="container">
     <EshopLoader v-if="loading" />
     <div class="content_block">
-      <div class="title">Регистрация</div>
+      <div class="title">{{ $t("auth.registration") }}</div>
       <form class="form" @submit="registerUser">
         <div class="form_item">
-          <div class="label">Имя:</div>
+          <div class="label">{{ $t("auth.name") }}:</div>
           <EshopInput
             :model-value="name"
-            placeholder="Ваше имя"
+            :placeholder="$t('auth.namePlaceholder')"
             @update:modelValue="(value) => (name = value)"
           />
         </div>
         <div class="form_item">
-          <div class="label">Эл. почта:</div>
+          <div class="label">{{ $t("auth.email") }}:</div>
           <EshopInput
-            placeholder="Ваша почта"
+            :placeholder="$t('auth.emailPlaceholder')"
             :model-value="email"
             @update:modelValue="(value) => (email = value)"
           />
         </div>
         <div class="form_item">
-          <div class="label">Пароль:</div>
+          <div class="label">{{ $t("auth.password") }}:</div>
           <EshopInput
-            placeholder="Ваш пароль"
+            :placeholder="$t('auth.passwordPlaceholder')"
             @update:modelValue="(value) => (password = value)"
             :type="isPwt ? 'text' : 'password'"
             :icon="isPwt ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"
@@ -36,15 +36,17 @@
             <img :src="avatar" class="avatar" />
           </div>
           <button class="upload_avatar_btn" type="button" @click="uploadImage">
-            Загрузить
+            {{ $t("auth.upload") }}
           </button>
         </div>
-        <button type="submit" class="register_btn">Зарегистрироваться</button>
+        <button type="submit" class="register_btn">
+          {{ $t("auth.register") }}
+        </button>
       </form>
       <div class="link">
-        Уже есть аккаунт?<RouterLink to="/signin" tag="span"
-          >Войдите</RouterLink
-        >
+        {{ $t("auth.alreadyHave") }}?<RouterLink to="/signin" tag="span">{{
+          $t("auth.loginThen")
+        }}</RouterLink>
       </div>
     </div>
   </div>

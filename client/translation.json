@@ -1,0 +1,223 @@
+{
+    "ru": {
+        "intro": "Добро пожаловать в интернет-магазин",
+        "headerTop": {
+            "login": "Войти",
+            "logout": "Выйти",
+            "guest": "Гость"
+        },
+        "headerMiddle": {
+            "shop": "Магазин",
+            "placeholder": "Поиск товара",
+            "history": "История поиска",
+            "clear": "Очистить"
+        },
+        "headerBottom": {
+            "smartphones_and_gadgets": {
+                "value": "Телефоны и гаджеты",
+                "children": {
+                    "smartphones": {
+                    "value": "Телефоны",
+                    "children": {}
+                    },
+                    "gadgets": {
+                    "value": "Гаджеты",
+                    "children": {
+                        "chargers": {
+                            "value": "Зарядки",
+                            "children": {}
+                        },
+                        "clocks": {
+                            "value": "Часы",
+                            "children": {}
+                        }
+                    }
+                  }
+                }
+            },
+            "tv_audio_video": { 
+                "value": "ТВ, аудио, видео",
+                "children": {} 
+            },
+            "computers": {
+                "value": "компьютеры",
+                "children": {}
+            },
+            "furniture": {
+                "value": "мебель",
+                "children": {}
+            },
+            "food": { 
+                "value": "продукты питания",
+                "children": {}
+            },
+            "technics": { 
+                "value": "Бытовая техника",
+                "children": {}
+            }
+        },
+        "cart": {
+            "empty": "Ваша корзина пуста",
+            "headerTitle": "Ваша корзина",
+            "sum": "Сумма",
+            "goods": "Товары",
+            "order": "Оформить заказ"
+        },
+        "product": {
+            "price": "Цена",
+            "installment": "В рассрочку",
+            "to-cart": "В корзину",
+            "in-cart": "Уже в корзине"
+        },
+        "pagination": {
+            "next": "Следующий",
+            "prev": "Предыдущий"
+        },
+        "auth": {
+            "login": "Войти",
+            "register": "Зарегистрироваться",
+            "alreadyHave": "Уже есть аккаунт?",
+            "loginThen": "Войдите",
+            "registration": "Регистрация",
+            "email": "Эл. почта",
+            "name": "Имя",
+            "password": "Пароль",
+            "namePlaceholder": "Ваше имя",
+            "passwordPlaceholder": "Ваш пароль",
+            "emailPlaceholder": "Ваша почта",
+            "loginTitle": "Вход",
+            "noAccount": "Нет аккаунта?",
+            "continueAs": "Продолжить как",
+            "upload": "Загрузить"
+        },
+        "reviews": {
+            "add": "Добавить комментарий",
+            "rating": "Рейтинг",
+            "comment": "Комментарий",
+            "authAlert": "Авторизуйтесь на сайте",
+            "description": "Описание",
+            "reviews": "Отзывы",
+            "zoom": "Чтобы увеличить, нажмите на картинку",
+            "reviewPlaceholder": "Ваш отзыв",
+            "show": "Показать",
+            "title": "Отзывы о",
+            "new": "Новые",
+            "old": "Старые",
+            "positive": "Позитивные",
+            "negative": "Негативные",
+            "all": "Все",
+            "none": "Отзывов нет"
+        }
+    },
+    "kz": {
+        "intro": "Интернет-дүкенге қош келдіңіз",
+        "headerTop": {
+            "login": "Кіру",
+            "logout": "Шығу",
+            "guest": "Қонақ"
+        },
+        "headerMiddle": {
+            "shop": "Дүкен",
+            "placeholder": "Өнімді іздеу",
+            "history": "Іздеу тарихы",
+            "clear": "Тазалау"
+        }, 
+        "headerBottom": {
+            "smartphones_and_gadgets": {
+                "value": "Телефондар мен гаджеттер",
+                "children": {
+                    "smartphones": {
+
+                    "value": "Телефондар",
+                    "children": {}
+                    },
+                    "gadgets": {
+                    "value": "Гаджеттер",
+                    "children": {
+                        "chargers": {
+                            "value": "Зарядтағыш",
+                            "children": {}
+                        },
+                        "clocks": {
+                            "value": "Сағаттар",
+                            "children": {}
+                        }
+                    }
+                  }
+                }
+            },
+            "tv_audio_video": { 
+                "value": "ТВ, аудио, видео",
+                "children": {} 
+            },
+            "computers": {
+                "value": "компьютерлер",
+                "children": {}
+            },
+            "furniture": {
+                "value": "жиһаз",
+                "children": {}
+            },
+            "food": { 
+                "value": "азық-түлік",
+                "children": {}
+            },
+            "technics": {
+                "value": "Тұрмыстық техника",
+                "children": {}
+            }
+        },
+        "cart": {
+            "empty": "Cебeтіңіз бос",
+            "headerTitle": "Cебетіңіз",
+            "sum": "Сомасы",
+            "goods": "Тауарлар",
+            "order": "Тапсырысты рәсімдеу"
+        },
+        "product": {
+            "price": "Баға",
+            "installment": "Бөліп төлеу",
+            "to-cart": "Себетке қосу",
+            "in-cart": "Себетте бар"
+        },
+        "pagination": {
+            "next": "Келесі",
+            "prev": "Алдыңғы"
+        },
+        "auth": {
+            "login": "Кіру",
+            "register": "Тіркелу",
+            "alreadyHave": "Тіркелгі бар ма?",
+            "loginThen": "содан кейін жүйеге кіріңіз",
+            "registration": "Тіркеу",
+            "email": "Эл. пошта",
+            "name": "Есім",
+            "password": "Құпия сөз",
+            "namePlaceholder": "Сіздің атыңыз",
+            "passwordPlaceholder": "құпия сөзіңіз",
+            "emailPlaceholder": "Сіздің поштаңыз",
+            "loginTitle": "Кіру",
+            "noAccount": "Есептік жазбаңыз жоқ па?",
+            "continueAs": "ретінде жалғастырыңыз",
+            "upload": "Жүктеп алу"
+        },
+        "reviews": {
+         "add": "Пікір қосу",
+            "rating": "Рейтинг",
+            "comment": "Пікір",
+            "authAlert": "Сайтқа кіріңіз",
+            "description": "Сипаттама",
+            "reviews": "Пікірлер",
+            "zoom": "Үлкейту үшін суретті басыңыз",
+            "reviewPlaceholder": "Cіздің пікірініз",
+            "show": "Корсету",
+            "title": "туралы пікірлер",
+            "new": "Жана",
+            "old": "Ескі",
+            "positive": "Жаксы",
+            "negative": "Жаман",
+            "all": "Бәрі",
+            "none": "Пікір жоқ"
+        }
+    }
+}

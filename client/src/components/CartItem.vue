@@ -15,7 +15,7 @@
           {{ props.product.model }}
         </div>
         <div class="price cart_item-right-item">
-          <span style="font-weight: 500">Цена:</span> {{ props.product.price }}
+          <span style="font-weight: 500">{{ $t('product.price') }}:</span> {{ props.product.price }}
         </div>
       </div>
       <div class="amounts">

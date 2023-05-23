@@ -5,13 +5,11 @@ module.exports = {
       category: "mobiles",
       products: [
         {
-      category: "mobiles",
-      brand: "Apple",
+          category: "mobiles",
+          brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 14 Pro Max",
-          reviews: [
-           
-          ],
+          reviews: [],
           color: "чёрный",
           images: [
             "../assets/apple/mobiles/I14ProMax/black/image1.jpg",
@@ -24,7 +22,7 @@ module.exports = {
             {
               title: {
                 ru: "Цвет",
-                kz: "Тус",
+                kz: "Түс",
               },
               properties: ["color", "images"],
               values: [
@@ -57,7 +55,7 @@ module.exports = {
             {
               title: {
                 ru: "Объем встроенной памяти",
-                kz: "",
+                kz: "Кірістірілген жад",
               },
               properties: ["memory", "price"],
               values: [
@@ -85,8 +83,8 @@ module.exports = {
           `,
         },
         {
-      category: "mobiles",
-      brand: "Apple",
+          category: "mobiles",
+          brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 14 Pro",
           current_bundle: {
@@ -142,7 +140,7 @@ module.exports = {
             {
               title: {
                 ru: "Цвет",
-                kz: "Тус",
+                kz: "Түс",
               },
               properties: ["color", "images"],
               values: [
@@ -175,7 +173,7 @@ module.exports = {
             {
               title: {
                 ru: "Объем встроенной памяти",
-                kz: "",
+                kz: "Кірістірілген жад",
               },
               properties: ["memory", "price"],
               values: [
@@ -203,13 +201,11 @@ module.exports = {
           `,
         },
         {
-      category: "mobiles",
-      brand: "Apple",
+          category: "mobiles",
+          brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 14",
-          reviews: [
-            
-          ],
+          reviews: [],
           color: "чёрный",
           images: [
             "../assets/apple/mobiles/I14/black/image1.jpg",
@@ -255,7 +251,7 @@ module.exports = {
             {
               title: {
                 ru: "Объем встроенной памяти",
-                kz: "",
+                kz: "Кірістірілген жад",
               },
               properties: ["memory", "price"],
               values: [
@@ -283,13 +279,11 @@ module.exports = {
           `,
         },
         {
-      category: "mobiles",
-      brand: "Apple",
+          category: "mobiles",
+          brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 13 Pro Max",
-          reviews: [
-
-          ],
+          reviews: [],
           color: "зелёный",
           images: [
             "../assets/apple/mobiles/I13ProMax/green/image1.jpg",
@@ -335,7 +329,7 @@ module.exports = {
             {
               title: {
                 ru: "Объем встроенной памяти",
-                kz: "",
+                kz: "Кірістірілген жад",
               },
               properties: ["memory", "price"],
               values: [
@@ -367,12 +361,11 @@ module.exports = {
           `,
         },
         {
-      category: "mobiles",
-      brand: "Apple",
+          category: "mobiles",
+          brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 13 Pro",
-          reviews: [
-          ],
+          reviews: [],
           color: "зелёный",
           images: [
             "../assets/apple/mobiles/I13ProMax/green/image1.jpg",
@@ -418,7 +411,7 @@ module.exports = {
             {
               title: {
                 ru: "Объем встроенной памяти",
-                kz: "",
+                kz: "Кірістірілген жад",
               },
               properties: ["memory", "price"],
               values: [
@@ -450,13 +443,11 @@ module.exports = {
           battery_capacity: "3095 мАч",
         },
         {
-      category: "mobiles",
-      brand: "Apple",
+          category: "mobiles",
+          brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 13",
-          reviews: [
-           
-          ],
+          reviews: [],
           color: "чёрный",
           images: [
             "../assets/apple/mobiles/I13/black/image1.jpg",
@@ -502,7 +493,7 @@ module.exports = {
             {
               title: {
                 ru: "Объем встроенной памяти",
-                kz: "",
+                kz: "Кірістірілген жад",
               },
               properties: ["memory", "price"],
               values: [
@@ -530,13 +521,11 @@ module.exports = {
           battery_capacity: "3095 мАч",
         },
         {
-      category: "mobiles",
-      brand: "Apple",
+          category: "mobiles",
+          brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 12 Pro Max",
-          reviews: [
-    
-          ],
+          reviews: [],
           color: "чёрный",
           images: [
             "../assets/apple/mobiles/I12ProMax/black/image1.jpg",
@@ -582,7 +571,7 @@ module.exports = {
             {
               title: {
                 ru: "Объем встроенной памяти",
-                kz: "",
+                kz: "Кірістірілген жад",
               },
               properties: ["memory", "price"],
               values: [
@@ -610,13 +599,11 @@ module.exports = {
           battery_capacity: "3687.0 мАч",
         },
         {
-      category: "mobiles",
-      brand: "Apple",
+          category: "mobiles",
+          brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 12 Pro",
-          reviews: [
-     
-          ],
+          reviews: [],
           color: "чёрный",
           images: [
             "../assets/apple/mobiles/I12ProMax/black/image1.jpg",
@@ -662,7 +649,7 @@ module.exports = {
             {
               title: {
                 ru: "Объем встроенной памяти",
-                kz: "",
+                kz: "Кірістірілген жад",
               },
               properties: ["memory", "price"],
               values: [
@@ -690,13 +677,11 @@ module.exports = {
           battery_capacity: "3295 мАч",
         },
         {
-      category: "mobiles",
-      brand: "Apple",
+          category: "mobiles",
+          brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 12",
-          reviews: [
-   
-          ],
+          reviews: [],
           color: "чёрный",
           images: [
             "../assets/apple/mobiles/I12/black/image1.jpg",
@@ -742,7 +727,7 @@ module.exports = {
             {
               title: {
                 ru: "Объем встроенной памяти",
-                kz: "",
+                kz: "Кірістірілген жад",
               },
               properties: ["memory", "price"],
               values: [
@@ -770,13 +755,11 @@ module.exports = {
           battery_capacity: "2815.0 мАч",
         },
         {
-      category: "mobiles",
-      brand: "Apple",
+          category: "mobiles",
+          brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 11 Pro Max",
-          reviews: [
-       
-          ],
+          reviews: [],
           color: "чёрный",
           images: [
             "../assets/apple/mobiles/I11ProMax/black/image1.jpg",
@@ -822,7 +805,7 @@ module.exports = {
             {
               title: {
                 ru: "Объем встроенной памяти",
-                kz: "",
+                kz: "Кірістірілген жад",
               },
               properties: ["memory", "price"],
               values: [
@@ -850,13 +833,11 @@ module.exports = {
           battery_capacity: "3500.0 мАч",
         },
         {
-      category: "mobiles",
-      brand: "Apple",
+          category: "mobiles",
+          brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 11 Pro",
-          reviews: [
-   
-          ],
+          reviews: [],
           color: "чёрный",
           images: [
             "../assets/apple/mobiles/I11ProMax/black/image1.jpg",
@@ -902,7 +883,7 @@ module.exports = {
             {
               title: {
                 ru: "Объем встроенной памяти",
-                kz: "",
+                kz: "Кірістірілген жад",
               },
               properties: ["memory", "price"],
               values: [
@@ -930,13 +911,11 @@ module.exports = {
           battery_capacity: "2815.0 мАч",
         },
         {
-      category: "mobiles",
-      brand: "Apple",
+          category: "mobiles",
+          brand: "Apple",
           id: uuidv4(),
           model: "Смартфон Apple iPhone 11",
-          reviews: [
-  
-          ],
+          reviews: [],
           color: "чёрный",
           images: [
             "../assets/apple/mobiles/I11/black/image1.jpg",
@@ -982,7 +961,7 @@ module.exports = {
             {
               title: {
                 ru: "Объем встроенной памяти",
-                kz: "",
+                kz: "Кірістірілген жад",
               },
               properties: ["memory", "price"],
               values: [
@@ -1010,12 +989,11 @@ module.exports = {
           battery_capacity: "3110.0 мАч",
         },
         {
-      category: "mobiles",
-      brand: "Samsung",
+          category: "mobiles",
+          brand: "Samsung",
           id: uuidv4(),
           model: "Смартфон Samsung Galaxy A13 ",
-          reviews: [
-          ],
+          reviews: [],
           color: "чёрный",
           images: [
             "../assets/samsung/mobiles/A13/black/image1.jpg",
@@ -1061,7 +1039,7 @@ module.exports = {
             {
               title: {
                 ru: "Объем встроенной памяти",
-                kz: "",
+                kz: "Кірістірілген жад",
               },
               properties: ["memory", "price"],
               values: [
@@ -1085,13 +1063,11 @@ module.exports = {
           battery_capacity: "5000 мАч",
         },
         {
-      category: "mobiles",
-      brand: "Samsung",
+          category: "mobiles",
+          brand: "Samsung",
           id: uuidv4(),
           model: "Samsung Galaxy A23",
-          reviews: [
-   
-          ],
+          reviews: [],
           color: "чёрный",
           images: [
             "../assets/samsung/mobiles/A23/black/image1.jpg",
@@ -1137,7 +1113,7 @@ module.exports = {
             {
               title: {
                 ru: "Объем встроенной памяти",
-                kz: "",
+                kz: "Кірістірілген жад",
               },
               properties: ["memory", "price"],
               values: [
@@ -1157,13 +1133,11 @@ module.exports = {
           battery_capacity: "5000 мАч",
         },
         {
-      category: "mobiles",
-      brand: "Samsung",
+          category: "mobiles",
+          brand: "Samsung",
           id: uuidv4(),
           model: "Смартфон Samsung Galaxy A53",
-          reviews: [
-
-          ],
+          reviews: [],
           color: "чёрный",
           images: [
             "../assets/samsung/mobiles/A53/black/image1.jpg",
@@ -1209,7 +1183,7 @@ module.exports = {
             {
               title: {
                 ru: "Объем встроенной памяти",
-                kz: "",
+                kz: "Кірістірілген жад",
               },
               properties: ["memory", "price"],
               values: [
@@ -1229,13 +1203,11 @@ module.exports = {
           battery_capacity: "5000 мАч",
         },
         {
-      category: "mobiles",
-      brand: "Samsung",
+          category: "mobiles",
+          brand: "Samsung",
           id: uuidv4(),
           model: "Смартфон Samsung Galaxy S21 FE",
-          reviews: [
-
-          ],
+          reviews: [],
           color: "чёрный",
           images: [
             "../assets/samsung/mobiles/S21FE/black/image1.jpg",
@@ -1281,7 +1253,7 @@ module.exports = {
             {
               title: {
                 ru: "Объем встроенной памяти",
-                kz: "",
+                kz: "Кірістірілген жад",
               },
               properties: ["memory", "price"],
               values: [
@@ -1311,7 +1283,7 @@ module.exports = {
           value: "CPU",
           title: {
             ru: "Модель процессора",
-            kz: "Процессордын модели",
+            kz: "Процессор үлгісі",
           },
           values: [
             { value: "A13 Bionic", checked: false, title: "A13 Bionic" },
@@ -1325,7 +1297,7 @@ module.exports = {
           value: "RAM",
           title: {
             ru: "Объем оперативной памяти",
-            kz: "Процессордын модели",
+            kz: "Жедел жадтау құрылғысы",
           },
           values: [
             { value: "2 ГБ", checked: false, title: "2 ГБ" },
@@ -1353,7 +1325,7 @@ module.exports = {
           value: "current_bundle.price|price",
           title: {
             ru: "Цена",
-            kz: "Бага",
+            kz: "Баға",
           },
           values: [
             { title: "до 10 000т", value: "0-10000", checked: false },
@@ -1391,8 +1363,8 @@ module.exports = {
       category: "chargers",
       products: [
         {
-      category: "chargers",
-      brand: "Apple",
+          category: "chargers",
+          brand: "Apple",
           id: uuidv4(),
           model: "Зарядное устройство Apple 18W USB-C Power Adapter белый",
           price: "10 155 ₸",
@@ -1406,8 +1378,8 @@ module.exports = {
           ],
         },
         {
-      category: "chargers",
-      brand: "Apple",
+          category: "chargers",
+          brand: "Apple",
           id: uuidv4(),
           model: "Зарядное устройство Apple 20W USB-C Power Adapter белый",
           price: "9 484 ₸",
@@ -1421,8 +1393,8 @@ module.exports = {
           ],
         },
         {
-      category: "chargers",
-      brand: "Apple",
+          category: "chargers",
+          brand: "Apple",
           id: uuidv4(),
           model: "Зарядное устройство Apple 20W USB-C Power Adapter (Type A)",
           price: "11 966 ₸",
@@ -1436,8 +1408,8 @@ module.exports = {
           ],
         },
         {
-      category: "chargers",
-      brand: "Apple",
+          category: "chargers",
+          brand: "Apple",
           id: uuidv4(),
           model: "Зарядное устройство Apple 5W USB Power Adapter",
           price: "8 866 ₸",
@@ -1451,8 +1423,8 @@ module.exports = {
           ],
         },
         {
-      category: "chargers",
-      brand: "Apple",
+          category: "chargers",
+          brand: "Apple",
           id: uuidv4(),
           model: "Зарядное устройство Apple 20W USB-C Power Adapter (Type G)",
           price: "11 975 ₸",
@@ -1466,8 +1438,8 @@ module.exports = {
           ],
         },
         {
-      category: "chargers",
-      brand: "Apple",
+          category: "chargers",
+          brand: "Apple",
           id: uuidv4(),
           model: "Зарядное устройство Apple 12W USB Power Adapter",
           price: "13 898 ₸",
@@ -1481,8 +1453,8 @@ module.exports = {
           ],
         },
         {
-      category: "chargers",
-      brand: "Apple",
+          category: "chargers",
+          brand: "Apple",
           id: uuidv4(),
           model: "Блок питания Apple 30W USB-C Power Adapter",
           price: "29 850 ₸",
@@ -1496,8 +1468,8 @@ module.exports = {
           ],
         },
         {
-      category: "chargers",
-      brand: "Apple",
+          category: "chargers",
+          brand: "Apple",
           id: uuidv4(),
           model: "Блок питания Apple 45W MagSafe 2 Power Adapter",
           price: "28 490 ₸",
@@ -1507,8 +1479,8 @@ module.exports = {
           images: ["../assets/apple/chargers/MagSafe245W/image1.jpg"],
         },
         {
-      category: "chargers",
-      brand: "Apple",
+          category: "chargers",
+          brand: "Apple",
           id: uuidv4(),
           model: "Блок питания Apple MagSafe 2 60W белый",
           price: "28 890 ₸",
@@ -1522,8 +1494,8 @@ module.exports = {
           ],
         },
         {
-      category: "chargers",
-      brand: "Apple",
+          category: "chargers",
+          brand: "Apple",
           id: uuidv4(),
           model:
             "Блок питания Apple 61W USB-C Power Adapter + Apple USB-C - USB-C 2 м",
@@ -1538,8 +1510,8 @@ module.exports = {
           ],
         },
         {
-      category: "chargers",
-      brand: "Apple",
+          category: "chargers",
+          brand: "Apple",
           id: uuidv4(),
           model: "Блок питания Apple 67W USB-C Power Adapter",
           price: "41 979 ₸",
@@ -1553,8 +1525,8 @@ module.exports = {
           ],
         },
         {
-      category: "chargers",
-      brand: "Apple",
+          category: "chargers",
+          brand: "Apple",
           id: uuidv4(),
           model: "Блок питания Apple MagSafe 2 85W белый",
           price: "20 550 ₸",
@@ -1568,8 +1540,8 @@ module.exports = {
           ],
         },
         {
-      category: "chargers",
-      brand: "Apple",
+          category: "chargers",
+          brand: "Apple",
           id: uuidv4(),
           model: "Зарядное устройство Apple MagSafe Duo Charger",
           price: "74 856 ₸",
@@ -1602,7 +1574,7 @@ module.exports = {
           value: "current_bundle.price|price",
           title: {
             ru: "Цена",
-            kz: "Бага",
+            kz: "Баға",
           },
           values: [
             { title: "до 10 000т", value: "0-10000", checked: false },
@@ -1640,8 +1612,8 @@ module.exports = {
       category: "clocks",
       products: [
         {
-      category: "clocks",
-      brand: "Apple",
+          category: "clocks",
+          brand: "Apple",
           id: uuidv4(),
           model: "Смарт-часы Apple Watch Series 8",
           color: "чёрный",
@@ -1656,7 +1628,7 @@ module.exports = {
             {
               title: {
                 ru: "Цвет",
-                kz: "Тус",
+                kz: "Түс",
               },
               properties: ["color", "images"],
               values: [
@@ -1710,8 +1682,8 @@ module.exports = {
           memory: "32 ГБ",
         },
         {
-      category: "clocks",
-      brand: "Apple",
+          category: "clocks",
+          brand: "Apple",
           id: uuidv4(),
           model: "Смарт-часы Apple Watch SE 2nd Gen",
           color: "чёрный",
@@ -1726,7 +1698,7 @@ module.exports = {
             {
               title: {
                 ru: "Цвет",
-                kz: "Тус",
+                kz: "Түс",
               },
               properties: ["color", "images"],
               values: [
@@ -1781,8 +1753,8 @@ module.exports = {
           memory: "32 ГБ",
         },
         {
-      category: "clocks",
-      brand: "Apple",
+          category: "clocks",
+          brand: "Apple",
           id: uuidv4(),
           model: "Смарт-часы Apple Watch SE",
           color: "чёрный",
@@ -1797,7 +1769,7 @@ module.exports = {
             {
               title: {
                 ru: "Цвет",
-                kz: "Тус",
+                kz: "Түс",
               },
               properties: ["color", "images"],
               values: [
@@ -1856,8 +1828,8 @@ module.exports = {
           memory: "32 ГБ",
         },
         {
-      category: "clocks",
-      brand: "Apple",
+          category: "clocks",
+          brand: "Apple",
           id: uuidv4(),
           model: "Смарт-часы Apple Watch Series 7",
           color: "чёрный",
@@ -1872,7 +1844,7 @@ module.exports = {
             {
               title: {
                 ru: "Цвет",
-                kz: "Тус",
+                kz: "Түс",
               },
               properties: ["color", "images"],
               values: [
@@ -1927,8 +1899,8 @@ module.exports = {
           memory: "32 ГБ",
         },
         {
-      category: "clocks",
-      brand: "Apple",
+          category: "clocks",
+          brand: "Apple",
           id: uuidv4(),
           model: "Смарт-часы Apple Watch Series 6",
           color: "чёрный",
@@ -2005,8 +1977,8 @@ module.exports = {
           memory: "32 ГБ",
         },
         {
-      category: "clocks",
-      brand: "Apple",
+          category: "clocks",
+          brand: "Apple",
           id: uuidv4(),
           model: "Смарт-часы Apple Watch Ultra Ocean",
           color: "чёрный",
@@ -2047,8 +2019,8 @@ module.exports = {
           memory: "32 ГБ",
         },
         {
-      category: "clocks",
-      brand: "Samsung",
+          category: "clocks",
+          brand: "Samsung",
           id: uuidv4(),
           model: "Смарт-часы Samsung Galaxy Watch 5 Pro",
           color: "чёрный",
@@ -2106,8 +2078,8 @@ module.exports = {
           memory: "32 ГБ",
         },
         {
-      category: "clocks",
-      brand: "Samsung",
+          category: "clocks",
+          brand: "Samsung",
           id: uuidv4(),
           model: "Смарт-часы Samsung Galaxy Watch 5",
           color: "чёрный",
@@ -2174,8 +2146,8 @@ module.exports = {
           memory: "32 ГБ",
         },
         {
-      category: "clocks",
-      brand: "Samsung",
+          category: "clocks",
+          brand: "Samsung",
           id: uuidv4(),
           model: "Смарт-часы Samsung Galaxy Watch 4 SM-R870N",
           color: "чёрный",
@@ -2236,8 +2208,8 @@ module.exports = {
           memory: "16 ГБ",
         },
         {
-      category: "clocks",
-      brand: "Samsung",
+          category: "clocks",
+          brand: "Samsung",
           id: uuidv4(),
           model: "Смарт-часы Samsung Galaxy Watch3 SM-R840",
           color: "чёрный",
@@ -2295,8 +2267,8 @@ module.exports = {
           memory: "8 ГБ",
         },
         {
-      category: "clocks",
-      brand: "Samsung",
+          category: "clocks",
+          brand: "Samsung",
           id: uuidv4(),
           model: "Смарт-часы Samsung Galaxy Watch3 SM-R850",
           color: "чёрный",
@@ -2338,7 +2310,7 @@ module.exports = {
             {
               title: {
                 ru: "Размер корпуса",
-                kz: "",
+                kz: "Корпус өлшемі",
               },
               properties: ["size", "price"],
               values: [
@@ -2375,7 +2347,7 @@ module.exports = {
           value: "current_bundle.price|price",
           title: {
             ru: "Цена",
-            kz: "Бага",
+            kz: "Баға",
           },
           values: [
             { title: "до 10 000т", value: "0-10000", checked: false },
@@ -2404,6 +2376,38 @@ module.exports = {
               title: "более 500 000т",
               value: "500000-100000000",
               checked: false,
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  tv_audio_video: [
+    {
+      category: "tv",
+      products: [
+        {
+          category: "tv",
+          id: uuidv4(),
+          model: "",
+          parameters: [],
+          screenSize: 10,
+          price: "",
+          parameters: [
+            {
+              title: {
+                ru: "Цвет",
+                kz: "Түс",
+              },
+            },
+            {
+              properties: ["color", "images"],
+              values: [
+                {
+                  color: "чёрный",
+                  images: [],
+                },
+              ],
             },
           ],
         },

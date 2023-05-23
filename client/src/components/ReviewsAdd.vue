@@ -3,38 +3,37 @@
     <EshopLoader v-if="loading" />
     <div class="locked" v-if="!userStore.user.email">
       <i class="fa-solid fa-lock lock"></i>
-      <div class="lock_text">Авторизуйтесь на сайте</div>
+      <div class="lock_text">{{ $t("reviews.authAlert") }}</div>
     </div>
-    <label class="label">Комментарий</label>
+    <label class="label">{{ $t("reviews.comment") }}</label>
     <input
-      placeholder="Ваш отзыв"
+      :placeholder="$t('reviews.reviewPlaceholder')"
       type="text"
       v-model="reviewMessage"
       class="message_input"
     />
-    <label class="label">Рейтинг</label>
+    <label class="label">{{ $t("reviews.rating") }}</label>
     <select class="select" v-model="reviewRate">
-      <option class="option" v-for="item in 5" :value="item">{{ item }}</option>
+      <option class="option" v-for="item in 5" :key="item" :value="item">
+        {{ item }}
+      </option>
     </select>
-    <EshopButton class="btn" @click="postReview">Добавить отзыв</EshopButton>
+    <EshopButton class="btn" @click="postReview">{{
+      $t("reviews.add")
+    }}</EshopButton>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, inject } from "vue";
 import type { Ref } from "vue";
-import { Review, Product } from "../../types/types";
+import { Review } from "../../types/types";
 import { v4 as uuidv4 } from "uuid";
 import { useUserStore } from "../stores/user";
-import { useRoute } from "vue-router";
 import EshopButton from "../UIcomponents/EshopButton.vue";
 import EshopLoader from "./EshopLoader.vue";
 
-const route = useRoute();
 const userStore = useUserStore();
-const props = defineProps<{
-  product: Product;
-}>();
 
 const loading: Ref<boolean> = inject("reviewLoading") as Ref<boolean>;
 const emit = defineEmits<{

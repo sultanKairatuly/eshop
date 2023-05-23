@@ -4,10 +4,13 @@
     @click="handleParameterConfigClick(props.parameters)"
     :class="{
       'parameters_configuration-open':
-        activeConfiguration?.title?.ru === props.parameters.title.ru,
+        props.activeConfiguration?.title?.[userStore.activeLocale as string] ===
+        props.parameters.title[userStore.activeLocale as string],
     }"
   >
-    <div class="parameters_title">{{ props.parameters.title.ru }}</div>
+    <div class="parameters_title">
+      {{ props.parameters.title[userStore.activeLocale as string] }}
+    </div>
     <div class="parameters_value">
       {{ props.product[parameters.properties[0] as keyof Product] }}
     </div>
@@ -16,7 +19,9 @@
 
 <script setup lang="ts">
 import { ProductParametersType, Product } from "../../types/types";
+import { useUserStore } from "../stores/user";
 
+const userStore = useUserStore();
 const props = defineProps<{
   parameters: ProductParametersType;
   product: Product;

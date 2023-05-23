@@ -23,13 +23,16 @@
 </template>
 
 <script setup lang="ts">
-import { shallowRef } from "vue";
+import { shallowRef, computed } from "vue";
 import type { Component } from "vue";
 import { Product, Review, Tab } from "../../types/types";
 import ProductDescription from "./ProductDescription.vue";
 import ProductReviews from "./ProductReviews.vue";
 import ProductTab from "../components/ProductTab.vue";
 import { v4 as uuidv4 } from "uuid";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 const props = defineProps<{
   product: Product;
 }>();
@@ -39,18 +42,18 @@ const emit = defineEmits<{
 }>();
 
 let currentComponent = shallowRef<Component>(ProductDescription);
-const tabs: Tab[] = [
+const tabs = computed<Tab[]>(() => [
   {
-    name: "Описание",
+    name: t("reviews.description"),
     component: ProductDescription,
     id: uuidv4(),
   },
   {
-    name: "Отзывы",
+    name: t("reviews.reviews"),
     component: ProductReviews,
     id: uuidv4(),
   },
-];
+]);
 
 function changeTab(component: Component) {
   currentComponent.value = component;

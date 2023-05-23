@@ -38,13 +38,13 @@
     </div>
     <div class="bills">
       <div class="price">
-        <div class="price_title">Цена</div>
+        <div class="price_title">{{ $t("product.price") }}</div>
         <div class="price_value">
           {{ props.product.price }}
         </div>
       </div>
       <div class="installment">
-        <div class="installment_title">В рассрочку</div>
+        <div class="installment_title">{{ $t("product.installment") }}</div>
         <div class="installment_value">
           {{ getInstallment(props.product) }}
         </div>

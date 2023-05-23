@@ -179,7 +179,6 @@ function breadcrumpClicked(id: string) {
 }
 
 function updatePage(updatedPage: number) {
-  //   page.value = updatedPage;
   emit("updatePage", updatedPage);
   const capturedScrollYCoordinates: number = scrollYCoordinates.value;
   setTimeout(() => {

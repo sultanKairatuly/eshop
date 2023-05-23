@@ -9,13 +9,13 @@
         :currentTreeLinkId="props.currentTreeLinkId"
         @changeLoading="changeLoading"
         @updateCurrentTreeLinkId="updateCurrentTreeLinkId"
+        @openDropdown="openDropdown"
       />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import CatalogPageContent from "../components/CatalogPageContent.vue";
 import { DropdownFilterType, Product } from "../../types/types";
 
@@ -23,11 +23,12 @@ const props = defineProps<{
   dropdownFilter: DropdownFilterType[];
   currentTreeLinkId: string;
   foundProducts: Product[] | null;
-  loading: boolean
+  loading: boolean;
 }>();
 const emit = defineEmits<{
   (e: "updateCurrentTreeLinkId", value: string): void;
   (e: "changeLoader", value: boolean): void;
+  (e: "openDropdown", value: string): void;
 }>();
 
 function changeLoading(loadingValue: boolean) {
@@ -36,6 +37,10 @@ function changeLoading(loadingValue: boolean) {
 
 function updateCurrentTreeLinkId(id: string) {
   emit("updateCurrentTreeLinkId", id);
+}
+
+function openDropdown(id: string) {
+  emit("openDropdown", id);
 }
 </script>
 

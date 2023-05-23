@@ -14,6 +14,7 @@
         @updateCurrentTreeLinkId="updateCurrentTreeLinkId"
         @updatePage="updatePage"
         @deleteTotalFilterValue="deleteTotalFilterValue"
+        @openDropdown="openDropdown"
       />
     </div>
     <div class="products_container">
@@ -41,8 +42,7 @@ import type {
   totalFilterItemType,
   Product,
 } from "../../types/types";
-import { v4 as uuidv4 } from "uuid";
-import { useRoute, useRouter } from "vue-router";
+import { useRoute } from "vue-router";
 import { useUserUtilities } from "../composables/utilities";
 import { FilterType } from "../../types/types";
 
@@ -53,6 +53,7 @@ import CatalogPageProducts from "./CatalogPageProducts.vue";
 const emit = defineEmits<{
   (e: "changeLoading", value: boolean): void;
   (e: "updateCurrentTreeLinkId", value: string): void;
+  (e: "openDropdown", id: string): void;
 }>();
 
 const props = defineProps<{
@@ -61,8 +62,7 @@ const props = defineProps<{
   foundProducts: Product[] | null;
 }>();
 
-const { isHasDepth, findTreeLinkAndDepth, isHasBundle, isHasValues } =
-  useUserUtilities();
+const { isHasDepth, findTreeLinkAndDepth } = useUserUtilities();
 const route = useRoute();
 const categoryName = route.params.category as string;
 const { fetchCatalog, category } = useHttpRequests(categoryName);
@@ -110,7 +110,6 @@ function setTotalFilterValue(value: {
 }
 
 function updateCurrentTreeLinkId(id: string) {
-  // props.currentTreeLinkId = id;
   emit("updateCurrentTreeLinkId", id);
 }
 
@@ -158,10 +157,6 @@ function updateCurrentLinkId() {
       1,
       category
     );
-    // currentTreeLinkId.value = isHasDepth(foundTreeLink)
-    //   ? foundTreeLink.item.id
-    //   : dropdownFilter[0].id;
-
     if (isHasDepth(foundTreeLink)) {
       emit("updateCurrentTreeLinkId", foundTreeLink.item.id);
     } else {
@@ -223,6 +218,10 @@ function fetchProducts() {
   } catch (err) {
     console.log(err);
   }
+}
+
+function openDropdown(id: string) {
+  emit("openDropdown", id);
 }
 </script>
 

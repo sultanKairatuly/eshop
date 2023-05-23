@@ -5,16 +5,22 @@
         <div class="avatar_container">
           <img :src="userStore.user?.photoURL" class="avatar" />
         </div>
-        <div class="name">{{ userStore.user?.displayName }}</div>
+        <div class="name">
+          {{
+            userStore.user?.email
+              ? userStore.user.displayName
+              : userStore.user.displayName[userStore.activeLocale]
+          }}
+        </div>
         <button
           class="auth_btn"
           v-if="isUser(userStore.user)"
           @click="logoutUser"
         >
-          Выйти
+          {{ $t("headerTop.logout") }}
         </button>
         <button class="auth_btn" @click="$router.push('/signin')" v-else>
-          Войти
+          {{ $t("headerTop.login") }}
         </button>
         <button class="cart_btn" @click="$router.push('/cart')">
           <div class="unchecked">{{ uncheckedProductsLength }}</div>
@@ -22,8 +28,17 @@
         </button>
       </div>
       <div class="lang">
-        <div class="lang_item">Қаз</div>
-        <div class="lang_item active_lang">Рус</div>
+        <div
+          class="lang_item"
+          v-for="locale in locales"
+          :key="locale.value"
+          :class="{
+            active_lang: userStore.activeLocale === locale.value,
+          }"
+          @click="changeLocale(locale.value)"
+        >
+          {{ locale.title }}
+        </div>
       </div>
     </div>
   </div>
@@ -32,8 +47,11 @@
 <script setup lang="ts">
 import { useUserStore } from "../stores/user";
 import { useUserUtilities } from "../composables/utilities";
-import { computed } from "vue";
+import { computed, ref, reactive } from "vue";
 import { Product } from "../../types/types";
+import { useI18n } from "vue-i18n";
+
+const i18n = useI18n();
 const userStore = useUserStore();
 const { isUser } = useUserUtilities();
 async function logoutUser() {
@@ -45,6 +63,26 @@ const uncheckedProductsLength = computed(() => {
   ).length;
   return unchecked;
 });
+type Locale = {
+  title: string;
+  value: string;
+};
+
+const locales: Locale[] = reactive([
+  {
+    title: "Қаз",
+    value: "kz",
+  },
+  {
+    title: "Рус",
+    value: "ru",
+  },
+]);
+
+function changeLocale(locale: string) {
+  i18n.locale.value = locale;
+  userStore.changeLocale(locale);
+}
 </script>
 
 <style scoped>

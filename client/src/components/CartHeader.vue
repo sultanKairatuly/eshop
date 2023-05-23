@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <h2 class="title">Ваша корзина({{ props.cartItems }})</h2>
+    <h2 class="title">{{ $t('cart.headerTitle') }}({{ props.cartItems }})</h2>
   </header>
 </template>
 

@@ -1,6 +1,11 @@
 <template>
   <div class="reviews_container">
-    <h1 class="title">Отзывы о {{ props.product.model }}</h1>
+    <h1 class="title" v-if="userStore.activeLocale === 'ru'">
+      {{ $t("reviews.title") }} {{ props.product.model }}
+    </h1>
+    <h1 v-else class="title">
+      {{ props.product.model }} {{ $t("reviews.title") }}
+    </h1>
     <ReviewSorts
       :reviews="props.product.reviews"
       :activeSortingCriteria="activerSortingCriteria"
@@ -16,12 +21,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, computed } from "vue";
+import { ref, computed } from "vue";
 import { Product, sortingCriteriesType, Review } from "../../types/types";
 import ReviewSorts from "./ReviewSorts.vue";
 import ReviewList from "./ReviewList.vue";
 import ReviewAdd from "./ReviewsAdd.vue";
+import { useI18n } from "vue-i18n";
+import { useUserStore } from "../stores/user";
 
+const userStore = useUserStore();
+const { t } = useI18n();
 const props = defineProps<{
   product: Product;
 }>();
@@ -30,14 +39,16 @@ const emit = defineEmits<{
   (e: "updateReviews", value: Review): void;
 }>();
 
-const sortingCriteries: sortingCriteriesType[] = [
-  { name: "Все", value: "all" },
-  { name: "Новые", value: "new" },
-  { name: "Старые", value: "old" },
-  { name: "Положительные", value: "positive" },
-  { name: "Отрицательные", value: "negative" },
-];
-const activerSortingCriteria = ref<sortingCriteriesType>(sortingCriteries[0]);
+const sortingCriteries = computed<sortingCriteriesType[]>(() => [
+  { name: t("reviews.all"), value: "all" },
+  { name: t("reviews.new"), value: "new" },
+  { name: t("reviews.old"), value: "old" },
+  { name: t("reviews.positive"), value: "positive" },
+  { name: t("reviews.negative"), value: "negative" },
+]);
+const activerSortingCriteria = ref<sortingCriteriesType>(
+  sortingCriteries.value[0]
+);
 const sortingCriteria = ref<sortingCriteriesType["value"]>("all");
 const sortedReviews = computed<Review[] | undefined>(() => {
   if (sortingCriteria.value === "all") {

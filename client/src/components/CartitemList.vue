@@ -31,7 +31,10 @@ const callback = (
         "|"
       ) as string[];
       userStore.user.cart.forEach(
-        (product: Product & { amount: number; checked: boolean }, idx: number) => {
+        (
+          product: Product & { amount: number; checked: boolean },
+          idx: number
+        ) => {
           if (product.price === price && product.images[0] === image) {
             userStore.user.cart[idx] = {
               ...product,
@@ -43,6 +46,7 @@ const callback = (
       observer.unobserve(entry.target);
     }
   });
+  sessionStorage.setItem("user", JSON.stringify(userStore.user));
 };
 const observer = new IntersectionObserver(callback, {
   threshold: 1.0,

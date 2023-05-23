@@ -9,7 +9,7 @@
       @click="activateSliderFlag"
       :src="getImageUrl(props.currentImage)"
     />
-    <div class="zoom_tooltip">Чтобы увеличить, нажмите на картинку</div>
+    <div class="zoom_tooltip">{{ $t("reviews.zoom") }}</div>
   </div>
 </template>
 
@@ -19,14 +19,12 @@ import { useUserUtilities } from "../composables/utilities";
 const { getImageUrl } = useUserUtilities();
 
 const props = defineProps<{
-    currentImage: string
-}>()
+  currentImage: string;
+}>();
 
 const emit = defineEmits<{
   (e: "activateSliderFlag"): void;
 }>();
-
-
 
 function activateSliderFlag() {
   emit("activateSliderFlag");
@@ -55,8 +53,6 @@ function activateSliderFlag() {
   object-fit: contain;
   cursor: zoom-in;
 }
-
-
 
 .badges {
   width: 100px;

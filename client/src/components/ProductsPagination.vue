@@ -7,7 +7,7 @@
       }"
       @click="updatePage(props.page - 1)"
     >
-      ← Предыдущая
+      ← {{ $t("pagination.prev") }}
     </div>
     <div
       class="pagination_item"
@@ -29,7 +29,7 @@
           Math.ceil(props.products.length / props.productsPerPage),
       }"
     >
-      Следующая →
+      {{ $t("pagination.next") }} →
     </div>
   </div>
 </template>

@@ -11,7 +11,7 @@ import { User, Guest } from "../../types/types";
 import router from "../router/index";
 import axios from "axios";
 import { useHttpRequests } from "../composables/httpRequests";
-import { BlockquoteHTMLAttributes } from "vue";
+
 
 export const useUserStore = defineStore("user", {
   state() {
@@ -19,13 +19,16 @@ export const useUserStore = defineStore("user", {
       user:
         JSON.parse(sessionStorage.getItem("user") as string) ||
         ({
-          displayName: "Гость",
+          displayName: {
+            ru: "Гость",
+            kz: "Қонақ"
+          },
           cart: JSON.parse(sessionStorage.getItem('guest_cart' || null) as string) || [],
           photoURL: 
             "https://thinksport.com.au/wp-content/uploads/2020/01/avatar-.jpg",
         } as User | Guest),
       http: useHttpRequests('_'),
-      checkedProducts: JSON.parse(sessionStorage.getItem('checkedProducts') as string) ||  [] as (Product & { amount: number})[]
+      activeLocale: sessionStorage.getItem('locale') || "ru"
     };
   },
   actions: {
@@ -58,7 +61,10 @@ export const useUserStore = defineStore("user", {
     },
     continueWithGuest() {
       const guest: Guest = {
-        displayName: "Гость",
+        displayName: {
+          ru: "Гость",
+          kz: "Қонақ"
+        },
         cart: [],
         photoURL:
           "https://thinksport.com.au/wp-content/uploads/2020/01/avatar-.jpg",
@@ -192,6 +198,10 @@ export const useUserStore = defineStore("user", {
       this.user = updatedUser;
       sessionStorage.setItem("user", JSON.stringify(this.user));
     },
+    changeLocale(locale: string){
+      this.activeLocale = locale
+      sessionStorage.setItem('locale', locale)
+    }
   },
   getters: {},
 });

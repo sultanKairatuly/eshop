@@ -1,6 +1,6 @@
 <template>
   <div class="sort_container">
-    <div class="sort_title">Показать</div>
+    <div class="sort_title">{{ $t("reviews.show") }}</div>
     <div class="sorts">
       <div
         class="sort_item"
@@ -31,7 +31,7 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{
-  (e: "updateSortedReviews", value: sortingCriteriesType['value']): void;
+  (e: "updateSortedReviews", value: sortingCriteriesType["value"]): void;
   (e: "changeActiveSortingCriteria", value: sortingCriteriesType): void;
 }>();
 

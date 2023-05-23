@@ -9,7 +9,7 @@
           borderToped: idx === 0
         }"
       >
-        <div class="filter_title">{{ filter.title.ru }}</div>
+        <div class="filter_title">{{ filter.title[userStore.activeLocale] }}</div>
         <p
           class="label"
           v-for="checkbox in filter.values"
@@ -34,7 +34,9 @@
 import { computed, ref, watch } from "vue";
 import { Category, Filter, EmittedFilterType } from "../../types/types";
 import { useRoute } from 'vue-router'
+import { useUserStore } from "../stores/user";
 
+const userStore = useUserStore()
 const route = useRoute()
 const catalogName = ref<string>(route.query.catalogName as string)
 const subcatalogName = ref<string>(route.query.subcatalogName as string)

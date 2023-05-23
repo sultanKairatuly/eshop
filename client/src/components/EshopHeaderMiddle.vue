@@ -2,27 +2,29 @@
   <div class="header_middle">
     <div class="header_middle_content">
       <div class="search_bar">
-        <div class="left_side" @click="$router.push('/shop')">Магазин</div>
+        <div class="left_side" @click="$router.push('/shop')">
+          {{ $t("headerMiddle.shop") }}
+        </div>
         <div class="input_container">
           <input
             type="text"
             :value="props.modelValue"
             @input="updateModelValue"
             class="search_input"
-            placeholder="Поиск товара"
+            :placeholder="$t('headerMiddle.placeholder')"
             @click="changeHistoryFlag(true)"
           />
           <div class="history" @click.stop v-if="props.isHistory">
             <div class="history_header">
-              <div class="history_title">История поиска</div>
+              <div class="history_title">{{ $t("headerMiddle.history") }}</div>
               <button class="clear-history-btn" @click="clearHistory">
-                Очистить
+                {{ $t("headerMiddle.clear") }}
               </button>
             </div>
 
             <div
               class="history_item"
-              v-for="(item, idx) in history"
+              v-for="(item, idx) in props.history"
               :key="idx + item"
               @click="goToHistory(item)"
             >

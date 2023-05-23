@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="greets">
-      <h1 class="homepage_title">Добро пожаловать в Интернет-магазин</h1>
+      <h1 class="homepage_title">{{ $t("intro") }}</h1>
     </div>
     <carousel :wrap-around="true" :items-to-show="1">
       <slide class="slide" v-for="slide in slides" :key="slide.id">
@@ -27,7 +27,10 @@ import { Carousel, Slide, Navigation } from "vue3-carousel";
 import "vue3-carousel/dist/carousel.css";
 import { v4 as uuidv4 } from "uuid";
 import { useUserUtilities } from "../composables/utilities";
+import { useI18n } from "vue-i18n";
+import { computed } from "vue";
 
+const { t } = useI18n();
 const { getImageUrl } = useUserUtilities();
 type Slide = {
   imageUrl: string;
@@ -40,29 +43,29 @@ type MiniSlider = {
   items: Slide[];
 };
 
-const slides: MiniSlider[] = [
+const slides = computed<MiniSlider[]>(() => [
   {
     id: uuidv4(),
     items: [
       {
         imageUrl: "../assets/slides/slide1.png",
-        title: "Телефоны и гаджеты",
+        title: t("headerBottom.smartphones_and_gadgets.value"),
         id: uuidv4(),
       },
       {
         imageUrl: "../assets/slides/slide2.png",
-        title: "Бытовая техника",
+        title: t("headerBottom.technics.value"),
         id: uuidv4(),
       },
 
       {
         imageUrl: "../assets/slides/slide3.png",
-        title: "ТВ, Аудио, Видео",
+        title: t("headerBottom.tv_audio_video.value"),
         id: uuidv4(),
       },
       {
         imageUrl: "../assets/slides/slide4.png",
-        title: "Компьютеры",
+        title: t("headerBottom.computers.value"),
         id: uuidv4(),
       },
     ],
@@ -93,10 +96,10 @@ const slides: MiniSlider[] = [
       },
     ],
   },
-];
+]);
 </script>
 
-<style >
+<style>
 .home {
   height: 70vh;
   padding: 50px 0;

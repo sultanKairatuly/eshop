@@ -2,20 +2,20 @@
   <div class="container">
     <EshopLoader v-if="loading" />
     <div class="content_block">
-      <div class="title">Вход</div>
+      <div class="title">{{ $t("auth.loginTitle") }}</div>
       <form class="form" @submit="loginUser">
         <div class="form_item">
-          <div class="label">Эл. почта:</div>
+          <div class="label">{{ $t("auth.email") }}:</div>
           <EshopInput
-            placeholder="Ваша почта"
+            :placeholder="$t('auth.emailPlaceholder')"
             :model-value="email"
             @update:modelValue="(value) => (email = value)"
           />
         </div>
         <div class="form_item">
-          <div class="label">Пароль:</div>
+          <div class="label">{{ $t("auth.password") }}:</div>
           <EshopInput
-            placeholder="Ваш пароль"
+            :placeholder="$t('auth.passwordPlaceholder')"
             @update:modelValue="(value) => (password = value)"
             :type="isPwt ? 'text' : 'password'"
             :icon="isPwt ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"
@@ -24,14 +24,21 @@
           />
         </div>
         <div class="error_message">{{ errorMessage }}</div>
-        <button type="submit" class="signin_btn">Войти</button>
+        <button type="submit" class="signin_btn">{{ $t("auth.login") }}</button>
       </form>
       <div class="link">
-        Нет аккаунта?
-        <RouterLink to="/signup" tag="span">Зарегистрируйтесь</RouterLink>
+        {{ $t("auth.noAccount") }}
+        <RouterLink to="/signup" tag="span">{{
+          $t("auth.register")
+        }}</RouterLink>
       </div>
-      <div class="link">
-        Продолжить как <RouterLink to="/" tag="span">гость</RouterLink>
+      <div class="link" v-if="userStore.activeLocale === 'ru'">
+        {{ $t("auth.continueAs") }}
+        <RouterLink to="/" tag="span">{{ $t("headerTop.guest") }}</RouterLink>
+      </div>
+      <div v-else class="link">
+        <RouterLink to="/" tag="span">{{ $t("headerTop.guest") }}</RouterLink>
+        {{ $t("auth.continueAs") }}
       </div>
     </div>
   </div>

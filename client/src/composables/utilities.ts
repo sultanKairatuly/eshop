@@ -137,10 +137,10 @@ export function useUserUtilities() {
     let price = "";
     let value = ''
     if(typeof product !== 'string'){
+      price = (product.price ?? '');
       value = Math.round(
         +price.replace(/[\s₸]/g, "") / 12
       ).toString();
-      price = (product.price ?? '');
     }else{
       value = product
     }
@@ -166,6 +166,15 @@ export function useUserUtilities() {
     return value !== null && typeof value === "object" && "parameters" in value;
   }
 
+  function getName(item: DropdownFilterType, categoriesNames: Record<string, any> ) {
+    let result = structuredClone(categoriesNames);
+    for (let i = 0; i < item.value.split(".").length; i++) {
+      const prop = item.value.split(".")[i];
+      result = result[prop];
+    }
+    return result;
+  }
+
   return {
     isUser,
     findTreeLinkAndDepth,
@@ -178,6 +187,7 @@ export function useUserUtilities() {
     isHasValues,
     getInstallment,
     isHasParameters,
-    assertUnreachable
+    assertUnreachable,
+    getName
   };
 }

@@ -1,12 +1,12 @@
 <template>
   <footer class="footer">
     <div class="products_amount footer-item">
-      <span style="font-weight: 500">Товаров: </span> {{ productsAmount }}
+      <span style="font-weight: 500">{{ $t('cart.goods') }}: </span> {{ productsAmount }}
     </div>
     <div class="products_sum footer-item">
-      <span style="font-weight: 500">Сумма: </span> {{ productsSum }}
+      <span style="font-weight: 500">{{ $t('cart.sum') }}: </span> {{ productsSum }}
     </div>
-    <EshopButton @click="order">Оформить заказ</EshopButton>
+    <EshopButton @click="order">{{ $t('cart.order') }}</EshopButton>
   </footer>
 </template>
 

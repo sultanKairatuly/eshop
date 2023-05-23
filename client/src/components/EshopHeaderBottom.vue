@@ -38,43 +38,56 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { v4 as uuidv4 } from "uuid";
 import type { CategoryExplorerType } from "../../types/types";
 import CategoryExplorer from "./CategoryExplorer.vue";
+import { useI18n } from "vue-i18n";
+import messages from "../../translation.json";
 
+const { t } = useI18n({
+  messages,
+  locale: "kz",
+});
 const hoveredCategory = ref<null | CategoryExplorerType>(null);
 const tillHovered = ref<boolean>(false);
 function clearHoveredCategory() {
   hoveredCategory.value = null;
 }
 
-const categories: CategoryExplorerType[] = [
+
+const categories = computed<CategoryExplorerType[]>(() => [
   {
-    name: "Телефоны и гаджеты",
+    name: t("headerBottom.smartphones_and_gadgets.value"),
     category: "mobiles-clocks-chargers",
     value: "smartphones_and_gadgets",
     id: uuidv4(),
     children: [
       {
-        name: "Телефоны",
+        name: t(
+          "headerBottom.smartphones_and_gadgets.children.smartphones.value"
+        ),
         category: "mobiles",
         children: [],
         id: uuidv4(),
       },
       {
-        name: "Гаджеты",
+        name: t("headerBottom.smartphones_and_gadgets.children.gadgets.value"),
         category: "clocks-chargers",
         id: uuidv4(),
         children: [
           {
-            name: "Зарядки",
+            name: t(
+              "headerBottom.smartphones_and_gadgets.children.gadgets.children.chargers.value"
+            ),
             category: "chargers",
             children: [],
             id: uuidv4(),
           },
           {
-            name: "Часы",
+            name: t(
+              "headerBottom.smartphones_and_gadgets.children.gadgets.children.clocks.value"
+            ),
             category: "clocks",
             children: [],
             id: uuidv4(),
@@ -84,31 +97,31 @@ const categories: CategoryExplorerType[] = [
     ],
   },
   {
-    name: "ТВ, Аудио, Видео",
+    name: t("headerBottom.tv_audio_video.value"),
     category: "",
     children: [],
     id: uuidv4(),
   },
   {
-    name: "Компьютеры",
+    name: t("headerBottom.computers.value"),
     category: "",
     children: [],
     id: uuidv4(),
   },
 
   {
-    name: "Мебель",
+    name: t("headerBottom.furniture.value"),
     category: "",
     children: [],
     id: uuidv4(),
   },
   {
-    name: "Продукты питания",
+    name: t("headerBottom.food.value"),
     category: "",
     children: [],
     id: uuidv4(),
   },
-];
+]);
 
 function changeHoveredCategory(category: CategoryExplorerType | null = null) {
   tillHovered.value = category ? true : false;

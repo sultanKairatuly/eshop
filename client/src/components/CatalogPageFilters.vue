@@ -1,9 +1,10 @@
 <template>
   <div class="filters">
     <DropdownFilter
-      :active-id="currentTreeLinkId"
-      :dropdown-filter="dropdownFilter"
+      :active-id="props.currentTreeLinkId"
+      :dropdown-filter="props.dropdownFilter"
       @treeLinkClicked="treeLinkClicked"
+      @openDropdown="openDropdown"
     />
     <ProductFilters
       :categories="props.category"
@@ -52,6 +53,7 @@ const emit = defineEmits<{
     }
   ): void;
   (e: "deleteTotalFilterValue", value: string): void;
+  (e: "openDropdown", id: string): void;
 }>();
 
 function treeLinkClicked(treeLink: DropdownFilterType) {
@@ -97,6 +99,10 @@ function filterProducts(filter: {
     property: "empty",
     data: filter.empty,
   });
+}
+
+function openDropdown(id: string) {
+  emit("openDropdown", id);
 }
 </script>
 

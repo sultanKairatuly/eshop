@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <NoMessage class="title">Ваша корзина пуста</NoMessage>
+    <NoMessage class="title">{{ $t('cart.emptyr') }}</NoMessage>
     <img
       src="../assets/empty-inbox-4790940-3989293.webp"
       class="image"

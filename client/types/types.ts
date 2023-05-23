@@ -8,6 +8,17 @@ export type FormUser = {
   photoURL: string;
 };
 
+export type Tab = {
+  name: string,
+  id: string,
+  component: Component
+}
+
+export type Critertias = 'all' | 'new' | "old" | 'positive' | 'negative'
+export type sortingCriteriesType = {
+  name: string,
+  value: Critertias
+}
 type currentUser = typeof auth.currentUser;
 
 export type Review = {
@@ -20,7 +31,10 @@ export type Review = {
 
 export type Guest = {
   photoURL: string;
-  displayName: string;
+  displayName: {
+    ru: string,
+    kz: string
+  };
   cart: Cart;
 };
 
@@ -74,7 +88,7 @@ export type CategoryExplorerType = {
 
 export type Filter = {
   value: string;
-  title: { ru: string; kz: string };
+  title: { [key: string]: any, ru: string; kz: string };
   values: { value: string; title: string; checked: boolean }[];
   type: "default" | "range";
 };
@@ -88,6 +102,7 @@ export type Category = {
 
 export type ProductParametersType = {
   title: {
+    [key: string]: any
     ru: string;
     kz: string;
   };
@@ -154,4 +169,5 @@ export type Clock = {
 
 export type Cart = (Product & { amount: number })[];
 
-export type Product = (Phone | Clock | Charger) & { category: string };
+export type Product = (Phone | Clock | Charger) & { category: string, reviews: Review[], description: string };
+

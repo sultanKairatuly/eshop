@@ -1,7 +1,7 @@
 <template>
   <div
     class="filter"
-    v-for="(item, index) in dropdownFilter"
+    v-for="item in dropdownFilter"
     :key="item.id"
     :style="{
       paddingLeft: setPadding(returnNumberType(item.id)),
@@ -15,16 +15,16 @@
           'fa-arrow-down': item.opened && item.children.length,
           dot: !item.children.length,
         }"
-        @click="item.opened = !item.opened"
+        @click="openDropdown(item.id)"
       ></i>
       <div
         class="name"
-        @click.stop="emit('treeLinkClicked', item)"
+        @click.stop="treeLinkClicked(item)"
         :class="{
           active: activeId === item.id,
         }"
       >
-        {{ item.value }}
+        {{ getName(item, categoriesNames) }}
       </div>
     </div>
 
@@ -33,6 +33,7 @@
         :active-id="props.activeId"
         :dropdown-filter="item.children"
         @treeLinkClicked="emit('treeLinkClicked', $event)"
+        @openDropdown="openDropdown"
       />
     </div>
   </div>
@@ -41,13 +42,15 @@
 <script setup lang="ts">
 import { useUserUtilities } from "../composables/utilities";
 import type { DropdownFilterType } from "../../types/types";
+import { inject } from "vue";
+import type { ComputedRef } from "vue";
 
-const { findTreeLinkAndDepth, isHasDepth } = useUserUtilities();
+const { findTreeLinkAndDepth, isHasDepth, getName } = useUserUtilities();
 const props = defineProps<{
   dropdownFilter: DropdownFilterType[];
   activeId?: string;
 }>();
-
+const categoriesNames: ComputedRef<any> = inject("categoriesNames")!;
 function returnNumberType(value: string) {
   let result = findTreeLinkAndDepth(value, props.dropdownFilter);
   if (isHasDepth(result)) {
@@ -59,10 +62,19 @@ function returnNumberType(value: string) {
 
 const emit = defineEmits<{
   (e: "treeLinkClicked", value: DropdownFilterType): void;
+  (e: "openDropdown", id: string): void;
 }>();
 
 function setPadding(index: number): string {
   return index * 10 + 10 * index + "px";
+}
+
+function openDropdown(id: string) {
+  emit("openDropdown", id);
+}
+
+function treeLinkClicked(item: DropdownFilterType) {
+  emit("treeLinkClicked", item);
 }
 </script>
 

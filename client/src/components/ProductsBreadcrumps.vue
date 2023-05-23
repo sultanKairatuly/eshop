@@ -9,7 +9,7 @@
       }"
       @click="emit('breadcrumpClicked', breadcrump.id)"
     >
-      {{ breadcrump.value }}
+      {{ getName(breadcrump, categoriesNames) }}
       <i
         class="fa-solid fa-arrow-right breadcrump_arrow"
         v-if="index !== breadcrumps.length - 1"
@@ -19,16 +19,20 @@
 </template>
 
 <script setup lang="ts">
+import { ComputedRef, inject } from "vue";
 import { DropdownFilterType } from "../../types/types";
+import { useUserUtilities } from "../composables/utilities";
 
+const { getName } = useUserUtilities();
 const props = defineProps<{
   currentTreeLinkId: string;
   breadcrumps: DropdownFilterType[];
 }>();
-
 const emit = defineEmits<{
   (e: "breadcrumpClicked", value: string): void;
 }>();
+const categoriesNames: ComputedRef<any> = inject("categoriesNames")!;
+console.log(categoriesNames);
 </script>
 
 <style scoped>

@@ -3,14 +3,14 @@
   <div class="separator"></div>
   <div class="product_price">
     <div class="product_price_item">
-      <h4 class="price_title">Цена</h4>
+      <h4 class="price_title">{{ $t("product.price") }}</h4>
       <div class="price_value">
         {{ props.product.price }}
       </div>
     </div>
 
     <div class="product_price_item">
-      <h4 class="price_title">В рассрочку</h4>
+      <h4 class="price_title">{{ $t("product.installment") }}</h4>
       <div class="installment_value">
         {{ getInstallment(props?.product) }}
       </div>
